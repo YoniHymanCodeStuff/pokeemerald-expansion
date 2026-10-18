@@ -9323,6 +9323,28 @@
       "border_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/border.bin",
       "blockdata_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/map.bin",
       "layout_version": "frlg"
+    },
+    {
+      "id": "LAYOUT_POC_VILLAGE",
+      "name": "PocVillage_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/PocVillage/border.bin",
+      "blockdata_filepath": "data/layouts/PocVillage/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_POC_TRAIL",
+      "name": "PocTrail_Layout",
+      "width": 20,
+      "height": 32,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/PocTrail/border.bin",
+      "blockdata_filepath": "data/layouts/PocTrail/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }
