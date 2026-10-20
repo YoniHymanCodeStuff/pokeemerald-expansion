@@ -1,4 +1,5 @@
 #include "global.h"
+#include "leg_one.h"
 #include "trainer_pokemon_sprites.h"
 #include "bg.h"
 #include "constants/rgb.h"
@@ -234,6 +235,9 @@ static void Task_NewGameBirchSpeech_ReshowBirchLotad(u8);
 static void Task_NewGameBirchSpeech_WaitForSpriteFadeInAndTextPrinter(u8);
 static void Task_NewGameBirchSpeech_AreYouReady(u8);
 static void Task_NewGameBirchSpeech_ShrinkPlayer(u8);
+static void Task_LegPreferenceStart(u8);
+static void Task_LegPreferenceMenu(u8);
+static void Task_LegPreferenceInput(u8);
 static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *);
 static void Task_NewGameBirchSpeech_WaitForPlayerShrink(u8);
 static void Task_NewGameBirchSpeech_FadePlayerToWhite(u8);
@@ -1759,6 +1763,50 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
         NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
         StringExpandPlaceholders(gStringVar4, gText_Birch_AreYouReady);
         AddTextPrinterForMessage(TRUE);
+        gTasks[taskId].data[12] = 0;
+        gTasks[taskId].func = Task_LegPreferenceStart;
+    }
+}
+
+static const u8 sLegPrefsNick[] = _("Automatically open the nickname\nscreen for received POKéMON?");
+static const u8 sLegPrefsFast[] = _("Enable Fast Leveling at\nPOKéMON Centers?");
+static const u8 sLegPrefsMoves[] = _("Enable Set Moves in your\nPOKéMON menu?");
+static const u8 sLegPrefsDone[] = _("Everything in order?\pThen we can begin.");
+static const u8 *const sLegPrefsTexts[] = {sLegPrefsNick, sLegPrefsFast, sLegPrefsMoves};
+
+static void Task_LegPreferenceStart(u8 taskId)
+{
+    if (!gTasks[taskId].tIsDoneFadingSprites || RunTextPrintersAndIsPrinter0Active())
+        return;
+    if (gTasks[taskId].data[12] == 0)
+        gLegOpeningPreferences = 0;
+    StringExpandPlaceholders(gStringVar4, sLegPrefsTexts[gTasks[taskId].data[12]]);
+    AddTextPrinterForMessage(TRUE);
+    gTasks[taskId].func = Task_LegPreferenceMenu;
+}
+
+static void Task_LegPreferenceMenu(u8 taskId)
+{
+    if (!RunTextPrintersAndIsPrinter0Active())
+    {
+        CreateYesNoMenuParameterized(2, 1, 0xF3, 0xDF, 2, 15);
+        gTasks[taskId].func = Task_LegPreferenceInput;
+    }
+}
+
+static void Task_LegPreferenceInput(u8 taskId)
+{
+    s8 input = Menu_ProcessInputNoWrapClearOnChoose();
+    if (input == MENU_NOTHING_CHOSEN)
+        return;
+    if (input == 0)
+        gLegOpeningPreferences |= 1 << gTasks[taskId].data[12];
+    if (++gTasks[taskId].data[12] < ARRAY_COUNT(sLegPrefsTexts))
+        gTasks[taskId].func = Task_LegPreferenceStart;
+    else
+    {
+        StringExpandPlaceholders(gStringVar4, sLegPrefsDone);
+        AddTextPrinterForMessage(TRUE);
         gTasks[taskId].func = Task_NewGameBirchSpeech_ShrinkPlayer;
     }
 }
@@ -1916,7 +1964,7 @@ static void AddBirchSpeechObjects(u8 taskId)
     u8 brendanSpriteId;
     u8 maySpriteId;
 
-    birchSpriteId = AddNewGameBirchObject(0x88, 0x3C, 1);
+    birchSpriteId = CreateTrainerSprite(TRAINER_PIC_LEG_YEW, 0x88, 0x3C, 0, NULL);
     gSprites[birchSpriteId].callback = SpriteCB_Null;
     gSprites[birchSpriteId].oam.priority = 0;
     gSprites[birchSpriteId].invisible = TRUE;

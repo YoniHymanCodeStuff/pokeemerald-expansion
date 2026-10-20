@@ -1,4 +1,5 @@
 #include "global.h"
+#include "leg_one.h"
 #include "malloc.h"
 #include "apprentice.h"
 #include "battle.h"
@@ -2537,6 +2538,8 @@ void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg)
         break;
     case MON_DATA_LEVEL:
         SET8(mon->level);
+        if ((uintptr_t)mon >= (uintptr_t)gParties[B_TRAINER_PLAYER] && (uintptr_t)mon < (uintptr_t)(gParties[B_TRAINER_PLAYER] + PARTY_SIZE))
+            LegOneTrackLevel(mon->level);
         break;
     case MON_DATA_HP:
     {

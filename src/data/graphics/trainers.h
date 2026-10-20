@@ -583,8 +583,22 @@ const union AnimCmd *const sBackAnims_OldManPokedude[] = {
         .animation = anim,                                                                   \
     }}
 
+const u32 gTrainerFrontPic_LegYew[] = INCGFX_U32("graphics/our_game/characters/yew-front.png", ".4bpp.smol");
+const u16 gTrainerPalette_LegYew[] = INCGFX_U16("graphics/our_game/characters/yew-front.png", ".gbapal");
+const u32 gTrainerFrontPic_LegAstrid[] = INCGFX_U32("graphics/our_game/characters/astrid-front.png", ".4bpp.smol");
+const u16 gTrainerPalette_LegAstrid[] = INCGFX_U16("graphics/our_game/characters/astrid-front.png", ".gbapal");
+const u32 gTrainerFrontPic_LegEdwulf[] = INCGFX_U32("graphics/our_game/characters/edwulf-front.png", ".4bpp.smol");
+const u16 gTrainerPalette_LegEdwulf[] = INCGFX_U16("graphics/our_game/characters/edwulf-front.png", ".gbapal");
+const u32 gTrainerFrontPic_LegNeville[] = INCGFX_U32("graphics/our_game/characters/neville-front.png", ".4bpp.smol");
+const u16 gTrainerPalette_LegNeville[] = INCGFX_U16("graphics/our_game/characters/neville-front.png", ".gbapal");
+const u32 gTrainerBackPic_LegNeville[] = INCGFX_U32("graphics/our_game/characters/neville-back.png", ".4bpp");
+const u16 gTrainerBackPalette_LegNeville[] = INCGFX_U16("graphics/our_game/characters/neville-back.png", ".gbapal");
 const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
 {
+    [TRAINER_PIC_LEG_YEW] = { .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LegYew, gTrainerPalette_LegYew), },
+    [TRAINER_PIC_LEG_ASTRID] = { .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LegAstrid, gTrainerPalette_LegAstrid), },
+    [TRAINER_PIC_LEG_EDWULF] = { .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LegEdwulf, gTrainerPalette_LegEdwulf), },
+    [TRAINER_PIC_LEG_NEVILLE] = { .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LegNeville, gTrainerPalette_LegNeville), .backPic = TRAINER_BACK_PIC(1, gTrainerBackPic_LegNeville, gTrainerBackPalette_LegNeville, sBackAnims_None), },
     [TRAINER_PIC_NONE] =
     {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_None, gTrainerPalette_None),

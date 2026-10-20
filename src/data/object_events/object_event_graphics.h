@@ -633,3 +633,15 @@ const u16 gObjectEventPic_PidgeyOld[] = INCGFX_U16("graphics/object_events/pics/
 const u16 gObjectEventPic_ClefairyOld[] = INCGFX_U16("graphics/object_events/pics/pokemon_old/clefairy.png", ".4bpp", "-mwidth 2 -mheight 2");
 
 #endif // IS_FRLG
+
+const u32 gObjectEventPic_LegYew[] = INCGFX_U32("graphics/our_game/characters/yew-overworld.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPal_LegYew[] = INCGFX_U16("graphics/our_game/characters/yew-overworld.png", ".gbapal");
+
+const u32 gObjectEventPic_LegAstrid[] = INCGFX_U32("graphics/our_game/characters/astrid-overworld.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPal_LegAstrid[] = INCGFX_U16("graphics/our_game/characters/astrid-overworld.png", ".gbapal");
+
+const u32 gObjectEventPic_LegEdwulf[] = INCGFX_U32("graphics/our_game/characters/edwulf-overworld.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPal_LegEdwulf[] = INCGFX_U16("graphics/our_game/characters/edwulf-overworld.png", ".gbapal");
+
+const u32 gObjectEventPic_LegNeville[] = INCGFX_U32("graphics/our_game/characters/neville-overworld.png", ".4bpp", "-mwidth 2 -mheight 4");
+const u16 gObjectEventPal_LegNeville[] = INCGFX_U16("graphics/our_game/characters/neville-overworld.png", ".gbapal");

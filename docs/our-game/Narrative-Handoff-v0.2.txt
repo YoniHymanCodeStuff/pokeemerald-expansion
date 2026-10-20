@@ -1,0 +1,776 @@
+EMERALD ROMHACK — COMPLETE STORYBOARD AND DESIGN HANDOFF
+Version 0.2 | Updated October 19, 2026, through the final negotiation-design discussion
+
+READ THIS FIRST
+
+This is a standalone knowledge base for continuing the project's story development in another chat. It incorporates the original lore and the subsequent storyboard, faction branches, character arcs, and ending discussions. It supersedes the earlier v0.1 story handoff wherever they differ. No earlier document is needed to understand this one.
+
+The user considers the main storyboard sufficiently cemented. Continue by developing its details rather than repeatedly replacing its structure. Preserve uncertainty where a detail has not been selected. This document is a development handoff, not a finished script or code specification.
+
+STATUS KEY
+- SETTLED: explicit user decisions or clearly adopted directions.
+- WORKING: a broadly accepted implementation or scene treatment whose details can still change.
+- OPEN: something that remains genuinely undecided.
+- EXAMPLE: illustrates an agreed principle; not automatically approved story content.
+
+The exact gym placement of several middle chapters is provisional. Their causal order matters more than their current badge numbers. Do not mistake an assistant's illustrative dialogue for final dialogue.
+
+RESPONSE PREFERENCE
+Index assistant responses so the user can refer to them quickly. The latest conversational response before this handoff was #35; the handoff progress message was #36. Continue numbering naturally in the current thread. In a new thread, retain indexed responses without needing to preserve this thread's numbering exactly.
+
+======================================================================
+1. PROJECT AND CREATIVE NORTH STAR
+======================================================================
+
+The project is a dark, adult-oriented Pokémon ROM hack using an expanded Emerald base. A working proof of concept was previously completed. The user's repository is:
+https://github.com/YoniHymanCodeStuff/pokeemerald-expansion
+
+Current work is story design, not coding. An expanded base was selected to support more recent existing Pokémon without manually adding the entire roster. Do not assume the region must reproduce Hoenn's exact geography.
+
+The game starts convincingly like an ordinary colorful Pokémon adventure. An excited child receives a starter, leaves home, battles trainers, and collects eight badges. Gradually the same familiar conventions acquire darker meanings.
+
+The target audience is adults who grew up with Pokémon and want a grittier story that still delivers nostalgia. The user described jaded adults like themselves. The goal is a believable sinister "behind the scenes" of the original games, not merely a Pokémon skin over an unrelated dystopian story.
+
+Core institutions should do narrative work: the professor, starter ceremony, route encounters, gym attendants, gym leaders, trainer careers, ruins, ocean liner, Victory Road, Elite Four structure, and capture mechanics.
+
+The story can become very dark without relying on blood or graphic corpses, which can look awkward in the pixel-art presentation. Consequences, coercion, memory alteration, damaged friendships, and cheerful normality are the principal tools. Some towns remain colorful and happy after the truth is known; the façade becomes disturbing because its cost is understood.
+
+References mentioned by the user:
+- The Giver: paternalistic containment, managed happiness, suppression of painful truth.
+- 1984: forbidden history and enforced official reality.
+- Men in Black: analogy for possible psychic witness-memory suppression.
+- Avatar Wan and the spirit wilds: analogy for earning nonhuman trust, not a plot to copy.
+- Aladdin's genie: cooperation toward eventual freedom while the immediate mission still requires partnership.
+
+No final title, region name, protagonist name, professor name, rival names, or detailed map has been chosen. Team Anarchy IS the selected resistance name. Giovanni remains only a possible leader identity.
+
+======================================================================
+2. THE WORLD AND ITS HIDDEN HISTORY
+======================================================================
+
+SETTLED:
+This is our world roughly a century after a cataclysmic atomic war. Most countries have broken down. Beyond the region, violent armed groups, severe crime, ruined infrastructure, and powerful mutated Pokémon create genuine danger.
+
+Humans received a protective medical treatment against radiation; animals did not. Animals mutated into Pokémon. The user accepts radiation as the central fictional explanation. Use a few plausible-sounding terms if helpful, but do not replace it with an elaborate biotechnology origin or lengthy scientific exposition.
+
+The exact treatment mechanism, inheritance, dates, individual species origins, legendary origins, and Mewtwo's creation remain OPEN.
+
+Chronology note: at around a century after the war, most elderly people's knowledge would be inherited from parents, hidden records, and fragments of childhood testimony. Firsthand war survivors would be exceptional. Preserve the user's intent that older people retain dangerous, hazy knowledge without casually making every elderly NPC a direct eyewitness.
+
+The regional government has built a genuinely safer enclave. Its borders mark the practical limits of its protection and control. It is not necessarily a world government.
+
+It maintains a happy, colorful official picture and prohibits contact with the outside, discussion of forbidden history, and disclosure of concealed conflict. Its argument is that painful truth causes fear, unrest, and instability.
+
+People are taught that Pokémon are an exciting discovery, in the spirit of the original professor introduction. Since generations have lived with them, the exact propaganda should suggest an ongoing age of discovery rather than an implausibly recent first sighting.
+
+War ruins are attributed to mythical Pokémon or invented ancient events. Some have deliberately installed Pokémon-themed puzzles and tourist attractions disguising their real history.
+
+======================================================================
+3. GOVERNMENT: REAL PROTECTION, TOTAL CONTROL
+======================================================================
+
+The government sincerely wishes to protect citizens and give them happy lives. It also refuses challenges to its authority. Its protective function must remain real: dismantling it creates risks for ordinary people, rather than revealing that all danger was fabricated.
+
+Useful governing premise: safety is real, and obedience and ignorance are its price.
+
+Initial dissent may receive a friendly warning against spreading misinformation that causes alarm or discomfort. Persistent dissenters are marked as problems and taken to reeducation facilities.
+
+Psychic Pokémon are forced to brainwash humans. The state therefore exploits one captive mind to control another.
+
+WORKING limits on psychic coercion:
+- Deep reeducation requires repeated sessions, detention, and psychological conditioning.
+- Field suppression can blur recent incidents, rather than effortlessly rewrite entire lives.
+- Powerful psychic Pokémon and trained handlers are limited resources.
+- Psychic Pokémon can resist or hesitate.
+
+These limits prevent the obvious question of why the government does not instantly mind-control every opponent. Exact mechanics remain open.
+
+Ordinary civilian occupations can coexist with highly prestigious government careers. The detailed economic model is not finished. The user originally considered universal job assignment versus a distinction between ordinary workers and successful government recruits; the working preference is to retain civilian life while letting government control access, movement, and opportunity.
+
+======================================================================
+4. THE TRAINER PROGRAM AND TASK FORCE
+======================================================================
+
+Children enter the program around the familiar Pokémon age of ten; precise age and story duration remain open. The original premise is compulsory enrollment. The local professor is a government official with a familiar tree-based name/codename, overseeing starter selection and training.
+
+Children choose one of three starters and travel through eight gyms. Publicly, this is adventure, partnership, self-improvement, patriotism, and preparation for honorable work. Success determines social standing and access to admired careers.
+
+Privately, it selects and conditions competence, loyalty, obedience, and ruthlessness. The government wants children because they are easier to shape. Elite job duties are concealed.
+
+Failure usually means diminished prospects and low-status work, not automatic imprisonment. The social weight is substantial because this is presented as the opportunity that defines one's future.
+
+Some unsuccessful trainees become stationary route challengers as employment. They wait at assigned posts and battle passing candidates. This explains an iconic Pokémon convention while exposing a disappointing career path.
+
+An elite task force maintains the system. It may not officially exist. Its present duties include:
+- Removing Pokémon too strong for particular training routes.
+- Keeping towns and approved routes safe.
+- Fighting Team Anarchy.
+- Suppressing Pokémon independence.
+- Detaining dissenters and enforcing domestic restrictions.
+
+It historically may have focused more on border defense. Publicly, children know prestigious jobs await successful trainers, not that they are being cultivated for secret-police service.
+
+Routes are deliberately "normalized": dangerous Pokémon are killed or relocated so encounters fit trainee progression. The government's action both protects children and manufactures the apparently natural adventure world.
+
+Gyms and other encounters can covertly assess obedience and ruthlessness. Keep this wrapped in familiar Pokémon/anime idealism. Not every gym has a designed moral test yet. Hidden observation can occur outside gyms too.
+
+======================================================================
+5. THE THREE FACTIONS AND WHAT EACH DEFENDS
+======================================================================
+
+GOVERNMENT
+Defends human security and continuity. Conceals history, coerces dissenters, and treats Pokémon as resources. It can knowingly do terrible things while preserving something genuinely valuable.
+
+TEAM ANARCHY
+Selected public name: Team Anarchy; government descriptions may say "the terrorist organization Team Anarchy." It initially occupies the recognizable villain-team role.
+
+Its opposition to imposed lies, forbidden truth, and authoritarian control has merit. Its violence is also real. Do not later reveal that every crime blamed on it was secretly government work.
+
+The movement contains different views on acceptable violence, casualties, and what follows revolution. It has no unified reliable replacement government. Some members care deeply about the aftermath; others prioritize destruction.
+
+It uses Pokémon as weapons and does not automatically extend human freedom to them. This is central to its conflict with Mewtwo.
+
+MEWTWO'S MOVEMENT
+Defends Pokémon autonomy and resists captivity. Mewtwo distrusts humans because both human factions exploit Pokémon. He can be militant and willing to fight institutions holding them captive without becoming a would-be ruler of humanity.
+
+His ultimate liberation ending is separation and exodus, not the installation of a Pokémon dictatorship. Earlier ideas about supremacy and replacing human tyranny were explored but are not the chosen ending direction.
+
+The user wants broadly familiar Mewtwo lore adjacency, not a specific film/anime/game continuity. His origin remains undefined.
+
+The factions are not perfectly symmetrical:
+- Government and Anarchy contest human political rule.
+- Mewtwo challenges the ownership system both rely on.
+
+All major storylines need closure, but closure need not mean destroying every faction. Withdrawal, negotiated separation, defeat, surviving resentment, and epilogue consequences can resolve a relationship.
+
+======================================================================
+6. MAIN CHARACTERS
+======================================================================
+
+PROTAGONIST
+An excited child who initially believes the ordinary Pokémon worldview. The game should not open with them already aware of the dystopia. They become entangled in faction conflicts as a recognizable Pokémon protagonist would, then make consequential choices.
+
+PROFESSOR
+The local recruiter and government official, later the final government opponent on anti-government routes. Capable, reassuring, and sincerely proud of promising children. Their willingness to expose children to violence is framed as practical training.
+
+They need not secretly stage attacks. They respond to real events and use them as learning and assessment opportunities.
+
+Their eventual regret over the protagonist's defection is sincere, but does not prevent them choosing lethal repression. Avoid reducing them to a generic sneering villain.
+
+LOYALIST FRIEND
+One of the hometown trainees. Becomes successful, gains government access, learns about repression, and knowingly accepts it as necessary. Do not excuse their final position through secret brainwashing or mere ignorance.
+
+They can care for friends and victims while deciding the government's coercion prevents greater suffering. They become the fourth of the professor's elite opponents. Their appointment should be a late promotion reflecting the journey, not an unexplained lifetime as a master assassin.
+
+REBEL FRIEND
+Another hometown trainee. Initially a rival, gradually becomes close to the protagonist. Witnesses cracks in the official story alongside or ahead of them and joins Team Anarchy.
+
+The radio-station encounter is an early seed. Their later commitment grows through experience, especially government repression. They are not automatically a revolutionary after one cryptic line.
+
+They become an important Anarchy operative and the fourth elite Anarchy opponent on the loyalist route. Leadership of the entire movement is not required; local command or a significant operational position is more credible.
+
+UNSUCCESSFUL FRIEND
+The third significant hometown companion. Falls behind around Gym 3, later reappears as a route challenger employed by the program. They are learning to live with their position and defend its modest dignity: "It's not that bad," and they are still helping the government.
+
+COHORT SIZE
+Four central children including the protagonist. Other classmates/children can exist. A small town's annual age cohort reconciles this with mandatory enrollment; the exact enrollment arrangement is not a critical finalized detail.
+
+MEWTWO'S HUMAN DISGUISE
+Mewtwo first appears through a psychic human illusion. He meets the protagonist before his identity is revealed. He is curious about the partner Pokémon's wishes and disappears unusually.
+
+Do not immediately show the disguise melting away. The user accepted keeping the identity for a later reveal, with an enigmatic disappearance as a clue. He later reappears at the underground fighting ring, visibly disturbed by cruelty.
+
+ANARCHY LEADER
+The escaping prisoner whom the protagonist privately assists or subdues aboard the ship later proves to be Anarchy's leader. This is selected. The player does not know their rank at that first conversation.
+
+Giovanni was suggested as a possible identity, not confirmed. How such a valuable prisoner was captured, transported, and liberated remains to be detailed. Avoid assuming staff would casually identify them to the trainee.
+
+======================================================================
+7. SHARED STORYBOARD: OPENING THROUGH THE MIDDLE GAME
+======================================================================
+
+BEAT 1 — DEPARTURE AND STARTERS
+Before Gym 1. A sincere celebration of the children's futures. Introduce companions through ordinary interactions. The professor presents Pokémon training as an exciting patriotic opportunity. Small restrictions can appear as familiar game-world roadblocks without immediately revealing the dystopia.
+
+BEAT 2 — RADIO-STATION ATTACK
+Just after Gym 1, working placement.
+
+A small Team Anarchy cell seizes a radio station to broadcast a "message of truth." Its members are extremely violent toward staff who obstruct them. The violence is genuine.
+
+The professor hears the attack is underway and deliberately brings the protagonist and future rebel along with "great learning opportunity, follow me" energy. Their presence is not accidental and the attack is not staged.
+
+The professor handles the strongest threats while assigning the children a manageable section, such as freeing employees through a side entrance. Include a tag-team fight against junior members.
+
+Fragments of the broadcast provoke the future rebel's curiosity, even though they initially oppose the attackers. The professor restores order and praises the children.
+
+The first impression should remain recognizably Pokémon: capable adult, brave children, villain-team disruption. Later the player reconsiders how readily the professor took children into violence.
+
+Do not plant such obvious sympathetic signals that Team Anarchy stops seeming dangerous immediately.
+
+BEAT 3 — CHARIZARD CLEARANCE
+Between Gyms 1 and 2.
+
+The protagonist and another trainer witness black-clad operatives take down an unusually powerful Pokémon, preferably something nostalgic such as Charizard. It need not be threatening anyone; it may be occupying its own habitat.
+
+Later an official blames Team Anarchy for attacking Pokémon in their homes. In reality, this is the task force normalizing the route.
+
+The children should not positively identify official uniforms as Anarchy uniforms. They see black outfits; the subsequent explanation supplies the false identification. The exact fate of Charizard—death or relocation—is not settled.
+
+The other witness can be an ordinary trainee, making the cohort world larger and preserving someone who can corroborate the memory later.
+
+BEAT 4 — THE HUMAN STRANGER
+After Gym 2.
+
+Mewtwo appears human through illusion. A short ordinary interaction with the partner Pokémon leads to a question about what it wants. Example only: "And what does your partner want?"
+
+He listens rather than delivering an anti-human lecture. The protagonist looks away briefly; he is gone. His identity is revealed much later through a reference to this meeting.
+
+BEAT 5 — THE FRIEND FALLS BEHIND
+Around Gym 3.
+
+Near the gym, the unsuccessful friend complains the leader is unbeatable, then insists they can at least still beat the protagonist. They battle. After losing, their bravado collapses into a depressed monologue about failure.
+
+The professor or an assistant approaches and asks them to take a walk. They leave the screen together. No immediate explanation of the outcome.
+
+Later the protagonist finds this friend assigned to a route. They failed the gauntlet and accepted the posting. Their rationalization mixes resignation, real security, and a desire to remain useful. The initial intervention can be genuinely compassionate without making the institution benign.
+
+BEAT 6 — THE BORDER GATE
+Between Gyms 3 and 4, provisional.
+
+A guard turns the protagonist away because the outside is dangerous. A substantial gate and defensive arrangements suggest a meaningful boundary rather than another temporary road closure. This can be a small exploration encounter rather than a major cutscene.
+
+BEAT 7 — THE PERIMETER PASSAGE
+Around Gym 4, provisional.
+
+The protagonist helps stop an alleged Pokémon-smuggling tunnel or exit through the perimeter, operated by Anarchy. They fight lookouts or help close a passage without inspecting the entire operation.
+
+Ambiguous details can suggest human travelers: bedding, personal belongings, supplies. Officials explain them away.
+
+Later it is revealed the passage was used to help people leave. Whether it also carried supplies or Pokémon remains open. This is a stronger player-complicity mission than the superseded "recover a stolen Pokémon" proposal.
+
+BEAT 8 — THE DISILLUSIONED GYM LEADER
+Around Gym 4; exact gym open.
+
+A respected leader asks questions that undermine the tunnel's official explanation or otherwise hints at their disillusionment. They arrange a later conversation on a route.
+
+The familiar entrance attendant—the "hey, champ in the making" NPC—is the government's gym monitor. A pause or movement makes clear they are listening to the subversive conversation.
+
+A brief later cutscene may show officials confronting or taking the leader, but this does NOT happen directly in front of the protagonist. Do not replace this with the professor publicly hauling them away during the conversation.
+
+At the promised route meeting, the leader remembers wanting to speak, but now delivers earnest praise for the government and warnings against people sabotaging society. They are hazy and changed while retaining familiar mannerisms. Their purpose has been overwritten, not simply their appointment forgotten.
+
+The player does not yet witness the psychic procedure. Later the island facility confirms what happened.
+
+BEAT 9 — THE UNEXPECTED ANARCHY MEETING
+Between Gyms 4 and 5, provisional.
+
+The future rebel leads the protagonist to people who can explain recent events, without initially disclosing it is an Anarchy meeting. The affiliation becomes apparent on arrival.
+
+They present specific evidence or testimony about government wrongdoing, preferably correcting an incident the player experienced, such as the tunnel. They do not explain all lore in one speech.
+
+The protagonist can hear them out, leave, or fight under a credible confrontation. The friend concealed the meeting's nature, which should affect their relationship.
+
+The exact dialogue/battle branches remain to be scripted. Do not assume refusal to join automatically justifies everyone attacking.
+
+BEAT 10 — UNDERGROUND FIGHTING RING
+Between Gyms 5 and 6, provisional.
+
+A local Anarchy cell runs or protects an underground Pokémon fighting ring: revenue, recruitment, and a meeting hub away from government surveillance. Show genuine cruelty through forced fighting, exhaustion, ignored refusal, and treatment of injury.
+
+This comes after Anarchy has provided some credible truth, preventing a simple reversal from "Anarchy bad" to "Anarchy secretly always right."
+
+The disguised Mewtwo is watching, angry and possibly struggling to contain that anger. He asks what the protagonist thinks or intends to do and subtly urges action. His identity can remain concealed here.
+
+Player responses and actions concerning the ring should later affect Mewtwo's trust. Exact options are open; direct intervention versus discreet rescue were proposed, not exhaustively finalized.
+
+======================================================================
+8. OUTSIDE THE REGION, HISTORY, AND MEWTWO'S REVEAL
+======================================================================
+
+WORKING BRIDGE AFTER THE FIGHTING RING:
+Helping freed Pokémon reach safety gives a practical reason to follow the disguised stranger through an unmaintained passage beyond the perimeter. This avoids an excursion whose only purpose is exposition. Exact escort objectives remain open.
+
+OUTSIDE ENCOUNTERS
+Show no uniform curated level progression. Include weak Pokémon as well as dangerous ones, and human communities whose survival depends on local knowledge. The outside is genuinely threatening, but not everyone there is a monster or criminal.
+
+The user raised an important gameplay issue: a level-70 encounter should not simply wipe the player's midgame team.
+
+WORKING SOLUTION, requiring technical verification:
+- Most encounters remain survivable but vary more widely.
+- A visibly dangerous Pokémon triggers a brief scripted battle showing its overwhelming level.
+- Before player commands or a fatal attack, the disguised Mewtwo intervenes psychically and enables escape.
+- Return to the map and avoid its territory.
+
+This is a proposed presentation, not a verified implementation. Do not claim the battle scripts have been written or tested.
+
+HISTORICAL REVELATION
+A surviving medical/civil-defense facility or comparable concrete evidence establishes the war, human radiation treatment, and changes in untreated animals. Keep it brief and connected to prior clues. The exact building and records are open.
+
+ROUTE-REGULATION REVELATION
+The stranger can explain that approved routes are deliberately cleared of unsuitable Pokémon, giving a new account of Charizard's removal. At this stage it is an allegation. Later government evidence confirms it. Do not assume the protagonist understands route regulation before this explanation.
+
+REFUGE AND IDENTITY
+The escaped Pokémon reach an autonomous refuge. The stranger reveals himself as Mewtwo, linking the conversation back to the early meeting. Pokémon organize and choose without human ownership.
+
+Trust becomes conditional rather than universal reconciliation. Mewtwo objects to both human factions' use of Pokémon. The protagonist does not cure his distrust with a single kind act.
+
+Earlier proposals had the team freely choose to stay here. Preserve continuity with the later liberation campaign: do not promise permanent companionship if the starter will ultimately leave. They can choose to continue cooperating without committing to live with the protagonist forever.
+
+RETURN TO THE COLORFUL REGION
+The contrast should have room to breathe. Familiar propaganda, route jobs, and the altered gym leader are reinterpreted. The loyalist now openly defends necessary evils, citing the real outside danger. They are informed, not merely deceived.
+
+======================================================================
+9. THE SHIP AND ISLAND: ONE CONTINUOUS OPERATION
+======================================================================
+
+This replaces older outlines containing separate unrelated ship and prison attacks. There is ONE Anarchy assault as the ship reaches the island.
+
+WHY THE PROTAGONIST IS ABOARD
+The government has intelligence of a coming Anarchy attack. The protagonist is assigned supervised escort/security duty as a promising trainee, alongside the loyalist. They protect provisions, crew, and the vessel until docking.
+
+The vessel is a recognizable Pokémon-style ocean liner that also transports supplies and detainees. Restricted decks conceal prisoners. The island is an Alcatraz-like reeducation facility publicly masked as something benign, such as recovery and rehabilitation. Its exact cover name remains open.
+
+VOYAGE
+Allow exploration, restricted doors, and conversation with the loyalist. The protagonist may glimpse detainees or discover inconsistencies. The loyalist can acknowledge supposed rehabilitation rather than transparently deny all restrictions.
+
+The precise pre-voyage conversation with the rebel is not locked. An earlier proposal had a warning at the harbor, but the selected branch does not require a separate advance-contact stage.
+
+BREACH AND FIRST CHOICE
+As the ship approaches/docks and Anarchy attacks, the protagonist has a private moment with an escaping Anarchy prisoner. After a short conversation, choose:
+- ASSIST the prisoner.
+- SUBDUE the prisoner in battle.
+
+This prisoner later turns out to be Anarchy's leader. That identity is concealed at the time and becomes a consequential personal connection.
+
+FACILITY ROUTE
+- If assisting: help the breakout and fight government personnel.
+- If subduing: help security and fight Anarchy members.
+
+The action carries from ship to dock to facility. Entry must follow operational objectives and physical access, not an unexplained ability to stroll into a secret prison.
+
+REEDUCATION WINDOW
+Both routes pass observation windows. A cutscene shows psychic Pokémon being forced to alter a prisoner. The gym leader's earlier change is now understood. A record can independently identify their treatment.
+
+Government personnel/evidence can also confirm route clearances and the true identity of the Charizard operatives. Place evidence in accessible spaces during the mission; avoid interrupting action with a giant lore dump.
+
+FINAL CONFRONTATION: THE THREE FRIENDS
+Near the end, protagonist, rebel, and loyalist converge. Each friend urges the protagonist to act. The player chooses which friend to fight, regardless of their first prisoner decision.
+
+Four valid combinations:
+1) Assist prisoner, fight loyalist: follow through on escape assistance.
+2) Assist prisoner, fight rebel: reject Anarchy despite helping a detainee.
+3) Subdue prisoner, fight rebel: continue government support.
+4) Subdue prisoner, fight loyalist: change course after witnessing reeducation.
+
+The second decision is informed by what the player has now seen. Both decisions matter later; do not collapse them into one identical reputation increment.
+
+IF THE PLAYER FIGHTS THE REBEL
+After the rebel loses, an Anarchy explosion enables their extraction by comrades. People die in the explosion. The rebel survives for the late game.
+
+Who ordered the explosion and whether the rebel knew the risks remain open. Its harm is real and should affect subsequent conversations.
+
+IF THE PLAYER FIGHTS THE LOYALIST
+The protagonist leaves with the rebel and escaping prisoners. The loyalist survives and knows the protagonist deliberately opposed them.
+
+Whether an explosion also happens on this version is OPEN; it is established only for the rebel-defeat version.
+
+AFTERMATH
+The two routes reconverge on the mainland. The protagonist completes the final gym, then is summoned by the professor.
+
+The professor is still trying to recruit/reclaim them. Dialogue branches:
+- Fought rebel: approval and recognition of difficult service.
+- Fought loyalist: disappointment, an explanation of necessary measures, and one last opportunity to prove dedication.
+
+The exact legal/political mechanism allowing a defiant protagonist to continue should be made explicit: the professor intervenes, contains the incident, and treats them as salvageable. Do not ignore their prior fight with government agents.
+
+======================================================================
+10. VICTORY ROAD: THE FINAL ASSIGNMENT, NOT A FIXED ROAD
+======================================================================
+
+SETTLED USER DECISION:
+Everyone knows Victory Road is the last challenge before graduation. Children imagine a tough road filled with powerful trainers and high-level Pokémon. In reality, Victory Road is whatever final test the program assigns a candidate.
+
+Do NOT restore the superseded proposals of an old evacuation road, compulsory mountain corridor, or an extra Elite Four exam before the assignment.
+
+After Gym 8, the professor assigns this protagonist's Victory Road:
+1) Capture Mewtwo, whose movement threatens society's foundations.
+2) Take down the former friend who defected to Anarchy, as part of suppressing its leadership.
+
+This tests competence and dedication: will the recruit put the government's version of the public good ahead of personal attachment and doubt?
+
+The player chooses which target to visit first. The professor should hint that order matters and urge careful thought about the greater threat, without revealing every consequence or assigning the player a preferred route.
+
+NO REQUIRED EXTRA CONTACT STAGE
+An assistant proposed advance messages from both factions to advertise all options. The user rejected the need. The offer to join is discovered naturally when visiting the faction. Do not add a mandatory introductory summit or messenger sequence merely to force equal exposure.
+
+======================================================================
+11. FINAL BRANCHING LOGIC — CURRENT AGREED STRUCTURE
+======================================================================
+
+DECISION A: FIRST DESTINATION
+- Anarchy.
+- Mewtwo.
+
+DECISION B: FIRST FACTION'S CONFRONTATION
+The faction offers a meaningful "with us or against us" choice:
+- FIGHT: carry out that part of the government assignment.
+- JOIN: commit to that faction's cause and prepare to storm government power.
+
+Joining fixes allegiance but does NOT instantly launch the final assault. There is a preparation interval and one optional visit to the remaining faction.
+
+IF THE PLAYER FIGHTS THE FIRST FACTION
+They next visit the remaining faction and can:
+- Fight it too: complete both government assignments, leading to the loyalist ending.
+- Join it: defect to that faction after having already harmed the other.
+
+IF THE PLAYER JOINS A FACTION
+Before the government assault, choose:
+- Proceed without addressing the remaining faction.
+- Visit the remaining faction to seek limited terms or fight over incompatible demands.
+
+The second visit is made ON BEHALF OF THE ALLEGIANCE ALREADY CHOSEN. It is not another unrestricted faction-switch menu. This prevents endless allegiance changes and branching overhead.
+
+No requirement to recruit both factions into one army. Their goals differ. The optional mission is limited accommodation, noninterference, or liberation—not a universal golden alliance.
+
+If the other faction has already been defeated/captured, the optional negotiation visit is unavailable. Its fate remains part of the ending.
+
+COMPACT PATH REGISTER
+
+A1. Visit Anarchy -> fight -> visit Mewtwo -> fight:
+Government outcome; Anarchy defeated, Mewtwo captured.
+
+A2. Visit Anarchy -> fight -> visit Mewtwo -> join:
+Liberation allegiance; Anarchy already weakened/defeated; assault government.
+
+A3. Visit Anarchy -> join:
+Anarchy allegiance; optional Mewtwo visit, then assault government.
+
+M1. Visit Mewtwo -> fight/capture -> visit Anarchy -> fight:
+Government outcome; Mewtwo captured, Anarchy defeated.
+
+M2. Visit Mewtwo -> fight/capture -> visit Anarchy -> join:
+Anarchy allegiance; Pokémon movement already harmed; assault government.
+
+M3. Visit Mewtwo -> join:
+Liberation allegiance; optional Anarchy visit, then assault government.
+
+For A3 and M3, optional second-faction outcomes depend on negotiation conditions and player responses, described below.
+
+ORDER MATTERS
+Defeating one faction and defecting at the next is not morally equivalent to joining immediately. Captures, damaged movements, prisoners, personal relationships, and future options persist. Do not magically undo the first operation after allegiance changes.
+
+The professor's final targets should not be empty fights whose consequences disappear when the player changes sides.
+
+======================================================================
+12. OPTIONAL NEGOTIATIONS: PLAYER AGENCY AND HISTORICAL CONSEQUENCES
+======================================================================
+
+CORE AGREED RULE:
+Past actions establish the available deals. Present choices determine which deal, if any, the player accepts.
+
+The player can offer workable compromises, insist on incompatible demands and enforce them, or leave without agreement. Conflict results from material disagreement and action, not simply choosing a rude line.
+
+Compromise must have a real cost: release captives, protect an evacuation, give up a tactical advantage, or undertake an additional objective. It cannot just be the universally correct polite option.
+
+Earlier choices must have SIGNIFICANT impact. Merely changing greeting warmth or adding a trivial fetch quest is insufficient.
+
+ANARCHY-ALIGNED NEGOTIATION WITH MEWTWO
+Goal: secure withdrawal/noninterference or another limited agreement before the human revolution.
+
+Mewtwo's objection: leaving his people dependent on another human regime's promise, especially while Anarchy still holds Pokémon captive.
+
+Possible conditions: concrete releases, an evacuation guarantee backed by action, or a staged release agreement if the protagonist is trusted. Exact terms remain to be written.
+
+Player exits:
+- Meet an available agreement's conditions.
+- Leave without agreement and accept unresolved danger/resentment.
+- Force the issue and fight.
+
+Defeating Mewtwo on this optional Anarchy-aligned visit must NOT automatically deliver him to the government. Forced withdrawal or another outcome needs to be specified. This is an explicit remaining gap.
+
+LIBERATION-ALIGNED NEGOTIATION WITH ANARCHY
+Goal: permit captive Pokémon to choose whether to leave or voluntarily continue, rather than inherit ownership from the government.
+
+Anarchy's objection: unilateral liberation could disarm the movement while government forces and outside threats remain.
+
+Possible conditions: real defensive assistance, a safe route, or coordinated timing that does not postpone autonomy indefinitely. The player's alliance with Mewtwo cannot be honored by bargaining away Pokémon consent.
+
+Player exits:
+- Meet available conditions and secure a voluntary-choice arrangement.
+- Leave without agreement, preserving Anarchy as an unresolved faction.
+- Force liberation, fight the cell/leadership, and free Pokémon.
+
+SPECIFIC HISTORY, NOT ONLY A SINGLE HIDDEN REPUTATION NUMBER
+Track consequential events. A friend who supported one action and opposed another has mixed history; do not flatten all conduct into simple good/bad points.
+
+Examples of meaningful carryover already discussed:
+- Helping the unidentified leader escape aboard the ship creates a personal debt, potentially letting them authorize a concession others oppose.
+- Subduing that prisoner but later helping the breakout demonstrates a change of heart, but does not erase the first act.
+- Helping the prisoner and later fighting the rebel creates a perceived betrayal; the friend may refuse to vouch for promises.
+- Action at the fighting ring influences Mewtwo's belief that the protagonist recognizes Pokémon autonomy.
+- If a knowingly returning-Pokémon-to-captivity choice is included, Mewtwo may demand release before negotiation, refusing any promise of later action. That particular earlier choice is an EXAMPLE, not an already scripted scene.
+
+Trust can affect:
+- Which peaceful agreements exist.
+- Whether a promise suffices or action must precede agreement.
+- Who advocates for the player internally.
+- The scale of concessions.
+- Personal reconciliation.
+
+Strongly negative history can close a particular peaceful settlement. Do not make every consequence repairable with one generic task. Conversely, one isolated early choice should not mechanically determine everything.
+
+Preserve the three MAIN allegiances as available at the final branch; earlier actions primarily constrain secondary settlements, trust, and costs. The exact thresholds, flags, and scene combinations have not been designed.
+
+MAKE CAUSALITY VISIBLE
+Characters explicitly refer to actions: "You handed them back last time," or "You helped me before you knew who I was." The player should understand why terms differ. Avoid invisible approval checks, random negotiation outcomes, or a sequence of correct polite dialogue answers.
+
+======================================================================
+13. FINAL BATTLES AND PACING
+======================================================================
+
+USER'S ELITE FOUR MIRROR
+Against government:
+- Four elite operatives/assassins personally associated with the professor.
+- Loyalist friend is fourth.
+- Professor occupies the Champion/final-boss slot.
+
+Serving government against Anarchy:
+- Four senior Anarchy opponents.
+- Rebel friend is fourth.
+- Anarchy leader is final boss.
+
+Mewtwo operation:
+The original idea used autonomous Pokémon groups as trainerless trainer-style waves, culminating in Mewtwo. The professor supplies a Master Ball and a psychic-protection key item.
+
+IMPORTANT PACING CAUTION:
+The user repeatedly worried about too many back-to-back boss ladders. Four or five Pokémon waves plus another complete four-plus-one campaign is NOT fixed. Earlier discussions recommended shortening Mewtwo's operation and optional faction confrontations, with exploration, rescue objectives, healing, and preparation between major sequences.
+
+The final branching logic is settled more firmly than exact encounter counts. Keep the government's four-plus-professor and Anarchy's four-plus-leader as the principal recognizable mirrors, but do not silently require a full Elite Four at every visit. Exact distributions remain open.
+
+LIBERATION ASSAULT
+The protagonist's willing team fights alongside Mewtwo's forces to free captives and dismantle recapture operations. Mewtwo's forces handle parallel fronts so the child is not single-handedly winning an uprising. Human familiarity, access, and trainer competence can explain the protagonist's particular role.
+
+ANARCHY ASSAULT
+Overthrow the government, release human prisoners, and capture infrastructure. It can share the government stronghold and elite opponents with liberation while pursuing different operational objectives.
+
+Boss defeat should create a credible operational opening. It does not instantly erase a whole institution. The professor's position needs to be powerful enough that defeating their unit changes regional enforcement; the exact hierarchy is still open.
+
+MASTER BALL / PSYCHIC PROTECTION
+The key item protects the protagonist against direct psychic intrusion/mental coercion, not all harm. It should not make them immune to physical attacks or every Psychic-type battle move.
+
+Whether Mewtwo must be weakened or his defenses broken before the Master Ball works remains OPEN. Preserve a meaningful battle rather than promising an instantly usable guaranteed win and then arbitrarily disabling it.
+
+Mewtwo captured before the protagonist later joins Anarchy should not become an obedient legendary conveniently usable against the government. Immediate government custody was proposed as a clean consequence, but exact handoff logistics still need to be finalized.
+
+TRAINERLESS ENCOUNTERS
+Autonomous Pokémon groups can use trainer-style rules with different presentation and no human owner. This is a narrative design intention; technical feasibility and scripting against the actual repository have not been verified.
+
+======================================================================
+14. LIBERATION, PARTY CONSENT, AND THE FINAL FAREWELL
+======================================================================
+
+The user wants Pokémon autonomy to affect gameplay and relationships, not exist only in speeches.
+
+CURRENT DIRECTION:
+On choosing liberation, the protagonist's team willingly agrees to help finish the campaign that makes wider freedom possible. They remain usable through the finale. In the aftermath, they make their longer-term choice and depart with Mewtwo if they wish. The starter leaves.
+
+It helps to acknowledge consent before the campaign: surrender the ownership claim or explicitly give them a genuine choice, then cooperate. The aftermath becomes departure and farewell, rather than freedom only being granted after all the protagonist's needs are satisfied. The exact on-screen ritual is not fixed.
+
+The user earlier proposed deciding departures by friendship, RNG, or Pokémon ID. They noted friendship alone would retain every frequently used Pokémon. No roster-loss algorithm was selected.
+
+Design caution discussed:
+- Hidden randomness can make a major loss feel arbitrary.
+- Friendship need not equal a wish to continue a trainer's lifestyle.
+- Forced team loss immediately before final battles creates grinding and fairness problems.
+
+The later selected timing avoids the main gameplay problem: keep cooperating through the push, then depart after victory. Exact behavior for non-starter Pokémon remains open. Preferences can be foreshadowed through earlier interactions rather than invented in the final scene.
+
+The starter's affection was real. Departure must not reveal that it secretly hated the protagonist. A real bond does not guarantee a shared future.
+
+The wider exodus need not compel literally every Pokémon to leave. Autonomy means some can remain with humans. Similarly, not every human must resent the protagonist, but widespread grief and resentment establish their loss of belonging. These nuances support the user's intended ending without replacing it with a happy reconciliation.
+
+======================================================================
+15. ENDINGS — CURRENT ACCEPTED DIRECTIONS
+======================================================================
+
+The endings should secure different goods at different costs. Avoid funneling all paths into an identical new dictatorship. Avoid automatic total defeat, a golden ending, or a twist that makes all player achievements meaningless.
+
+LOYALIST ENDING: SAFETY AT THE COST OF CONSCIENCE
+Mewtwo is captured and becomes a government weapon. Pokémon independence is crushed or scattered; many participants are captured for government use. Anarchy is largely routed, leaderless, and in hiding.
+
+The protagonist and loyalist become unremorseful enforcers who believe they serve the greater good. Their language can remain reassuring and idealistic rather than overtly villainous.
+
+The rebel friend is subjected to reeducation at the institution, with the protagonist participating/authorizing it. This echoes the altered gym leader. To the protagonist, they may be saving their friend and allowing them to be happy.
+
+A new recruiting ceremony may close the cycle. The world remains colorful and genuinely protected. The player understands the machinery maintaining it.
+
+Keep the rebel alive through the relevant final battles so this ending remains possible. The fate of Anarchy's leader after defeat is not fully specified.
+
+REBEL ENDING: FREEDOM WITHOUT GUARANTEED SECURITY
+The government falls. Street fighting and dismantled barriers are followed by disrupted protection, increased crime, dangerous Pokémon incursions, and fear. People are free, but the question of whether they are better off remains painful.
+
+Show real gains too: prisoners reunited with families, public truth, voluntary travel. The ending should not simply declare tyranny objectively correct. Some communities can organize better than others; uncertainty is stronger than a flat claim that everyone inevitably dies.
+
+The rebel kills the loyalist as part of the late conflict. Exact timing, intent, and the protagonist's response are OPEN. Killing after the protagonist's battle was an assistant suggestion, not a locked scene.
+
+A provisional government consolidating into new tyranny was considered earlier. The preferred later direction is instability and dangerous freedom, rather than repeating the same authoritarian twist across all endings.
+
+LIBERATION ENDING: AUTONOMY AT THE COST OF BELONGING
+Pokémon are freed and many follow Mewtwo deeper into the wilds, away from human control. The protagonist's team cooperates through the final push, then leaves; the starter's farewell is the central personal loss.
+
+Human society loses companions, labor, protection, and familiar ways of life. Many resent the protagonist for causing those losses. Understanding the moral case does not make grief disappear.
+
+Mewtwo and his people respect the protagonist, but wish to live apart from humans. Their refuge/new society is not the protagonist's home simply because they helped make it possible. Avoid gratuitous cruelty or sudden hatred from Mewtwo; the tragedy is genuine respect without shared belonging.
+
+This is not a Pokémon-supremacist conquest. Mewtwo does not need to become a new tyrant to produce melancholy.
+
+The protagonist achieves liberation and becomes isolated between the society they left and the society they enabled.
+
+======================================================================
+16. THIRD-FACTION CLOSURE AND POSTGAME
+======================================================================
+
+If a joined faction proceeds directly to the government assault, the ignored faction remains consequential. Do not pretend its story disappeared.
+
+ANARCHY VICTORY, MEWTWO UNADDRESSED
+Mewtwo and his already free followers withdraw deeper into the wilds. They resent abandonment of captives still in human society, distrust the new regime, and may hint at future retaliation. "We thought you were different" is the user's desired emotional direction, not mandatory final wording.
+
+LIBERATION VICTORY, ANARCHY UNADDRESSED
+Anarchy recognizes the protagonist helped defeat government power but resents the large-scale Pokémon departure and loss of the strength needed to defend people against outside criminals and feral Pokémon.
+
+These encounters can be available postgame. A design recommendation was to show basic faction fate in the ending itself so players who stop at credits still receive closure, with optional encounters deepening it. Exact split between epilogue and playable postgame remains open.
+
+Negotiated or fought outcomes alter these encounters. A prior agreement should be honored in the world state unless a betrayal is intentionally written and foreshadowed. Do not reset every version to the same angry speech.
+
+Postgame reconciliation is not permission to reverse the central ending or conjure an effortless golden solution. Its scope remains to be designed.
+
+======================================================================
+17. HOW REVELATIONS ARE DELIVERED
+======================================================================
+
+Avoid one late exposition dump. Establish experience, a plausible official explanation, then evidence that changes its meaning.
+
+- Charizard clearance: first blamed on Anarchy; later explained by Mewtwo; government evidence confirms it.
+- Perimeter tunnel: initially Pokémon trafficking; later testimony reveals human escape.
+- Gym leader: subversive conversation overheard; changed demeanor at arranged meeting; reeducation seen at the island.
+- Radio broadcast: violent criminals make claims; later events prove some claims true without excusing violence.
+- Fighting ring: Anarchy's exploitation remains real after government lies are exposed.
+- Outside world: confirms actual danger and prevents total dismissal of the government's protective purpose.
+- Historical records: confirm the war and mutations, connecting previously disguised ruins.
+- Final assignment: reveals the purpose of childhood advancement by making the protagonist enact it.
+
+Keep immediate playable objectives clear: rescue, escort, pursuit, escape, route access, liberation, securing positions. The player should not wander from one political lecture to the next.
+
+======================================================================
+18. WHY NOT GUNS? — BACKGROUND EXPLANATION ONLY
+======================================================================
+
+The user explicitly does NOT want firearms central or necessarily visible. They only need a credible answer to why Pokémon are the primary weapons.
+
+WORKING EXPLANATION:
+After the war, manufacturing and ammunition were scarce. Pokémon offered detection, restraint, mobility, barriers, physical force, and other capabilities beyond guns. Trained teams became the dominant security instrument. The government restricted civilian conventional weapons and controlled access to powerful Pokémon.
+
+Over generations this became ideology: conventional weapons belong to the violent old world; Pokémon partnership represents civilization.
+
+Guns can still harm exposed humans. Do not claim universal bulletproof Pokémon or pretend conventional weapons never existed. Strategic dominance, state control, and access explain their marginal role.
+
+A brief exhibit, record, or conversation is enough. Do not add a firearms subplot.
+
+Related battle consistency: organized matches follow accepted rules. In real violence, explain the trainer's protection or the opponent's capture objective rather than assume everyone politely waits for six knockouts. This does not require rebuilding the combat engine.
+
+======================================================================
+19. LEGENDARIES AND OTHER UNFINISHED THEMATIC MATERIAL
+======================================================================
+
+The user wants to interrogate capturing a unique/endangered, almost divine being as a weapon rather than preserving or respecting it. This applies to celebrated trainers and the player, not only villain organizations.
+
+Which legendaries appear, their origins, capture availability, and plot functions remain OPEN. Do not insert an elaborate legendary subplot merely because this theme was mentioned.
+
+Mewtwo's Master Ball assignment already embodies part of that critique but does not settle every legendary question.
+
+======================================================================
+20. PRACTICAL NARRATIVE STATE TO TRACK
+======================================================================
+
+This is a planning checklist, not implemented variables or a locked schema.
+
+Shared campaign flags:
+- Radio-station participation and significant dialogue/promises.
+- Tunnel involvement and later response to its truth.
+- Response to the unexpected Anarchy meeting.
+- Fighting-ring intervention and treatment of escaping Pokémon.
+- Mewtwo meetings and concrete promises.
+- Ship prisoner assisted/subdued.
+- Facility final opponent: rebel/loyalist.
+- Any specific rescues, betrayals, and casualties selected in later scripting.
+
+Final-act flags:
+- First destination: Anarchy/Mewtwo.
+- First resolution: defeated/joined.
+- If defeated first, second resolution: defeated/joined.
+- Chosen allegiance: government/Anarchy/liberation.
+- Other faction's status at commitment.
+- Optional visit undertaken/skipped.
+- Negotiation terms available from history.
+- Terms accepted, rejected without combat, or enforced through combat.
+- Actual releases, evacuations, captures, and surviving leaders.
+
+Ending flags:
+- Mewtwo's actual fate, not only selected ending label.
+- Anarchy leadership and movement's actual fate.
+- Loyalist/rebel survival and treatment.
+- Party departure decisions.
+- Third-faction agreement and postgame reaction.
+
+Keep a small number of concrete consequential events. Do not build an unnecessarily huge morality simulator or hidden reputation labyrinth.
+
+======================================================================
+21. SUPERSEDED IDEAS — DO NOT ACCIDENTALLY RESTORE
+======================================================================
+
+- Mandatory capture-or-release Mewtwo decision before Anarchy becomes available. Rejected because it makes liberation the obvious moral gate and crowds out the Anarchy route.
+- A single forced three-faction summit or required advance-contact stage. Not needed.
+- Joining immediately launches the final assault and deletes the other faction's storyline. Replaced with a preparation interval and optional second-faction visit.
+- Unlimited faction switching at every visit. Joining fixes allegiance; a later visit is made on that faction's behalf.
+- Earlier history merely changes greetings or adds a trivial task. It must materially affect available settlements and trust.
+- Negotiation decided by faction whim or rude/polite wording. Conditions, concessions, and consequential history determine outcomes visibly.
+- Separate repeated Anarchy attacks on ship and island. One connected operation is selected.
+- Full psychic atrocity shown before the gym leader's altered route meeting. The window scene at the island is the main confirmation.
+- Professor staging the radio attack. He hears of a real attack and brings children as training.
+- Victory Road as a fixed mountain route before a separate graduation exam. It is the name of the assigned final mission.
+- Automatic identical authoritarian endings for every faction. The endings now have distinct losses.
+- Mewtwo must become a human-subjugating tyrant. The accepted liberation ending centers on separation and belonging.
+- Mandatory random loss of the trained party immediately before final combat. Not selected; current timing preserves willing cooperation through the campaign.
+- Radiation must be replaced by elaborate biological engineering. The user chose the simpler science-fiction premise.
+
+======================================================================
+22. REMAINING DESIGN WORK
+======================================================================
+
+The central storyboard is agreed. Remaining work is refinement, consistency, and scene design:
+
+1) Fix exact gym placements and travel geography, especially the outside excursion and island sequence.
+2) Define all names and the leader's identity; Giovanni is not settled.
+3) Establish the professor's authority and why their defeat breaks task-force control.
+4) Detail the eight gym leaders, attendants, and covert assessments.
+5) Write the rivals' personalities, early warmth, divergences, and recurring interactions.
+6) Specify how Anarchy's leader was captured and transported, and how the two ship choices lead to their later freedom/leadership.
+7) Define what each first-target defeat actually achieves; captures and escapes must support later endings.
+8) Decide what fighting Mewtwo while already aligned with Anarchy does to him and his followers.
+9) Build a compact negotiation-condition matrix from actual earlier choices. The examples above are not a completed score system.
+10) Choose final encounter counts and preparation intervals; avoid two full boss gauntlets without breathing room.
+11) Define Master Ball restrictions, psychic immunity, and capture handoff without technical contradictions.
+12) Finalize the consent/party presentation and starter departure foreshadowing.
+13) Define the rebel's killing of the loyalist on the rebel path and its emotional consequences.
+14) Specify optional-third-faction outcomes and how they modify endings/postgame.
+15) Decide how the liberation ending treats surviving civilian institutions and humans who still have willing Pokémon partners.
+16) Settle ruins, war clues, legendaries, and Mewtwo's origin only as needed for the plot.
+17) Verify implementation feasibility against the actual codebase when entering production; none of this handoff certifies code or scripts already exist.
+
+======================================================================
+23. READY-TO-PASTE CONTINUATION INSTRUCTION
+======================================================================
+
+You are helping me develop a dark Emerald Pokémon ROM hack. Use this document as the current complete story handoff. The main storyboard and final branch structure are established; help refine them without repeatedly replacing them with new structures. Respect the distinctions between settled decisions, working treatments, and open details. The game must initially feel like a familiar happy Pokémon adventure, then reveal an authoritarian protected region, Team Anarchy's compromised human revolution, and Mewtwo's struggle for Pokémon autonomy. Keep the three endings distinct, preserve significant consequences of earlier player choices, and avoid excessive branching or boss-ladder repetition. We are doing story development unless I explicitly ask for implementation. Index your responses. I will specify what to work on next.
+
+END OF COMPLETE HANDOFF

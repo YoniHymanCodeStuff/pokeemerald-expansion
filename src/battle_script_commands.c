@@ -1,4 +1,5 @@
 #include "global.h"
+#include "leg_one.h"
 #include "battle.h"
 #include "battle_hold_effects.h"
 #include "battle_message.h"
@@ -2489,6 +2490,8 @@ static u32 DoesPartyHaveBattleReadyMons(enum BattleTrainer trainer)
 
 static bool32 WillPlayerWhiteOutIfPartnerWinsAlone()
 {
+    if (LegOneIsPracticeBattle())
+        return FALSE;
     if (GetConfig(B_MULTI_BATTLE_WHITEOUT) <= GEN_3)
         return TRUE;
     if (AreMultiPartiesFullTeams())

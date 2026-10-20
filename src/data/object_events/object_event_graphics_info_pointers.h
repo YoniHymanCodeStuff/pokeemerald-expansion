@@ -401,6 +401,10 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvi
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ApricornTree;
 
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LegYew;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LegAstrid;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LegEdwulf;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LegNeville;
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
     [OBJ_EVENT_GFX_BRENDAN_NORMAL] =           &gObjectEventGraphicsInfo_BrendanNormal,
     [OBJ_EVENT_GFX_BRENDAN_MACH_BIKE] =        &gObjectEventGraphicsInfo_BrendanMachBike,
@@ -422,6 +426,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_FAT_MAN] =                  &gObjectEventGraphicsInfo_FatMan,
     [OBJ_EVENT_GFX_POKEFAN_F] =                &gObjectEventGraphicsInfo_PokefanF,
     [OBJ_EVENT_GFX_MAN_1] =                    &gObjectEventGraphicsInfo_Man1,
+    [OBJ_EVENT_GFX_LEG_YEW] = &gObjectEventGraphicsInfo_LegYew,
+    [OBJ_EVENT_GFX_LEG_ASTRID] = &gObjectEventGraphicsInfo_LegAstrid,
+    [OBJ_EVENT_GFX_LEG_EDWULF] = &gObjectEventGraphicsInfo_LegEdwulf,
+    [OBJ_EVENT_GFX_LEG_NEVILLE] = &gObjectEventGraphicsInfo_LegNeville,
     [OBJ_EVENT_GFX_WOMAN_2] =                  &gObjectEventGraphicsInfo_Woman2,
     [OBJ_EVENT_GFX_EXPERT_M] =                 &gObjectEventGraphicsInfo_ExpertM,
     [OBJ_EVENT_GFX_EXPERT_F] =                 &gObjectEventGraphicsInfo_ExpertF,

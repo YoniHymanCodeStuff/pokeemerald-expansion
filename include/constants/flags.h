@@ -53,21 +53,21 @@
 
 #define FLAG_POC_GATE_OPEN   0x20 // Persistent proof-of-concept gate state
 #define FLAG_POC_COMPLETE    0x21 // Proof-of-concept finish sign read
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
+#define FLAG_LEG_CLASS_LEFT               0x22 // Leg one
+#define FLAG_LEG_NEVILLE_LEFT             0x23 // Leg one
+#define FLAG_LEG_MOM_GIFT                 0x24 // Leg one
+#define FLAG_LEG_OLD_TALKED               0x25 // Leg one
+#define FLAG_LEG_ED_TALKED                0x26 // Leg one
+#define FLAG_LEG_NEV_TALKED               0x27 // Leg one
+#define FLAG_LEG_NICKNAME                 0x28 // Leg one
+#define FLAG_LEG_FAST_LEVEL               0x29 // Leg one
+#define FLAG_LEG_SET_MOVES                0x2A // Leg one
+#define FLAG_LEG_BALL_0                   0x2B // Leg one
+#define FLAG_LEG_BALL_1                   0x2C // Leg one
+#define FLAG_LEG_BALL_2                   0x2D // Leg one
+#define FLAG_LEG_BALL_3                   0x2E // Leg one
+#define FLAG_LEG_BALL_4                   0x2F // Leg one
+#define FLAG_LEG_LAB_WON                  0x30 // Leg one
 #define FLAG_UNUSED_0x031    0x31 // Unused Flag
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag

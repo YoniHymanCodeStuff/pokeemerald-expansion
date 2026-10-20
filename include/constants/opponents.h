@@ -865,7 +865,13 @@
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
 #define TRAINER_POC_GATEKEEPER     855
-#define TRAINERS_COUNT_EMERALD     856
+#define TRAINER_LEG_ASTRID_PSYDUCK            856
+#define TRAINER_LEG_ASTRID_DEERLING           857
+#define TRAINER_LEG_ASTRID_VULPIX             858
+#define TRAINER_LEG_EDWULF_DEERLING           859
+#define TRAINER_LEG_EDWULF_CRABRAWLER         860
+#define TRAINER_LEG_EDWULF_PHANPY             861
+#define TRAINERS_COUNT_EMERALD     862
 #define MAX_TRAINERS_COUNT_EMERALD 864
 
 #if IS_FRLG

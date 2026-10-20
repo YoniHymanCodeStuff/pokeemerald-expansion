@@ -20,69 +20,78 @@
       "direction": "down"
     }
   ],
-  "object_events": [
-    {
-      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 9,
-      "y": 10,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "PocTrail_Gatekeeper",
-      "flag": "FLAG_POC_GATE_OPEN",
-      "local_id": "LOCALID_POC_GATEKEEPER"
-    }
-  ],
+  "object_events": [],
   "warp_events": [],
   "coord_events": [
     {
       "type": "trigger",
-      "x": 8,
-      "y": 30,
+      "x": 18,
+      "y": 10,
       "elevation": 3,
-      "var": "VAR_POC_STARTER",
+      "var": "VAR_LEG_COMPLETE",
       "var_value": "0",
-      "script": "PocTrail_NoStarter"
+      "script": "Leg_Complete"
     },
     {
       "type": "trigger",
-      "x": 9,
-      "y": 30,
+      "x": 19,
+      "y": 10,
       "elevation": 3,
-      "var": "VAR_POC_STARTER",
+      "var": "VAR_LEG_COMPLETE",
       "var_value": "0",
-      "script": "PocTrail_NoStarter"
+      "script": "Leg_Complete"
     },
     {
       "type": "trigger",
-      "x": 10,
-      "y": 30,
+      "x": 20,
+      "y": 10,
       "elevation": 3,
-      "var": "VAR_POC_STARTER",
+      "var": "VAR_LEG_COMPLETE",
       "var_value": "0",
-      "script": "PocTrail_NoStarter"
+      "script": "Leg_Complete"
     },
     {
       "type": "trigger",
-      "x": 11,
-      "y": 30,
+      "x": 21,
+      "y": 10,
       "elevation": 3,
-      "var": "VAR_POC_STARTER",
+      "var": "VAR_LEG_COMPLETE",
       "var_value": "0",
-      "script": "PocTrail_NoStarter"
+      "script": "Leg_Complete"
     }
   ],
   "bg_events": [
     {
       "type": "sign",
-      "x": 9,
-      "y": 4,
+      "x": 18,
+      "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "PocTrail_Finish"
+      "script": "Leg_Complete"
+    },
+    {
+      "type": "sign",
+      "x": 19,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Leg_Complete"
+    },
+    {
+      "type": "sign",
+      "x": 20,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Leg_Complete"
+    },
+    {
+      "type": "sign",
+      "x": 21,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Leg_Complete"
     }
   ]
 }

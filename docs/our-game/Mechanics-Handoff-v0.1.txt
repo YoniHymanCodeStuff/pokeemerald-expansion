@@ -1,0 +1,571 @@
+EMERALD ROMHACK — MECHANICS, SETTINGS, AND QUALITY-OF-LIFE HANDOFF
+Version 0.1 | October 19, 2026 | Through the real-time-clock agreement
+
+PURPOSE
+
+This is the standalone mechanics specification and conversation handoff for the Emerald ROM hack. It is deliberately separate from Emerald-Romhack-Complete-Storyboard-Handoff-v0.2.txt, the narrative document. Neither file replaces the other. No narrative file was modified while creating this document.
+
+This records design decisions, not implemented or tested code. The project uses the user's pokeemerald-expansion fork:
+https://github.com/YoniHymanCodeStuff/pokeemerald-expansion
+
+Current upstream capabilities were researched during discussion, but the exact version/configuration of the user's fork has not been audited for these mechanics. Do not claim a feature already works merely because upstream supports part of it.
+
+STATUS LANGUAGE
+AGREED: explicit user decision or clear acceptance.
+WORKING: proposed detail consistent with the direction, not fully finalized.
+OPEN: requires a decision or implementation verification.
+
+Where the user corrected the assistant, the correction takes priority. Do not restore superseded suggestions such as repeatedly scanning the party for trainer level, permanent PP-history bookkeeping, automatic downscaling in battle, universally free gift encounters, or universal pathfinding for portable healing.
+
+The user prefers indexed assistant responses. Continue that preference when using this handoff.
+
+1. DESIGN PHILOSOPHY
+
+AGREED:
+Remove repetitive grinding, catching/breeding for optimal stats, inconvenient travel, and menu repetition. Preserve strategic battle decisions, deliberate team construction, encounter limits when enabled, and authored gauntlet difficulty.
+
+Most conveniences are modular. Players who want traditional restrictions should be able to choose them. Settings are presented at the start and remain editable during play, except Nuzlocke-related choices when the player voluntarily locks them.
+
+The game encourages unusual Pokémon, niche abilities, and flexible team changes. It does not need every supported species in its encounter roster or every powerful familiar option early.
+
+2. CURATED ROSTER AND STARTERS
+
+AGREED ROSTER GOALS:
+- Early routes predominantly contain weaker options, stronger species becoming available later where appropriate.
+- This matches the narrative of government route curation, but also serves balance.
+- Remove or delay common playthrough-dominating species, such as Gyarados, so overlooked alternatives have meaningful opportunities.
+- Do not merely offer a weaker species early and then immediately overshadow it with a superior equivalent.
+- Consider abilities, learnsets, evolution timing, items, typing, and available competition, not only BST.
+- Gen 1–3 species are personally preferred, but suitability and niche variety take priority over strict generation limits.
+- No blanket stat buffs or full roster have been approved.
+
+STARTER REQUIREMENTS:
+Four children, including the protagonist, receive distinct starters. No forced three-type triangle.
+All four starter evolutionary lines must:
+1) Have the same number of evolutionary stages.
+2) Finish with similar BST.
+3) Avoid shared typing between the lines.
+4) Either all require stone evolution, or none require it.
+5) Offer distinct stat distributions and underused strategic identities.
+
+Sandshrew is a positive reference example, not a confirmed starter. The earlier mixed shortlist including Ponyta and Vulpix was rejected because it failed the matching criteria. No final quartet, BST tolerance, or initial encounter pool is selected.
+
+3. TRAINER LEVEL: PERSISTENT HIGH-WATER MARK
+
+AGREED:
+Trainer level is ONE saved integer. Whenever a player-owned Pokémon's level exceeds it, increase the integer. Otherwise leave it unchanged.
+
+Also update it on acquiring a higher-level Pokémon through catching, receiving, or trading. The user expects few gifts/trades and is not fond of those acquisition experiences, but the rule remains consistent.
+
+Do not recalculate it by repeatedly scanning the current party/boxes. It never falls because of death, release, storage, level reduction, or party changes. This is natural campaign progression without repeating the grind when building a new team.
+
+4. FAST LEVELING AT POKÉMON CENTERS
+
+AGREED:
+Separate convenience toggle. At a Center, instantly raise eligible lower-level Pokémon to trainer level, limited by the active level cap.
+
+Target = min(trainer level, current cap), or trainer level when caps are off.
+
+Fast Leveling:
+- Does not grant or alter EVs.
+- Does not grant or alter friendship.
+- Processes relevant level-up moves and evolution opportunities.
+- Lets the player decline evolution.
+- Cannot revive or make Nuzlocke casualties usable.
+- Does not independently raise the strongest Pokémon to the cap.
+
+WORKING UI:
+Individual selection and batch selection rather than repeated one-level candy animations. Exact menu and presentation of a long list of eligible moves remain to be designed.
+
+Missed level-based evolution opportunities should be available. Stone/item evolutions retain their required resources; fast leveling must not silently grant them. The exact evolution-eligibility UI remains open.
+
+5. EVs, IVs, NATURES, AND ABILITIES
+
+AGREED MODULAR OPTIONS:
+- Player EV effects on/off.
+- Opponent EV treatment: zero, randomized legal allocation, or optimized/maxed legal allocation.
+- Affordable IV/nature editing on/off.
+- Ability swapping on/off.
+
+WORKING ADDITION:
+A Designed opponent-EV option was recommended so authored boss spreads can be used. It fits the broad accepted direction, but exact labels/defaults are not individually finalized.
+
+Maxed EVs means a legal optimized spread, not maximum EVs in every stat. Randomized opponent spreads should be stable across retries rather than rerolling with each reload; this is a recommended fairness rule, not implemented behavior.
+
+Pokémon initially have random IVs and natures. Flexible editing removes the need to breed or repeatedly catch replacements for optimal stats.
+
+IV editing should allow raising and lowering values, including zero. Nature editing changes effective stat nature. Exact prices and whether displayed original nature is preserved separately are open.
+
+Affordable editing happens at the POKÉMON CENTER, not portably. EV reset/allocation belongs there when EVs are enabled. Exact EV-training economics remain to be designed; fast leveling does not provide EVs.
+
+ABILITY SELECTION:
+- Outside battle, switch among legitimate species abilities when the convenience is enabled.
+- Hidden abilities have a story unlock; meeting Mewtwo at the refuge was suggested, not firmly placed.
+- After that unlock, hidden abilities are also easily selectable. No repeated ability-item farming or searching for special individuals in the flexible mode.
+- Ability changes inside gauntlets are permitted outside battle, but cannot produce free HP, status cures, items, or other resources by repeated toggling.
+
+6. LEARNSET SOURCE AND DOCUMENTATION
+
+USER DIRECTION:
+Choose one documented generation/game ruleset already supported by the base rather than inventing every learnset. The user favors the latest available because modern moves, including Fairy moves, should be accessible.
+
+CURRENT RECOMMENDATION, NOT AN EXPLICITLY FINAL USER SELECTION:
+Pin Gen 9 level-up learnsets, rather than an automatically changing GEN_LATEST alias, with documented species fallbacks. Confirm the user's fork supports the selector before implementation.
+
+Research source:
+https://github.com/rh-hideout/pokeemerald-expansion/blob/master/include/config/pokemon.h
+
+The upstream configuration inspected during this conversation explicitly documents:
+- Gen 1: Yellow.
+- Gen 2: Crystal.
+- Gen 3: Ruby/Sapphire/Emerald.
+- Gen 4: HeartGold/SoulSilver.
+- Gen 5: Black 2/White 2.
+- Gen 6: Omega Ruby/Alpha Sapphire.
+- Gen 7: Ultra Sun/Ultra Moon.
+- Gen 8: BDSP for Gen 1–4 species, Legends: Arceus for species introduced there, then Sword/Shield where present; otherwise Gen 7 fallback, per upstream comments.
+- Gen 9: Scarlet/Violet where present, otherwise the Gen 8 selection.
+- Species introduced after the selected generation use their first available appearance.
+
+Level-up data, TM compatibility, transfer eligibility, typing, and battle-mechanic generation settings are separate concerns. Choosing a historical level-up set does not inherently remove Fairy typing or disable modern moves.
+
+Official source data reduces maintenance but does not guarantee balance under this hack's encounter order, reusable teaching, and direct move transfer. Verify the actual fork and keep compatibility documentation explicit.
+
+7. SET MOVES, TMs, AND NO TUTORS
+
+AGREED:
+When Set Moves convenience is enabled, a Pokémon menu command lets the player change its active four moves outside battle.
+
+Eligible moves include:
+- Current-species level-up moves available by the relevant current level.
+- Pre-evolution level-up moves available by that level.
+- Unlocked compatible TMs/HMs.
+- Legitimately acquired transferable moves.
+
+The exact treatment of previously learned high-level moves after deliberate level reduction is addressed below: keep already acquired moves. Do not remove them or reverse evolution when reducing levels to meet a cap.
+
+TMs can be configured for unlimited reuse/relearning. Obtaining the TM remains an acquisition gate; reusable does not mean every TM is available from the beginning.
+
+NO PLAYER-FACING MOVE TUTORS.
+The user dislikes searching for particular NPCs. Replace tutor rewards with additional TM givers/distribution. Implementations may reuse engine functions internally, but the user flow should be TMs and convenient menus, not a scattered tutor network.
+
+8. DIRECT MOVE TRANSFER INSTEAD OF BREEDING FOR EGG MOVES
+
+AGREED DIRECTION:
+Pokémon can learn eligible moves directly from another owned Pokémon rather than hatch a specially bred offspring. Example concept: an evolved recipient learns a compatible move directly from a donor that knows it.
+
+WORKING INTERACTION ACCEPTED IN DISCUSSION:
+1) Recipient selects Learn from teammate.
+2) Choose a donor currently in the party.
+3) Show donor's currently known moves that recipient can legally receive.
+4) Teach selected move; donor retains it.
+5) It is permanently unlocked for relearning by that individual, including after evolution.
+
+Use existing egg-move compatibility as an internal recipient eligibility list. Include relevant pre-evolution compatibility for evolved recipients. Do not allow arbitrary copying of any move from any species.
+
+No gender matching, egg hatching, waiting, or egg-group acquisition loop. No full breeding experience has been requested; eggs are likely omitted, but final scope is open.
+
+Technical assessment discussed: this is a contained menu/eligibility feature rather than inherently a risky breeding rewrite. Existing data and transfer concepts may help. It still needs code inspection and verification of evolved forms, save persistence, and relearning integration. No implementation has been tested.
+
+Reference:
+https://github.com/rh-hideout/pokeemerald-expansion/blob/master/docs/tutorials/teachable_learnsets.md
+
+9. PP WHEN LEARNING OR SWAPPING MOVES
+
+AGREED USER RULE:
+- Newly learned level-up moves receive full PP.
+- Moves taught via TM or selected via Set Moves inherit the remaining PP of the move being replaced, capped at the new move's maximum.
+- Optional setting: learned moves receive fresh/full PP instead.
+
+The user explicitly accepts some potential PP abuse. PP is principally meaningful in longer battles for this design, and players wanting stronger restrictions can select them.
+
+Do NOT add persistent PP bookkeeping for every inactive move or force all newly taught moves to zero PP. Those earlier assistant suggestions were superseded.
+
+WORKING DETAILS, NOT EXPLICITLY FINALIZED:
+- Apply replacement-slot PP inheritance to direct-transfer learning too.
+- Empty-slot learning receives full PP.
+- Exact inclusion of level-up prompting under the fresh-PP toggle should retain the unconditional full-PP level-up behavior.
+
+Abilities do not have PP. References to learning abilities in the user's PP discussion mean moves.
+
+10. HMs AND FIELD SKILLS
+
+AGREED:
+- HMs behave like reusable, freely deletable TMs.
+- Once a Pokémon has learned an HM, it retains the associated field skill even if the battle move is overwritten.
+- Until replaced by a key item, a qualifying Pokémon must be in the party and usable.
+- A boxed Pokémon or a Nuzlocke casualty cannot provide the field skill.
+- Story/badge access gates still apply.
+- Later key items replace the need for a Pokémon to supply the skill.
+
+Exact item names, placements, and HM roster remain open.
+
+11. LEVEL CAPS AND BRANCHING DIFFICULTY
+
+AGREED MODES:
+- Off: no progression cap.
+- Normal: next designated boss's highest level.
+- Hard: that highest level minus two.
+- Pro: must be at least as restrictive as Hard; use the lower of boss's lowest level and Hard's cap.
+- Clamp valid caps to at least level one.
+
+Explicit boss milestones include gyms and selected plot-significant encounters, not every incidental trainer battle. Display the active cap and relevant milestone to the player.
+
+MIDGAME CAP CHANGES:
+If enabling/tightening a cap affects overleveled Pokémon, ask the player to choose:
+A) Permanently reduce those Pokémon to the cap, recalculating stats.
+B) Preserve actual levels, but make those Pokémon unusable until allowed again.
+
+Apply the treatment to both party and boxes after clear confirmation. Keep evolved forms and already acquired moves. Do not lower trainer level. Do not substitute automatic battle-only downscaling for this choice.
+
+MID-BATTLE LEVELING:
+Whether leveling is allowed during a capped boss fight is a Nuzlocke-menu option. The user explicitly requested configurability. Exact enforcement when allowing leveling, cap update timing, and overflow experience handling remain to be specified.
+
+BRANCHING FINAL OPERATIONS:
+Use authored first-operation and second-operation versions. If Anarchy is visited first, its levels are lower than Mewtwo's subsequent operation; reverse that order when Mewtwo is first.
+
+Corresponding caps and operation trainers must branch too. Early completed routes retain authored levels; do not scale every old route globally. Account for moves, evolution, and held items in scaled encounter versions, not only numeric level.
+
+12. NUZLOCKE: MODULAR BASE RULES
+
+Independent settings:
+- One eligible encounter opportunity per named area.
+- Permadeath.
+- Evolution-family dupes clause.
+- Shiny clause.
+- Automatic required nickname entry.
+- Wipe behavior.
+- Mid-battle cap/leveling behavior.
+- Voluntary lock of all Nuzlocke-related choices at run setup.
+
+Other difficulty settings can coexist. Precisely enumerate which menu choices fall under the lock before implementation; avoid a loophole where the same locked behavior remains editable elsewhere.
+
+AREA IDENTIFICATION:
+Use the recorded route/area name, as in familiar Nuzlocke play. Designers may create more specific names such as Smelly Cave B1 to deliberately grant separate areas. Different maps with the same encounter-area identity should share the opportunity.
+
+An opportunity is consumed by the FIRST ELIGIBLE ENCOUNTER, not the first successful catch. Fleeing, defeating it, or failing to catch it loses the area's opportunity.
+
+Uncatchable scripted encounters do not consume an opportunity. Scripted uncatchability does NOT inherently suspend permadeath in an otherwise real battle.
+
+With a spent opportunity, block ball throws except enabled exceptions. Ordinary battles remain available.
+
+DUPES CLAUSE:
+Exclude the whole evolutionary family of any Pokémon previously owned, including dead/released Pokémon. Excluded encounters do not consume the opportunity. Track ownership history rather than only the current party.
+
+SHINY CLAUSE — USER'S SPECIFIC VARIANT:
+- Nothing in encounter-limit or dupes restrictions blocks an otherwise catchable shiny when enabled.
+- A spent ordinary opportunity does not block a shiny.
+- A prior shiny does not block another shiny.
+- A shiny duplicate is allowed.
+- A shiny encounter consumes any still-unused ordinary opportunity for the area.
+- If the opportunity is already spent, shiny encounters remain available as exceptions.
+- This does not override a scripted encounter's actual uncatchability.
+
+Do NOT replace this with the common alternative where shinies never consume the normal opportunity.
+
+NICKNAMING:
+When enabled, open the naming screen automatically instead of asking Give a nickname? Require a nonblank result. Keeping the species name is allowed; do not force a different name.
+
+13. STARTERS, GIFTS, STATICS, EGGS
+
+The user dislikes gift-heavy acquisition, trading, and egg grinding. Eggs may be omitted entirely; do not build a breeding system by default.
+
+The user requested research into community norms for starters/static encounters. Research found no universal consensus on gifts/statics. Separate allowances are optional variants, not a mandatory canonical rule.
+
+References consulted:
+https://nuzlockeuniversity.ca/nuzlocke-rules/
+https://nuzlockeuniversity.ca/optional-rules/
+https://nuzlockewiki.com/rules/
+
+PROPOSED DEFAULTS, NOT EXPLICITLY ACCEPTED YET:
+- Starters/gifts and catchable statics consume the opportunity for their recorded acquisition area.
+- Offer separate toggles exempting gifts/starters and exempting statics.
+- Starter acquired in the hometown would consume the hometown opportunity, not Route 1.
+
+Do not present these defaults as finalized. If eggs are included later, define their area accounting explicitly.
+
+14. PERMADEATH AND PARTY WIPES
+
+AGREED:
+Pokémon that faint under active permadeath become permanently unusable and greyed out. Move to a casualty box when safely possible. They can still be moved between boxes or released, but cannot be healed, field-skilled, or withdrawn into usable service through another menu.
+
+Turning permadeath on midgame is prospective: Pokémon already fainted receive a normal recovery rather than retroactively dying. Mark the transition consistently so it cannot repeatedly revive genuine later casualties.
+
+Scripted demonstrations/unavoidable scripted outcomes may explicitly exempt deaths; real story battles otherwise count. Important scripted overwhelming-level scenes should not impose an unavoidable Nuzlocke casualty.
+
+FULL-PARTY WIPE OPTIONS:
+A) Lose only the Pokémon that died; continue with usable reserves.
+B) Return to title/menu screen.
+C) Delete save file and return to title/menu screen.
+D) Immediately begin a fresh playthrough, separately choosing whether to delete or retain the previous save.
+
+The behavior is selected in setup, not a surprise destructive confirmation after defeat. Make the wording unambiguous before locking it.
+
+OPEN:
+- Option A when no usable reserves exist: title-screen fallback was proposed, not explicitly selected.
+- Whether option B records the loss in persistent run data before returning to title.
+- How a fresh unsaved run coexists with a retained old save under option D. It must not silently overwrite the retained save.
+- Meaning and limits of a save deletion in emulator environments: the ROM cannot promise to erase external emulator savestates/backups.
+
+These are save-state integrity details to settle during implementation, not grounds to remove the user's requested choices.
+
+15. VOLUNTARY RULE LOCK
+
+AGREED:
+Nothing starts locked. At the beginning, the player selects all desired settings and may choose Lock in Nuzlocke rules, acting as a personal resolution enforcer.
+
+Once locked, covered Nuzlocke-related choices cannot change during that run. Unrelated conveniences/accessibility options remain editable. Make the covered list explicit in setup and show locked status in the menu.
+
+Caps and other restrictions have some overlap with the Nuzlocke menu; finalize the exact coverage rather than assuming every setting everywhere becomes locked.
+
+16. BATTLE STYLE, BAG ITEMS, AND HELD ITEMS
+
+AGREED:
+- Shift/Set battle-style option.
+- Separate player and opponent bag-item permission in trainer battles.
+- Independent player bag-item restriction for wild battles.
+- Held items remain enabled by default; do not conflate bag-use bans with held-item bans.
+- Balls remain allowed in otherwise catchable wild encounters, unless encounter-limit rules or a specific scripted restriction forbid the catch.
+
+Bag-item restrictions cover battle healing, cures, revives, and boosters as appropriate. Exact escape-item exceptions can be listed during implementation.
+
+OPTIONAL DUPLICATE HELD-ITEM CLAUSE:
+The active party cannot equip duplicate held items.
+- Block an attempted equip that would create a duplicate.
+- Directly moving an item from one teammate to another is allowed as one operation, because the original holder relinquishes it.
+- When withdrawing/swapping in a boxed Pokémon holding an already represented item, remove the INCOMING Pokémon's item to the Bag.
+- Never delete the removed item.
+- Boxed Pokémon may carry duplicate items; enforce the restriction as they enter the active party.
+- Enabling the rule on an existing party: keep the first occurrence in party order, return later duplicates to the Bag.
+- If returning an item exceptionally fails, cancel the operation/setting change rather than lose it.
+
+Bag capacity should be generous enough that ordinary play and automatic returns do not become inventory-management chores. Exact current fork capacity and needed expansion have not been verified.
+
+17. PORTABLE POKÉMON CENTER
+
+Separate convenience toggle grants remote full healing and box access ONLY where returning to a Center would entail travel tedium rather than overcoming a challenge.
+
+AGREED IMPLEMENTATION SCOPE:
+Use authored areas/boundaries, defeated-trainer records, and known gauntlet transitions. No generalized map pathfinding or universal reachability simulation.
+
+Example: stepping over a particular ledge starts a restricted section; defeating the designated exit trainer restores safe access. More complex zones can refer to explicit groups of trainers and story state.
+
+In gauntlets, the portable Center is OFFLINE. Flavor explanation: no reception. Both healing AND storage are unavailable, preventing box swaps/deposit-withdraw healing from bypassing the restriction.
+
+When safe access is restored, do not heal automatically. The player deliberately invokes an instant-heal command. Authored physical Centers/PCs/healing opportunities work where deliberately placed.
+
+Permanent-death and over-cap unusable states remain enforced in all interfaces.
+
+18. QUICK HEALING AND THE SADIST NPC
+
+QUICK HEAL:
+Center healing should be immediate: no mandatory repeated long animation/dialogue. Preserve a deliberate interaction and brief confirmation. Portable healing uses the same deliberate instantaneous principle.
+
+SADIST NPC AT CENTERS:
+The user wants an NPC who happily inflicts selected HP damage or status conditions for strategic preparation.
+
+Functions:
+- Set a selected Pokémon's HP to a requested value or reduce it by a requested amount.
+- Apply a requested persistent status condition.
+- Respect applicable status immunities. Cannot poison Poison-types, etc.; also respect relevant ability immunities under the chosen battle rules.
+- Cannot restore a casualty or make an otherwise unusable Pokémon usable.
+
+WORKING DETAILS:
+- Show the resulting HP/status before confirming.
+- Minimum HP of one was proposed to avoid accidental executions; not explicitly finalized by the user.
+- Offer normal/bad poison distinctly where supported.
+- Temporary battle-only states such as confusion do not automatically become persistent overworld states.
+
+Exact service price, menu layout, and support for setting sleep duration or other status substate are open. Do not add complicated simulation unless needed.
+
+19. OVERWORLD POISON
+
+User requested an option controlling whether poison can kill outside battle.
+
+WORKING THREE-MODE SPECIFICATION, presented and not contradicted:
+- No field damage: status persists, walking does not reduce HP.
+- Survive at one HP: field damage stops at one.
+- Can faint: field poison can cause fainting and, with permadeath, death.
+
+Do not introduce random fatality by default. The user asked whether chance-based behavior exists; no random-poison-death variant was selected. Exact tick timing follows the intended engine rules once chosen.
+
+20. INFINITE REPEL AND FISHING
+
+AGREED:
+An optional discoverable Infinite Repel key item is available before the first cave/dungeon-like area. Player toggles it on/off.
+
+Initially it follows ordinary Repel behavior: suppress weaker ordinary encounters according to the selected engine rules, not all encounters.
+
+A later upgrade unlocks mode selection:
+- Standard Repel.
+- Block all ordinary random Pokémon encounters.
+
+Block-all applies to normal grass, cave, surf, AND fishing Pokémon encounters. This supersedes the assistant's earlier idea to exempt deliberate fishing.
+
+FISHING UNDER BLOCK-ALL:
+- Display a short alert explaining that Pokémon encounters are being suppressed.
+- Fishing can still yield items if the fishing pool supports them.
+- Otherwise the cast yields nothing.
+- Do not invent item rewards in a pool without items.
+- Exact probability handling for suppressed Pokémon outcomes versus item outcomes is open; do not silently convert every blocked fish into a guaranteed item.
+
+Visible/static Pokémon and scripted encounters remain available according to their own rules, not ordinary Repel suppression.
+
+SMOOTH FISHING OPTION:
+Remove reaction timing/repeated-input minigame. Cast, resolve success/failure, then deliver encounter/item/nothing as appropriate.
+
+The intended working interpretation preserves designed success probabilities; smooth does not automatically mean every cast succeeds. Exact rod-specific rates and warning frequency remain to be chosen.
+
+21. MAP AND ENCOUNTER LOG
+
+AGREED:
+When selecting routes/areas on the map, show Nuzlocke encounter opportunity status. Provide a map-view toggle highlighting all discovered areas where an opportunity remains available.
+
+Example labels:
+- Available.
+- Used: caught [species].
+- Used: eligible encounter defeated/fled.
+- Shiny exception available after ordinary opportunity is spent, when relevant.
+
+Highlight discovered areas only. Undiscovered areas remain unknown. A skipped duplicate or uncatchable scripted battle does not consume opportunity. A shiny consumes a still-open opportunity under this game's selected shiny rule.
+
+Map granularity must support separately named areas such as cave floors, whether by sub-area selection/list or another clear UI. Do not incorrectly merge separately named opportunities just because they share a world-map tile.
+
+An encounter log showing discovered local species was broadly welcomed; exact contents/spoiler policy are open. It must not reveal future unseen encounters merely to explain eligibility.
+
+22. LEARNSET REFERENCE AT THE CENTER PC
+
+AGREED USER LOCATION:
+Comprehensive learnset reference belongs in a separate Pokémon Center PC menu for owned Pokémon, NOT as a full future-move encyclopedia in the party menu.
+
+The ordinary party Set Moves command still displays currently available moves, so it remains functional. The Center reference can explain future level-up moves, TM compatibility, transferable moves, and their source ruleset.
+
+Exact interpretation of owned (currently owned versus ever-owned species) and visibility of future evolutions' information is open. At minimum support the player's current Pokémon across party/storage.
+
+Evolution-method reference and detailed stat/ability information were additional welcomed QoL directions. They can live in the Center reference or another appropriate information interface; exact location is not locked.
+
+23. EVOLUTION REPLACEMENTS
+
+AGREED:
+Remove friendship-grinding and trade requirements.
+- Friendship-based evolution uses a Friendship Stone.
+- Trade-based evolution uses a Trading Stone.
+- Names are placeholders.
+
+The user expects these to be purchasable alongside other evolution stones around midgame. Exact availability, prices, and placement are deliberately deferred.
+
+WORKING COMPOUND-REQUIREMENT RULES, not separately finalized:
+- Friendship plus day/night: replace friendship with stone, keep time condition.
+- Trade holding a specific item: use Trading Stone with the item held; consume the required evolution item.
+- Paired-species trade: replace pairing with Trading Stone.
+
+Whether the new stones themselves are consumable is not explicitly finalized; do not assume a reusable key item. Preserve branching evolution identity when replacing conditions.
+
+All remaining unusual evolution methods need a later pass for unnecessary grind. No new decisions on them were made here.
+
+24. CLOCK AND TIME-OF-DAY
+
+AGREED:
+In-game time follows real elapsed time using the real-time clock, but the player can reset the displayed in-game time whenever desired through settings.
+
+Use a saved offset from RTC so time keeps advancing normally after adjustment. Do not change system/emulator clock settings.
+
+Resetting time:
+- Immediately updates day/night and time-based evolution eligibility.
+- Does not reset playtime.
+- Does not refresh one-time rewards.
+
+Future recurring timed rewards must explicitly define their behavior rather than accidentally becoming farmable via the time-setting menu. RTC-unavailable emulator fallback is an implementation detail still to design.
+
+25. CATCH CHANCE DISPLAY
+
+AGREED FEATURE:
+Provide a visible indicator of the chance that the selected ball will catch the selected target. Text associated with the ball action is sufficient.
+
+Use actual configured capture rules and relevant target state/ball conditions. Do not present a percentage from the wrong generation formula.
+
+OPEN PRESENTATION:
+Exact percentage versus approximate display versus optional hiding was suggested; final mode/default not chosen. Ensure uncatchable encounters and Nuzlocke-blocked throws are clearly distinguished from an ordinary low catch chance.
+
+26. ADDITIONAL QOL DIRECTIONS
+
+The user liked most additional suggestions, with the specific changes elsewhere in this document. Treat these as accepted directions needing UI/detail work, not individually completed implementations:
+- Visible IV/EV and nature-effect information.
+- Full ability descriptions and useful move details/category.
+- Fast text and skipping repeated tutorials.
+- Configurable battle presentation speed/animations where feasible; no promise that arbitrary emulator fast-forward can be controlled by the ROM.
+- Running indoors.
+- Evolution-method information without external research.
+- Short objective journal for branching story progress.
+- Optional boss retry support, subject to explicit Nuzlocke-death/wipe consistency.
+
+Boss retry behavior is NOT finalized and must not silently revive permanent casualties or override the selected wipe punishment.
+
+CUSTOM TELEPORT/RETURN CHECKPOINT:
+User proposed placing a return marker anywhere, but explicitly shelved it due to risk of map/story bypass bugs. Do not implement by default. Conventional travel and portable Center features remain the current plan.
+
+27. SETTINGS INTERACTION RULES
+
+These are consistency requirements, not extra mechanics:
+- Trainer level may exceed active cap; Fast Leveling still stops at cap.
+- Trainer level never falls after level reduction or death.
+- Dead/over-cap unusable Pokémon stay unusable through party, box, healing, and field-skill menus.
+- Portable healing/storage share gauntlet restrictions.
+- Ability toggling does not create resources.
+- PP behavior follows the chosen permissive/replacement rule, not an invented hidden history system.
+- Hidden ability access requires the story unlock and the applicable convenience permission.
+- Fixed Nuzlocke settings cannot be changed through a duplicate menu route.
+- Shiny exception overrides encounter/dupes limits but never overrides actual scripted uncatchability.
+- Branch order selects both authored opponent version and cap milestone.
+- Item-clause automatic returns never delete inventory.
+- Clock changes affect world time, not run duration or one-time flags.
+- Smooth Fishing and Repel compose: smooth resolution still honors suppression and item pools.
+- Story scenes must not assume a starter survives in runs where it may die or be released. The narrative handoff's starter farewell needs a conditional alternative.
+
+28. IMPLEMENTATION VERIFICATION CHECKLIST
+
+No code has been written for this specification. Verify the exact repository version before claiming built-in support.
+
+Focused checks when implementation starts:
+- Trainer-level updates across leveling, catching, receiving, loading, and permanent record persistence.
+- Fast-level caps, evolution refusal, no EV/friendship side effects.
+- Level-reduction stat recalculation and party/box handling without lowering trainer level.
+- First/second-operation teams and cap selection across all final branch orders.
+- Direct-transfer eligibility through evolution, saving, and relearning.
+- Replacement PP values, maximum clamping, empty slots, and fresh-PP toggle.
+- Ability-switch resource and immunity interactions.
+- Nuzlocke opportunity records for duplicate, shiny, failed catch, static, and scripted cases.
+- Casualty handling and prevention of revival through every storage/healing path.
+- All wipe modes and retained-save integrity.
+- Item-clause swaps and lossless Bag returns.
+- Gauntlet entry/exit boundaries, trainer-defeat conditions, and no-reception presentation.
+- Repel fishing/item outcomes and Smooth Fishing composition.
+- Map sub-area status and discovered-only highlighting.
+- Sadist immunity handling and HP limits.
+- Time offset persistence and no one-time reward reset.
+
+29. OPEN DECISIONS TO RETAIN, NOT SILENTLY INVENT
+
+1) Final starter quartet and full roster/encounter placement.
+2) Explicit final learnset selector and alignment of TM/transfer sources; Gen 9 is the recommendation, not a recorded final selection.
+3) Prices, service unlocks, hidden-ability milestone, and evolution-stone placement.
+4) Gift/static exception defaults; eggs likely omitted but not categorically banned.
+5) Exact Nuzlocke lock coverage, especially overlapping cap/battle settings.
+6) In-battle leveling/cap overflow details under the selectable option.
+7) Wipe-with-no-reserves behavior, save persistence for return-to-title, and retained-save restart design.
+8) PP for empty slots and direct transfer, if a different rule from the working defaults is desired.
+9) Sadist minimum HP and detailed status-substate controls.
+10) Compound evolution requirements and stone consumption.
+11) Catch-chance display format/default.
+12) Exact Center-reference ownership/spoiler scope and map sub-area UI.
+13) Smooth Fishing rates, Repel-warning frequency, and item-pool probability handling.
+14) Boss retry behavior and its relationship to permadeath/wipe settings.
+15) Battle-generation choices beyond learnsets, and whether any special generational battle gimmicks are included; none were selected here.
+
+Most user-facing behavior is now specified. These remaining details should be resolved as needed, without reopening agreed principles or adding unnecessary complexity.
+
+30. NEW-CHAT CONTINUATION INSTRUCTION
+
+Use this document as the mechanics and QoL handoff for my Emerald ROM hack. It is separate from the narrative storyboard. Preserve the agreed modular design and distinguish open details from final decisions. The goal is strategic team-building without repetitive grinding. Do not implement code unless I ask; when implementation begins, inspect my actual fork instead of assuming current upstream matches it. Index your responses. I will tell you which part to develop next.
+
+END OF MECHANICS HANDOFF

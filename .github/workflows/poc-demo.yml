@@ -1,9 +1,9 @@
-name: Build region demo
+name: Build hometown opening
 
 on:
   workflow_dispatch:
   push:
-    branches: [poc-demo]
+    branches: [poc-demo, leg-one]
 
 permissions:
   contents: read
@@ -22,11 +22,12 @@ jobs:
       - name: Package playable build
         run: |
           mkdir demo
-          cp pokeemerald.gba demo/pokemon-region-demo-v0.1.gba
-          cp POC.md demo/README.md
+          cp pokeemerald.gba demo/pokemon-leg-one-v0.2.gba
+          cp docs/our-game/PLAYTEST.md demo/README.md
+          cp docs/our-game/Leg-One-Dialogue.txt demo/Leg-One-Dialogue.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: pokemon-region-demo-v0.1
+          name: pokemon-leg-one-v0.2
           path: demo/
           if-no-files-found: error
           retention-days: 30

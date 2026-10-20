@@ -171,6 +171,8 @@ bool16 AddTextPrinterParameterized2(u8 windowId, u8 fontId, const u8 *str, u8 sp
 {
     struct TextPrinterTemplate printer;
 
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(bgColor));
+    CopyWindowToVram(windowId, COPYWIN_GFX);
     printer.currentChar = str;
     printer.type = WINDOW_TEXT_PRINTER;
     printer.windowId = windowId;

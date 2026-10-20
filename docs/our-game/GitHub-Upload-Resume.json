@@ -1,0 +1,855 @@
+{
+  "status": "UNFINISHED: no leg-one remote branch or published backup commit verified",
+  "snapshot_commit": "f8ba8796d51d4e7b84c585e02156c341c6fe0208",
+  "snapshot_tree": "046590f6aae4eb3efbacf1b5bd6cc9e6b980aee4",
+  "remote_repository": "YoniHymanCodeStuff/pokeemerald-expansion",
+  "remote_parent": "375fe74b1a12828bef23dd8c0cd54e411fdb6416",
+  "remote_parent_tree": "bea95d8d8b8c06e55fe63b4a5b29cf0828d55d69",
+  "verified_uploaded_entries": [
+    {
+      "path": ".github/workflows/poc-demo.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2f9a9744cf802876c7e81692cbdb0cc4be61f420"
+    },
+    {
+      "path": "data/event_scripts.s",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ffe03103c29f0214ad9225da5c11f09d8bc8c2d8"
+    },
+    {
+      "path": "data/layouts/LegEdwulf/map.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8f1460a90c2eebefea4cc3b95cda4d339094617"
+    },
+    {
+      "path": "data/layouts/LegLab/border.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "19d90667980ced4e6b00a744509ce6de9504511a"
+    },
+    {
+      "path": "data/layouts/LegLab/map.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a2df17f331c1e851ef356cb74f106963b490729"
+    },
+    {
+      "path": "data/layouts/PocTrail/map.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d74fd77c83df29e9b6b0e52c854fdba2af80620f"
+    },
+    {
+      "path": "data/layouts/PocVillage/map.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3b2069e6a86edd0028f24626b34dc3c51c458ab7"
+    },
+    {
+      "path": "data/layouts/layouts.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8a7f54ac6d1c65a43ca2d503dc39245451a3d46"
+    },
+    {
+      "path": "data/maps/LegAstrid/map.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5ef7a884c3a90e95f6754664a99fe8a6a4f1a953"
+    },
+    {
+      "path": "data/maps/LegAstrid/scripts.inc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegEdwulf/map.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c25dc002ed9b3945fb9d6f96edee6ae74e792eb"
+    },
+    {
+      "path": "data/maps/LegEdwulf/scripts.inc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegHome/map.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c85172778d72d5eb3bebe818ec811f7687d79509"
+    },
+    {
+      "path": "data/maps/LegHome/scripts.inc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegHomeUpstairs/map.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "604eb42d144eb699d542f0bb6ff55cdbb39c42d9"
+    },
+    {
+      "path": "data/maps/LegHomeUpstairs/scripts.inc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegLab/map.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1bd790106ac2bd4492afcbae922283a8f7e5c49c"
+    },
+    {
+      "path": "data/maps/LegLab/scripts.inc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegNeville/map.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e5b384ac12adec1ac52aafccbdc0fcb6b38a452"
+    },
+    {
+      "path": "data/maps/LegNeville/scripts.inc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegOldMan/map.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c45d6fb187306655a015bb0b9fa67e185b733802"
+    },
+    {
+      "path": "data/maps/LegOldMan/scripts.inc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/PocTrail/map.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3b572e589787e213841e569fa7bfb01d6d83da02"
+    },
+    {
+      "path": "data/maps/PocTrail/scripts.inc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25f6fcb75b9eed7fd2462daf45de00d8a8d4cc88"
+    },
+    {
+      "path": "data/maps/PocVillage/map.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb672b6dc360c667eff3cb4771cc8c8dbb56f635"
+    },
+    {
+      "path": "data/maps/PocVillage/scripts.inc",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab065a137891af0f97432d2b196803afb5642896"
+    }
+  ],
+  "all_snapshot_changes": [
+    {
+      "path": ".github/workflows/poc-demo.yml",
+      "size": 957,
+      "text": true,
+      "mode": "100644",
+      "sha": "2f9a9744cf802876c7e81692cbdb0cc4be61f420"
+    },
+    {
+      "path": "data/event_scripts.s",
+      "size": 76177,
+      "text": true,
+      "mode": "100644",
+      "sha": "ffe03103c29f0214ad9225da5c11f09d8bc8c2d8"
+    },
+    {
+      "path": "data/layouts/LegEdwulf/map.bin",
+      "size": 180,
+      "text": false,
+      "mode": "100644",
+      "sha": "a8f1460a90c2eebefea4cc3b95cda4d339094617"
+    },
+    {
+      "path": "data/layouts/LegLab/border.bin",
+      "size": 8,
+      "text": true,
+      "mode": "100644",
+      "sha": "19d90667980ced4e6b00a744509ce6de9504511a"
+    },
+    {
+      "path": "data/layouts/LegLab/map.bin",
+      "size": 612,
+      "text": true,
+      "mode": "100644",
+      "sha": "1a2df17f331c1e851ef356cb74f106963b490729"
+    },
+    {
+      "path": "data/layouts/PocTrail/map.bin",
+      "size": 960,
+      "text": false,
+      "mode": "100644",
+      "sha": "d74fd77c83df29e9b6b0e52c854fdba2af80620f"
+    },
+    {
+      "path": "data/layouts/PocVillage/map.bin",
+      "size": 2880,
+      "text": false,
+      "mode": "100644",
+      "sha": "3b2069e6a86edd0028f24626b34dc3c51c458ab7"
+    },
+    {
+      "path": "data/layouts/layouts.json",
+      "size": 350796,
+      "text": true,
+      "mode": "100644",
+      "sha": "d8a7f54ac6d1c65a43ca2d503dc39245451a3d46"
+    },
+    {
+      "path": "data/maps/LegAstrid/map.json",
+      "size": 1141,
+      "text": true,
+      "mode": "100644",
+      "sha": "5ef7a884c3a90e95f6754664a99fe8a6a4f1a953"
+    },
+    {
+      "path": "data/maps/LegAstrid/scripts.inc",
+      "size": 53,
+      "text": true,
+      "mode": "100644",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegEdwulf/map.json",
+      "size": 1502,
+      "text": true,
+      "mode": "100644",
+      "sha": "2c25dc002ed9b3945fb9d6f96edee6ae74e792eb"
+    },
+    {
+      "path": "data/maps/LegEdwulf/scripts.inc",
+      "size": 53,
+      "text": true,
+      "mode": "100644",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegHome/map.json",
+      "size": 1287,
+      "text": true,
+      "mode": "100644",
+      "sha": "c85172778d72d5eb3bebe818ec811f7687d79509"
+    },
+    {
+      "path": "data/maps/LegHome/scripts.inc",
+      "size": 53,
+      "text": true,
+      "mode": "100644",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegHomeUpstairs/map.json",
+      "size": 1036,
+      "text": true,
+      "mode": "100644",
+      "sha": "604eb42d144eb699d542f0bb6ff55cdbb39c42d9"
+    },
+    {
+      "path": "data/maps/LegHomeUpstairs/scripts.inc",
+      "size": 53,
+      "text": true,
+      "mode": "100644",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegLab/map.json",
+      "size": 6742,
+      "text": true,
+      "mode": "100644",
+      "sha": "1bd790106ac2bd4492afcbae922283a8f7e5c49c"
+    },
+    {
+      "path": "data/maps/LegLab/scripts.inc",
+      "size": 53,
+      "text": true,
+      "mode": "100644",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegNeville/map.json",
+      "size": 1526,
+      "text": true,
+      "mode": "100644",
+      "sha": "1e5b384ac12adec1ac52aafccbdc0fcb6b38a452"
+    },
+    {
+      "path": "data/maps/LegNeville/scripts.inc",
+      "size": 53,
+      "text": true,
+      "mode": "100644",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/LegOldMan/map.json",
+      "size": 1140,
+      "text": true,
+      "mode": "100644",
+      "sha": "c45d6fb187306655a015bb0b9fa67e185b733802"
+    },
+    {
+      "path": "data/maps/LegOldMan/scripts.inc",
+      "size": 53,
+      "text": true,
+      "mode": "100644",
+      "sha": "501ad647337c4455cc0b4ee72e9be5a191e96ee6"
+    },
+    {
+      "path": "data/maps/PocTrail/map.json",
+      "size": 2027,
+      "text": true,
+      "mode": "100644",
+      "sha": "3b572e589787e213841e569fa7bfb01d6d83da02"
+    },
+    {
+      "path": "data/maps/PocTrail/scripts.inc",
+      "size": 31,
+      "text": true,
+      "mode": "100644",
+      "sha": "25f6fcb75b9eed7fd2462daf45de00d8a8d4cc88"
+    },
+    {
+      "path": "data/maps/PocVillage/map.json",
+      "size": 5467,
+      "text": true,
+      "mode": "100644",
+      "sha": "fb672b6dc360c667eff3cb4771cc8c8dbb56f635"
+    },
+    {
+      "path": "data/maps/PocVillage/scripts.inc",
+      "size": 165,
+      "text": true,
+      "mode": "100644",
+      "sha": "ab065a137891af0f97432d2b196803afb5642896"
+    },
+    {
+      "path": "data/maps/map_groups.json",
+      "size": 34717,
+      "text": true,
+      "mode": "100644",
+      "sha": "c32328e09e034d5a89e0065de8ac2d0460f97fd8"
+    },
+    {
+      "path": "data/our-game/dialogue.json",
+      "size": 14337,
+      "text": true,
+      "mode": "100644",
+      "sha": "b4d3e138cec16ebadaa38c5251c9f15168899423"
+    },
+    {
+      "path": "data/our-game/events.inc",
+      "size": 23889,
+      "text": true,
+      "mode": "100644",
+      "sha": "8031f0f481d8e76c5958bc60598692dffc946c63"
+    },
+    {
+      "path": "data/our-game/text.inc",
+      "size": 16519,
+      "text": true,
+      "mode": "100644",
+      "sha": "3bc4c5af02ba9e0ab74c037d1990df2d40aada21"
+    },
+    {
+      "path": "data/text/birch_speech.inc",
+      "size": 1519,
+      "text": true,
+      "mode": "100644",
+      "sha": "9fa8da1f73b8f8f13a8a3aca580929a866a8516f"
+    },
+    {
+      "path": "dev_scripts/build_leg_one.py",
+      "size": 26335,
+      "text": true,
+      "mode": "100644",
+      "sha": "f85db21826de55fe1dc410a731cd7ca8a7db523d"
+    },
+    {
+      "path": "dev_scripts/convert_character_assets.py",
+      "size": 2205,
+      "text": true,
+      "mode": "100644",
+      "sha": "799498bbb3333e61953462b483ca1fd224eef56a"
+    },
+    {
+      "path": "docs/our-game/DEVELOPMENT-HANDOFF.md",
+      "size": 11723,
+      "text": true,
+      "mode": "100644",
+      "sha": "ae1c80cb16a4196c5ab97127df157cb6b67ea859"
+    },
+    {
+      "path": "docs/our-game/Leg-One-Dialogue.txt",
+      "size": 16440,
+      "text": true,
+      "mode": "100644",
+      "sha": "977dbbc0941b10b9e62b1c4bc2737bfb4b35eac4"
+    },
+    {
+      "path": "docs/our-game/Mechanics-Handoff-v0.1.txt",
+      "size": 35930,
+      "text": true,
+      "mode": "100644",
+      "sha": "691b4294f9f2aaeffe8cc65f0ff060e859fae5d4"
+    },
+    {
+      "path": "docs/our-game/Narrative-Handoff-v0.2.txt",
+      "size": 59360,
+      "text": true,
+      "mode": "100644",
+      "sha": "35429a995f00b47cd97056abef376bfb07d733f4"
+    },
+    {
+      "path": "docs/our-game/PLAYTEST.md",
+      "size": 4256,
+      "text": true,
+      "mode": "100644",
+      "sha": "93d992cfd2e87af7bd3b17f36c30e31601591898"
+    },
+    {
+      "path": "docs/our-game/PROJECT-NOTES.md",
+      "size": 4410,
+      "text": true,
+      "mode": "100644",
+      "sha": "9582757dd096a224029ae5b2ef230cb81210d0de"
+    },
+    {
+      "path": "docs/our-game/START-HERE.md",
+      "size": 1536,
+      "text": true,
+      "mode": "100644",
+      "sha": "2748c02b211845ccca671997f2e98bde225da3d0"
+    },
+    {
+      "path": "docs/our-game/TEST-RESULTS.md",
+      "size": 2755,
+      "text": true,
+      "mode": "100644",
+      "sha": "ab79df0292a90abd826832026526cefe161361d4"
+    },
+    {
+      "path": "docs/our-game/archive/README.md",
+      "size": 236,
+      "text": true,
+      "mode": "100644",
+      "sha": "13dec25fd5139c7828e6de4dc6865e30fb88f969"
+    },
+    {
+      "path": "docs/our-game/archive/Story-Bible-v0.1.txt",
+      "size": 38900,
+      "text": true,
+      "mode": "100644",
+      "sha": "63b2b6e53c962ba28432c222f6c621fa2d580b61"
+    },
+    {
+      "path": "graphics/our_game/characters/astrid-front.png",
+      "size": 1608,
+      "text": false,
+      "mode": "100644",
+      "sha": "d68fec3d6fcdca18a3841fd19c062ec57a512d3c"
+    },
+    {
+      "path": "graphics/our_game/characters/astrid-overworld.png",
+      "size": 2158,
+      "text": false,
+      "mode": "100644",
+      "sha": "26bf4cceaf313836333508304bf62f23dc96401c"
+    },
+    {
+      "path": "graphics/our_game/characters/edwulf-front.png",
+      "size": 1541,
+      "text": false,
+      "mode": "100644",
+      "sha": "21a02abc6c0f93495d2ea7f57763b61f9e02ed3c"
+    },
+    {
+      "path": "graphics/our_game/characters/edwulf-overworld.png",
+      "size": 2363,
+      "text": false,
+      "mode": "100644",
+      "sha": "b27ab8713860870d9c95d99d558539aa522672a2"
+    },
+    {
+      "path": "graphics/our_game/characters/neville-back.png",
+      "size": 1594,
+      "text": false,
+      "mode": "100644",
+      "sha": "cd6d0acb55ab008b5afde24da0f30a62dcd0a434"
+    },
+    {
+      "path": "graphics/our_game/characters/neville-front.png",
+      "size": 1675,
+      "text": false,
+      "mode": "100644",
+      "sha": "944f49e1b05732a8bf74d01e736e77369e3f56f8"
+    },
+    {
+      "path": "graphics/our_game/characters/neville-overworld.png",
+      "size": 2131,
+      "text": false,
+      "mode": "100644",
+      "sha": "5ad2e08d3a72d089fa8389d62c78120289989a5d"
+    },
+    {
+      "path": "graphics/our_game/characters/yew-front.png",
+      "size": 1440,
+      "text": false,
+      "mode": "100644",
+      "sha": "94b81d1609ef89db5b4a81c7c95a023bc88b56ee"
+    },
+    {
+      "path": "graphics/our_game/characters/yew-overworld.png",
+      "size": 2182,
+      "text": false,
+      "mode": "100644",
+      "sha": "aa39497f81aef9639e6092a686fb21b14f95fff1"
+    },
+    {
+      "path": "graphics/our_game/references/astrid-overworld.png",
+      "size": 989609,
+      "text": false,
+      "mode": "100644",
+      "sha": "ba1b8aab2adc60255197184ad31e2739a6ccc4bb"
+    },
+    {
+      "path": "graphics/our_game/references/astrid.png",
+      "size": 604980,
+      "text": false,
+      "mode": "100644",
+      "sha": "bc06c33f48b58424176482fef62c343c890fc1e2"
+    },
+    {
+      "path": "graphics/our_game/references/edwulf-overworld.png",
+      "size": 642639,
+      "text": false,
+      "mode": "100644",
+      "sha": "4ae80b2958cb8a61b33ece53f9ca0a1b461cf577"
+    },
+    {
+      "path": "graphics/our_game/references/edwulf.png",
+      "size": 351612,
+      "text": false,
+      "mode": "100644",
+      "sha": "d9f424b3ada587ed694f4ed7e1dd05175cf37877"
+    },
+    {
+      "path": "graphics/our_game/references/neville-back.png",
+      "size": 623141,
+      "text": false,
+      "mode": "100644",
+      "sha": "5863a042c742e47b4d138d152d56122a1d0194f8"
+    },
+    {
+      "path": "graphics/our_game/references/neville-overworld.png",
+      "size": 738350,
+      "text": false,
+      "mode": "100644",
+      "sha": "b7751fd0fab75bd4e818d88926a19821eef60316"
+    },
+    {
+      "path": "graphics/our_game/references/neville.png",
+      "size": 672823,
+      "text": false,
+      "mode": "100644",
+      "sha": "8f4d0d5a99982e396ac2d8126d129009b7b764c1"
+    },
+    {
+      "path": "graphics/our_game/references/yew-overworld.png",
+      "size": 723899,
+      "text": false,
+      "mode": "100644",
+      "sha": "73735340278be649d1849a51f037a3b6e9eb5832"
+    },
+    {
+      "path": "graphics/our_game/references/yew.png",
+      "size": 453169,
+      "text": false,
+      "mode": "100644",
+      "sha": "1f906c623413c4af1a37c532bd55c079b2cbc6e3"
+    },
+    {
+      "path": "include/config/summary_screen.h",
+      "size": 3707,
+      "text": true,
+      "mode": "100644",
+      "sha": "c65342ab69ef0ebb0c70811ff75611a78907689d"
+    },
+    {
+      "path": "include/constants/battle_partner.h",
+      "size": 316,
+      "text": true,
+      "mode": "100644",
+      "sha": "e6d7a295983ec76c1779cd19d9823810e4ee7683"
+    },
+    {
+      "path": "include/constants/event_objects.h",
+      "size": 24899,
+      "text": true,
+      "mode": "100644",
+      "sha": "0eb42546ee64c75f4d87a3049497bd9411b8b627"
+    },
+    {
+      "path": "include/constants/flags.h",
+      "size": 165922,
+      "text": true,
+      "mode": "100644",
+      "sha": "dd6870bba9ab8f0e9475b092e6fca3d5383f1f34"
+    },
+    {
+      "path": "include/constants/opponents.h",
+      "size": 42389,
+      "text": true,
+      "mode": "100644",
+      "sha": "a47206d4213a182e8b91659caac6af2e3bafee54"
+    },
+    {
+      "path": "include/constants/trainers.h",
+      "size": 18993,
+      "text": true,
+      "mode": "100644",
+      "sha": "445f445b24209496d1de2cf87f599a2548a61ae5"
+    },
+    {
+      "path": "include/constants/vars.h",
+      "size": 21410,
+      "text": true,
+      "mode": "100644",
+      "sha": "293ebd293f37b1161e27f34c44ef66e66fc07b41"
+    },
+    {
+      "path": "include/leg_one.h",
+      "size": 575,
+      "text": true,
+      "mode": "100644",
+      "sha": "7a5c29e0e2bf67a53db2a1568b8b7f9e7a66ea14"
+    },
+    {
+      "path": "releases/leg-one-v0.3/Pokemon-Leg-One-v0.3.zip",
+      "size": 17465850,
+      "text": false,
+      "mode": "100644",
+      "sha": "cb8aecf10bc90149f5c65a73d861c2ea71686cc1"
+    },
+    {
+      "path": "releases/leg-one-v0.3/README.txt",
+      "size": 1625,
+      "text": true,
+      "mode": "100644",
+      "sha": "3964d7769bd8446f2284d56d656e96e1e4c31e26"
+    },
+    {
+      "path": "releases/leg-one-v0.3/SHA256SUMS.txt",
+      "size": 195,
+      "text": true,
+      "mode": "100644",
+      "sha": "5fe2b2404f7f9bf95b84033b8a1c777af57f2370"
+    },
+    {
+      "path": "src/battle_script_commands.c",
+      "size": 425328,
+      "text": true,
+      "mode": "100644",
+      "sha": "3457a54591cd55ac63b88bce2cdcf336c15e982a"
+    },
+    {
+      "path": "src/data/battle_partners.party",
+      "size": 1300,
+      "text": true,
+      "mode": "100644",
+      "sha": "84c76f89b2ea45065b5b2a6086078afd8d103408"
+    },
+    {
+      "path": "src/data/graphics/trainers.h",
+      "size": 67713,
+      "text": true,
+      "mode": "100644",
+      "sha": "4269c6fa3952178d24af7f8212a87b7b4f6d8f7f"
+    },
+    {
+      "path": "src/data/heal_locations.json",
+      "size": 10073,
+      "text": true,
+      "mode": "100644",
+      "sha": "65362e0e73c0cc7205e3a2105396ac50fff40048"
+    },
+    {
+      "path": "src/data/object_events/object_event_graphics.h",
+      "size": 79074,
+      "text": true,
+      "mode": "100755",
+      "sha": "02a45c2529e3f9e5eddc94f8023344e34314286a"
+    },
+    {
+      "path": "src/data/object_events/object_event_graphics_info.h",
+      "size": 225357,
+      "text": true,
+      "mode": "100755",
+      "sha": "7d0c19ea53bf1d664ccfae6826bf7b7dfde24867"
+    },
+    {
+      "path": "src/data/object_events/object_event_graphics_info_pointers.h",
+      "size": 66382,
+      "text": true,
+      "mode": "100755",
+      "sha": "5be08f7026db6a3b64338436bb47ae39ce1ae817"
+    },
+    {
+      "path": "src/data/object_events/object_event_pic_tables.h",
+      "size": 104471,
+      "text": true,
+      "mode": "100755",
+      "sha": "b2a3fcb3a72f9adf76b1a8a99689dd4c948a9374"
+    },
+    {
+      "path": "src/data/party_menu.h",
+      "size": 36086,
+      "text": true,
+      "mode": "100644",
+      "sha": "8f080c305c9d134de9461a0a6ee806220885fd40"
+    },
+    {
+      "path": "src/data/region_map/region_map_sections.json",
+      "size": 29195,
+      "text": true,
+      "mode": "100644",
+      "sha": "95bd2b7fa428fc2aae6f03dbffeef8c315475956"
+    },
+    {
+      "path": "src/data/trainers.party",
+      "size": 278154,
+      "text": true,
+      "mode": "100644",
+      "sha": "43169e61368be719514672c29b14ad78a87accc5"
+    },
+    {
+      "path": "src/event_object_movement.c",
+      "size": 447139,
+      "text": true,
+      "mode": "100644",
+      "sha": "ea2ad8d75f13c515fafb7c58d3a85aa01dccc265"
+    },
+    {
+      "path": "src/item_use.c",
+      "size": 50632,
+      "text": true,
+      "mode": "100644",
+      "sha": "c68241e062dc43cde8f14ede16d7537fe9c148f5"
+    },
+    {
+      "path": "src/leg_one.c",
+      "size": 6439,
+      "text": true,
+      "mode": "100644",
+      "sha": "f447eb1e17f1c11679ff3983f8a41c0f95c417ba"
+    },
+    {
+      "path": "src/leg_one_map.c",
+      "size": 3048,
+      "text": true,
+      "mode": "100644",
+      "sha": "61a4610d8a936223685669ffb43e8b6a7ce83310"
+    },
+    {
+      "path": "src/main_menu.c",
+      "size": 82864,
+      "text": true,
+      "mode": "100644",
+      "sha": "9eaaa6c119e73dd46c4f4afcafb703c624499fd0"
+    },
+    {
+      "path": "src/menu.c",
+      "size": 64268,
+      "text": true,
+      "mode": "100644",
+      "sha": "97522525933fc32430bab23bd907ef4c0e62fba2"
+    },
+    {
+      "path": "src/new_game.c",
+      "size": 6960,
+      "text": true,
+      "mode": "100644",
+      "sha": "c0d88c0971dbc9a3185807cd4834bd83b0bd7ba2"
+    },
+    {
+      "path": "src/party_menu.c",
+      "size": 286350,
+      "text": true,
+      "mode": "100644",
+      "sha": "c0149195d6f69a80f1bfe802d479781ab9b85afa"
+    },
+    {
+      "path": "src/pokemon.c",
+      "size": 236954,
+      "text": true,
+      "mode": "100644",
+      "sha": "66f6518c8e0397d0e26297c65b9d7e6bc0962dc0"
+    },
+    {
+      "path": "src/pokemon_summary_screen.c",
+      "size": 160159,
+      "text": true,
+      "mode": "100644",
+      "sha": "b80003074b6bf4210195c26d725797ffd6a7e15c"
+    },
+    {
+      "path": "src/strings.c",
+      "size": 75124,
+      "text": true,
+      "mode": "100644",
+      "sha": "4c9da6fa17308853f4e2e91a0ab558dd18a4c7d0"
+    },
+    {
+      "path": "tests/leg-one/driver.py",
+      "size": 4294,
+      "text": true,
+      "mode": "100644",
+      "sha": "d3793ccd170ee965e8d7a08a87417c2dfd9c25de"
+    },
+    {
+      "path": "tests/leg-one/emulator.c",
+      "size": 1855,
+      "text": true,
+      "mode": "100644",
+      "sha": "e43e6a60ae4f77fef78146ed22da134221ff9133"
+    },
+    {
+      "path": "tests/leg-one/qa_opening.py",
+      "size": 1763,
+      "text": true,
+      "mode": "100644",
+      "sha": "6bbb9f19ca431912e3552e669dc9915656d1578f"
+    },
+    {
+      "path": "tests/leg-one/test_content.py",
+      "size": 4340,
+      "text": true,
+      "mode": "100644",
+      "sha": "712da1dba6290d6878cb230a633c59e2b57f3f5a"
+    }
+  ],
+  "warning": "The interrupted ZIP upload has no confirmed result. Uploaded blobs alone are not a recoverable branch. Regenerate changed-file data if publishing a newer snapshot containing this handoff."
+}

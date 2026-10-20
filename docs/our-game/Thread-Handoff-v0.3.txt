@@ -1,0 +1,2565 @@
+POKEMON EMERALD DARK REGION — COMPLETE THREAD HANDOFF
+Version 0.3 | October 20, 2026
+
+PASTE THIS DOCUMENT INTO A NEW THREAD AND ATTACH THE CURRENT SOURCE ARCHIVE.
+It includes both implementation continuity and the complete narrative/mechanics
+knowledge base. Do not require the user to reconstruct the prior conversation.
+
+======================================================================
+0. IMMEDIATE STATUS — READ THIS BEFORE THE EMBEDDED OLDER DOCUMENTS
+======================================================================
+
+The opening prototype v0.3 is implemented and playable. All 11 requested fixes
+were completed and tested. The latest user first requested a GitHub backup of
+all code and handoff information, then asked for THIS .txt to continue in a new
+thread. The GitHub backup is NOT COMPLETE. Do not say it was pushed.
+
+Current response numbering: last progress message was 174. Index subsequent
+assistant responses. Work autonomously; do not repeatedly ask for permission.
+The user explicitly authorized GitHub publication. No additional approval is
+needed just because a previous attempt, before this authorization, was rejected.
+
+Repository: https://github.com/YoniHymanCodeStuff/pokeemerald-expansion
+Remote branches verified: master and poc-demo. No refs/heads/leg-one returned
+from git ls-remote in the last check. The new local leg-one branch exists only
+locally. Keep master and poc-demo intact; publish the snapshot on leg-one.
+Do not force push or overwrite another branch.
+
+Latest local snapshot before adding this handoff:
+  commit: f8ba8796d51d4e7b84c585e02156c341c6fe0208
+  tree: 046590f6aae4eb3efbacf1b5bd6cc9e6b980aee4
+  original poc-demo parent: 375fe74b1a12828bef23dd8c0cd54e411fdb6416
+  original parent tree: bea95d8d8b8c06e55fe63b4a5b29cf0828d55d69
+Adding this handoff creates a newer local snapshot; use its actual tree when
+publishing. These SHAs identify the preceding upload attempt, not a remote
+published commit.
+
+Current temporary workspace:
+  /workspace/scratch/438ced3af31e
+Repo:
+  /workspace/scratch/438ced3af31e/leg-one
+These paths may disappear in a new session. Durable files are in ChatGPT Library.
+A current source snapshot is being saved with this handoff. Use that snapshot,
+not an older source copy, when recovering the latest docs and build tools.
+
+Durable files and known Library identities:
+- Emerald-Romhack-Thread-Handoff-v0.3.txt: this new standalone handoff.
+- Leg-One-Source-v0.3.tar.gz:
+  libfile_c1a4614bb5a48191b3ba0106825dddde
+  This handoff's save updates the existing identity with the latest source.
+- Pokemon-Leg-One-v0.3.zip:
+  libfile_c4d0b581dcec819188caeec3ab090199
+  The playable ROM, README, dialogue, test report and game screenshots.
+- Emerald-Romhack-Leg-One-Dialogue-v0.1.txt:
+  libfile_1a2e1f62a6608191bc23a8dc70efc79b
+  Filename remains v0.1, but its content was updated for v0.3.
+- Older recovery base Leg-One-Source-v0.2.tar.gz:
+  libfile_4eb1c9bf72c08191b5f4d6ee89fde36a
+  Use only if the latest source is unavailable.
+
+Last validated playable ROM SHA-256:
+98e2d5530e749a1c7231a31780e5858a750e511347d1879938aa614346fad3f5
+The later GitHub/handoff work changes documentation and retained build tools,
+not gameplay. Start a NEW GAME to test this revision; old save states retain
+old map placements and script stages.
+
+======================================================================
+1. FINISHING THE GITHUB BACKUP — EXACT PROGRESS AND OBSTACLES
+======================================================================
+
+1) Normal HTTPS git fetch/ls-remote works for the public repository. Git push
+   failed with: could not read Username for https://github.com: No such device
+   or address. There is no usable command-line GitHub login in this environment.
+2) The connected GitHub tools ARE authenticated and report push permission.
+   Their get_repo/search_branches/fetch_commit/create_blob actions worked.
+3) An attempted generic hosted-app helper call for connector ID 'github'
+   returned HTTP 403. Do not pursue that bridge or manually inspect credentials.
+   Use the actual available GitHub tools instead.
+4) A native GitHub Git Data API upload began. The first 26 changed files of a
+   98-file manifest were uploaded as blobs and their returned SHAs verified.
+   No create_tree, create_commit or create_branch step was completed.
+   Individual uploaded blobs are NOT a durable user-visible backup branch.
+5) An attempt to read/upload the 17,465,850-byte playable ZIP was interrupted
+   by the user. Its upload result is unknown/unconfirmed. Blob creation is
+   content-addressed and may safely be repeated; do not infer branch success.
+6) docs/our-game/GitHub-Upload-Resume.json preserves the 98-file manifest and
+   first 26 verified blob entries. It applies to snapshot f8ba8796d51d4e7b84c585e02156c341c6fe0208.
+   New handoff files must be added to any newly generated manifest/tree.
+
+Available native tool names (discover their current schemas):
+  mcp__codex_apps__github_create_blob
+    repository_full_name, content, encoding='utf-8' or 'base64'
+  mcp__codex_apps__github_create_tree
+    repository_full_name, base_tree_sha, tree_elements
+  mcp__codex_apps__github_create_commit
+    repository_full_name, parent_sha, tree_sha, message
+  mcp__codex_apps__github_create_branch
+    repository_full_name, branch_name, sha (or base_ref)
+  mcp__codex_apps__github_update_ref
+    branch_name, sha, expected_sha; avoid force unless independently required
+
+Efficient continuation: use GitHub create_tree entries with content for UTF-8
+files and create_blob/base64 for PNGs/binary assets and the release ZIP. Use the
+original poc-demo tree as the base. Verify the resulting complete tree SHA
+against the desired local Git tree before publishing a commit/leg-one ref.
+Then fetch/inspect the remote branch to verify publication. Do not claim remote
+CI passed: normal upstream CI does not run for leg-one.
+
+Large local file content can be read within functions.exec without printing it
+to the model: tools.exec_command returns .output to JavaScript. Tested a
+131,072-byte base64 read with max_output_tokens=1000000; it was not truncated.
+Read larger files in bounded chunks and inspect output for truncation. If
+joining independently base64-encoded chunks, raw chunk lengths MUST be divisible
+by 3 (e.g. 1,048,575). A 1,048,576-byte chunk produces padding and cannot simply
+be concatenated. Do not expose base64 payloads in user-facing output.
+
+The prior attempt uploaded 26 small files sequentially and took minutes.
+Batching UTF-8 content directly in create_tree should reduce calls. Actual
+large ZIP tool-request support was not verified. If necessary, first secure
+all source/docs/art on the branch, then handle the optional playable ZIP.
+Explicitly report any remaining artifact rather than blocking source backup
+indefinitely. Keep the user's original objective to preserve the work.
+
+The current source snapshot includes releases/leg-one-v0.3/Pokemon-Leg-One-v0.3.zip
+and a checksum manifest, as well as all custom reference art and engine sprites.
+There are no known credential files in the snapshot. A targeted credential
+pattern scan found no matches; no file exceeds GitHub's 100 MiB limit.
+
+======================================================================
+2. RECOVERY NOTES — IMPORTANT SOURCE-ARCHIVE TRAP
+======================================================================
+
+After a workspace reset, v0.2 was recovered from its saved tar.gz. It contained
+engine tool sources that Git ignores even though upstream tracks them. Running
+'git init; git add .' alone omitted tools/compresSmol source and the tracked
+tools/mgba/mgba-rom-test.exe. These 12 files have now been explicitly restored
+from poc-demo and committed. They are included in the current source snapshot.
+Avoid older v0.3 source archive versions if you need a standalone fresh build.
+
+Best recovery path: clone/fetch the original repository/poc-demo, create the
+leg-one branch from it, overlay the latest complete source snapshot, then add
+and commit the differences. Preserve the clone's .git directory. This keeps
+upstream ancestry and its tracked ignored files. Do not add build/ or private
+runtime tools, credentials, temporary emulator saves or package download caches.
+
+The archive does not need a pre-existing compiler installation. Normal build
+instructions and exact implementation details are in the development section
+below. Runtime package downloads and private toolchain locations are temporary.
+If this workspace still exists, private toolchain PATH was:
+  /workspace/scratch/438ced3af31e/toolchain/usr/bin
+Host emulator libs:
+  /workspace/scratch/438ced3af31e/toolchain/usr/lib/x86_64-linux-gnu
+The correct bridge source already includes mgba/flags.h; omitting that header
+previously caused an ABI mismatch for battery save export.
+
+======================================================================
+3. DOCUMENT PRECEDENCE AND CONTINUATION SCOPE
+======================================================================
+
+The top status in this handoff overrides optimistic wording about publication
+inside older embedded docs. Explicit later decisions in PROJECT-NOTES and the
+implemented dialogue override older narrative/character names and discarded
+options. The full mechanics document describes desired future behavior; it
+must not be mistaken for a list of implemented settings.
+
+Do not reopen the whole storyboard without a reason. The user was polishing
+the opening, then requested backup. The next technical task is finishing that
+backup, followed by the user's v0.3 playtest feedback. Route 1 encounters,
+first gym, later factions and full mechanics are not implemented yet.
+
+All important documents follow verbatim, so this TXT is usable as a standalone
+knowledge base even before unpacking the source archive.
+
+
+========================================================================
+CURRENT IMPLEMENTATION AND BUILD HANDOFF
+========================================================================
+
+# Development handoff — October 20, 2026
+
+## Goal and next action
+
+A dark Pokémon game built on pokeemerald-expansion. This is a native Emerald
+ROM hack, not a browser remake. The current playable unit is the opening
+ceremony and hometown farewell, ending at the Route 1 boundary. Review v0.3
+with the user before extending Route 1. The user requested the GitHub backup
+explicitly after delivery of v0.3. No new story expansion was requested.
+
+Index assistant responses. The most recent response before this backup work
+was 168; backup progress began at 169. Continue naturally in this thread.
+
+## Creative decisions and authoritative documents
+
+Full narrative and mechanics handoffs are beside this file. PROJECT-NOTES.md
+preserves newer decisions: Yew, Astrid, Edwulf, Neville, five starter candidates,
+regional hierarchy, opening relationships and automatic Pokédex surveillance.
+Leg-One-Dialogue.txt and dialogue.json contain the implemented approved text.
+
+Yew is a woman and the highest regional official, under a broader administration
+shared with other isolated regions. She addresses four classmates in the intro.
+Player and Neville are a joking, laid-back pair; Astrid and Edwulf are a more
+serious pair. Astrid initially praises the government, then ultimately joins
+Team Anarchy. Edwulf eventually knowingly accepts repression as necessary.
+Neville struggles, fails the gauntlet and later becomes a route challenger.
+
+The last specific user fixes, all implemented in v0.3:
+
+1. Clear old text before printing a new message.
+2. Integrate the approved custom character designs.
+3. Face Yew, turn Neville toward the player to whisper, put balls on a table.
+4. Return movement control when called forward; individual physical ball
+   inspection, Pokémon sprite, description, and confirmation.
+5. Rivals walk to their choices; remove each chosen ball immediately.
+6. Move the player into practice position too.
+7. A fainted player Pokémon does not end the doubles battle while Neville lives.
+8. Yew walks into frame before feedback.
+9. Stage retrieval and distribution of the Pokédex devices.
+10. Two-storey player home with upstairs bed; Mom's supply dialogue says she is
+    handing items over rather than leaving them by the door.
+11. Astrid's mom and Edwulf's mom are named; Edwulf's parents stand around the
+    table, offset from each other. Astrid and Edwulf are absent from their homes.
+
+## Opening structure
+
+New Game: Yew speech, player appearance/name, initial preferences, lab reveal.
+Everyone faces Yew; Neville turns to whisper. Yew calls the player forward.
+The player walks to the table and inspects five balls. On confirmation the
+starter is given at level 5, the ball disappears, nickname handling runs, and
+Astrid, Edwulf and Neville approach and take their assigned starters.
+The two dialogue-choice replies converge on a supervised doubles battle.
+Player+AI Neville oppose Astrid+Edwulf. Both win and loss continue.
+Yew enters the practice floor for feedback, heals, explains the program,
+retrieves devices and visits each child to distribute them. Rivals depart.
+Mom supplies shoes and Town Map. Optional NPC conversations can be visited in
+any order; only Mom's farewell is required to leave. Crossing north into
+Route 1 sets the completion flag; player may return to town.
+
+Starter assignments: PC / Neville / Astrid / Edwulf / unused:
+
+- Vulpix / Phanpy / Psyduck / Deerling / Crabrawler
+- Psyduck / Phanpy / Deerling / Crabrawler / Vulpix
+- Phanpy / Psyduck / Deerling / Crabrawler / Vulpix
+- Crabrawler / Vulpix / Psyduck / Phanpy / Deerling
+- Deerling / Psyduck / Vulpix / Crabrawler / Phanpy
+
+## Source ownership and scene states
+
+- `data/our-game/dialogue.json`: editable dialogue.
+- `dev_scripts/build_leg_one.py`: map geometry, maps, events and text generator.
+- `data/our-game/events.inc`, `text.inc`: generated scripts/text, included by
+  `data/event_scripts.s`. Edit the generator rather than these outputs.
+- `src/leg_one.c`, `include/leg_one.h`: starter assignment, scene movement,
+  battle setup, high-water trainer-level tracking and ball display helpers.
+- `src/main_menu.c`: modified New Game speech and Yew intro portrait.
+- `src/menu.c`: clear the message window in AddTextPrinterParameterized2.
+  Do not apply the clear to the other printer helpers used for incremental UI.
+- `src/battle_script_commands.c`: practice-only exception in
+  WillPlayerWhiteOutIfPartnerWinsAlone. Normal partner battles are unchanged.
+- `src/data/trainers.party`, `battle_partners.party`: level-5 rival teams.
+  Trainer Pic names use spaces, e.g. `Leg Neville` -> TRAINER_PIC_LEG_NEVILLE.
+- Maps: PocVillage is the hometown exterior; PocTrail is only the Route 1
+  boundary. LegLab, LegHome, LegHomeUpstairs, LegNeville, LegAstrid,
+  LegEdwulf, LegOldMan are the new interiors. PocCabin is legacy/unconnected.
+
+VAR_LEG_STAGE (0x40FA): 0=not started, 1=opening dialogue, 2=free walk to table,
+5=free inspection, 3=chosen starter/rival movements/practice, 4=lab complete.
+VAR_TRAINER_LEVEL (0x40F7) is a monotonic high-water mark, not a party scan.
+VAR_LEG_FAREWELL 0x40F8; VAR_LEG_COMPLETE 0x40F9; VAR_LEG_REPLY 0x40FB.
+FLAG_LEG_* definitions are in flags.h, including per-ball and departed-rival
+flags. Do not reuse their IDs for unrelated events.
+
+The 17x18 lab has balls at x=4,6,8,10,12 and y=5; the counter occupies y=4/5.
+Ball objects retain elevation 3 for interaction. The rendering helper applies
+fixed priority, ignores subsprite priority and raises sprite y2 by 16 pixels.
+The helper runs on warp-in and return from battle. Exit tiles (8,17)/(9,17)
+are actual south arrow warp metatiles 0x0206/0x0207; plain floor here prevents
+leaving, even if JSON warp coordinates are present.
+
+Initial positions: PC (7,7), Neville (6,7), Astrid (9,7), Edwulf (10,7),
+Yew (8,3). Practice: PC (5,12), Neville (5,14), Astrid (11,12), Edwulf (11,14).
+Native movement buffers are independent per actor; every authored walk waits
+before its next step. Routes avoid other actors and furniture. Yew detours up
+before walking left after feedback to avoid walking through the player.
+
+## Character assets
+
+`graphics/our_game/references/` retains the approved front designs, nine-pose
+walking sheets and Neville's back reference. `graphics/our_game/characters/`
+holds native indexed assets: 64x64 portraits, 144x32 nine-frame walking sheets,
+and Neville's 64x64 battle back sprite. All use transparent index 0 plus at
+most 15 opaque colours. References are retained so nothing must be regenerated
+from a remembered description.
+
+Run `python3 dev_scripts/convert_character_assets.py` to reproduce native
+packing. It thresholds alpha at 128 before finding bounds, locates gaps between
+sheet rows, scales uniformly per character, and packs indices
+[0,3,6,1,2,4,5,7,8]. The engine mirrors the left frames for right-facing motion.
+Registration spans graphics/trainers.h, object-event graphics/pic/info tables,
+trainer/event-object constants, and palette entries in event_object_movement.c.
+Neville's back uses the static sBackAnims_None, not a multi-frame throw sequence.
+
+## Build and test from a fresh Linux checkout
+
+Install ordinary toolchain dependencies (on Ubuntu):
+
+    sudo apt-get update
+    sudo apt-get install -y build-essential pkg-config gcc-arm-none-eabi \
+      binutils-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
+
+Use Pillow for content/asset checks and libmgba development headers for the
+optional emulator bridge. A virtual environment with Pillow is sufficient.
+The validated ARM compiler was GCC 13.2.1; mGBA was 0.10.2.
+
+    python3 dev_scripts/build_leg_one.py
+    python3 tests/leg-one/test_content.py
+    make -j8
+
+Output: pokeemerald.gba. A normal full build was tested, not the upstream
+strict unused-variable CI configuration. The upstream CI workflow does not
+run automatically on the leg-one branch. No green remote CI result is claimed.
+
+After an interrupted or failed parallel build, inspect for zero-byte .o files
+under build/ and remove those before retrying. Interrupted compiler pipelines
+can leave empty objects that make linking fail with misleading undefined
+references. Do not change LTO or remove functions to work around empty files.
+Do not add generated build outputs to Git.
+
+Optional headless emulator:
+
+    gcc -shared -fPIC tests/leg-one/emulator.c -lmgba -o /tmp/leg-one-emulator.so
+    LEG_ONE_EMULATOR_LIBRARY=/tmp/leg-one-emulator.so \
+      ARM_NM=arm-none-eabi-nm python3 tests/leg-one/qa_opening.py
+
+The self-contained replay boots New Game and checks five ball selections,
+declining a choice, rival collection walks, one remaining ball and all practice
+positions. It writes temporary checkpoints/screenshots/results to ../playtest.
+The interactive driver accepts one JSON request per line; see its source.
+Use four-frame button pulses; after a walk, allow movement to settle before
+interacting. Message pages often require A; avoid repeatedly pressing A after
+a conversation ends or you will immediately start it again.
+
+SAVE validation must wait for the saved-game confirmation, not merely the
+SAVING message. The emulator bridge exports real 128 KiB SRAM. An early export
+while SAVING is on screen can still be blank. The final test reset the emulator
+and used CONTINUE to restore the upstairs location, stage and farewell flag.
+
+## Verification and limits
+
+TEST-RESULTS.md contains the validated ROM checksum and exact test scope.
+Nine structural/content checks and all five starter replays passed. Both battle
+feedback branches, a player-first faint with Neville continuing, full ceremony,
+lab exit, two-storey home, gifts and actual save/reload were exercised.
+Edge-case HP adjustments were used in the battle regression tests; those are
+identified in TEST-RESULTS.md rather than represented as normal balance tests.
+The final parent placement adjustment was compiled and content checked.
+
+This is not yet the whole intended mechanics system. Nickname prompting,
+Set Moves/relearning, trainer-level tracking and preference flags exist.
+Fast Leveling is recorded for the future Center. Full Nuzlocke rules, EV/IV and
+nature editing, abilities, level caps, portable Center, Repel, Sadist NPC,
+clock controls and move transfer remain design requirements, not shipped
+features. The title screen still uses Emerald art/music. Town names are open.
+No real Route 1 encounters, gym, cave or later-story gameplay is implemented.
+
+## Recovery and Git history
+
+Temporary workspace loss required recovery from the saved v0.2 source archive.
+The recovered local history contains the complete v0.2 snapshot and v0.3 edits.
+For GitHub, the final tree is attached to the existing poc-demo commit as its
+first parent on a new leg-one branch, preserving the original repository
+ancestry. The recovered development snapshots are preserved locally; publication uses
+the complete current tree on top of the original poc-demo commit.
+No force push or default-branch replacement is required. master and poc-demo
+are preserved. Use the repository and its tracked artwork/docs for recovery;
+do not depend on scratch paths, chat context or ephemeral emulator states.
+
+The release ZIP contains the playable ROM, README, dialogue, test report,
+source-info and visual test evidence. The source-info inside that original
+release records the local pre-backup commit and remote_published=false as a
+historical record; this backup commit now publishes that source tree.
+The release checksum manifest identifies the exact archived ZIP and ROM.
+
+Recovery detail: Git ignores tools/compresSmol and executable files even though
+some are tracked upstream. They were explicitly restored from poc-demo before
+this backup, so a fresh clone includes the build-tool sources.
+
+
+========================================================================
+LATEST CHARACTER / WORLD / OPENING DECISIONS
+========================================================================
+
+# Current decisions and implementation boundary
+
+The narrative and mechanics handoffs preserve the earlier design discussions.
+For the opening, **Leg-One-Dialogue.txt and data/our-game/dialogue.json supersede
+all earlier dialogue drafts**. These include the user's latest board edits.
+
+## Later decisions carried forward
+
+- Professor **Yew**, a woman, runs the regional program. Other isolated regions
+  exist under a common higher administration. She is the senior local official,
+  rather than the ruler of the entire surviving world.
+- Yew's approved concept: black neat ponytail, green glasses, a subtle smile,
+  lab coat slightly longer than a knee-length dark dress, one hand explaining,
+  the other holding a clipboard. Source inspiration B051.
+- **Astrid** is the most idealistic, enthusiastic, preachy classmate, initially
+  devoted to government service. Later disillusionment leads her to Anarchy.
+  Approved concept: blonde frizzy hair, pale blue streak and headband, tie-dye
+  shirt, jeans, a large backpack, a Poké Ball in her outstretched hand (B078).
+- **Edwulf** is the modernized spelling. He is quiet, knowledgeable and reserved.
+  He respects Astrid's initiative; she trusts his knowledge. He later accepts
+  repression as a necessary evil, rather than remaining oblivious to it.
+  Approved concept: short black buzz cut, white button-down, dark trousers (B017).
+- **Neville**, the player's best friend, is nervous, talkative, kind and prepared
+  from reading, but struggles under pressure. Both enjoy joking around.
+  Approved concept: stocky, orange-brown hair, no glasses, brown vest over black
+  shirt, green trousers, white/red sneakers; less baby-faced (B030).
+- These four classmates already know each other. The initial divide is
+  player/Neville versus Astrid/Edwulf. The latter pair dislike their levity.
+- Starter pool: Vulpix, Psyduck, Phanpy, Crabrawler, Deerling. Four chosen,
+  one left at the lab. See the assignment table in the dialogue log.
+- Early moves stay unchanged. No Infinite Repel until before the first dungeon;
+  no significant early TM reward is planned in this segment.
+- Pokédex scanning is automatic. The player is unknowingly providing government
+  surveillance. A later Charizard encounter triggers black-ops arrival only
+  after it is scanned. The friendly gym entrance attendants are program staff;
+  no attendant is introduced in the lab opening.
+- A farewell walk through town follows the ceremony. Mom offers shoes/map and
+  sincerely celebrates the program. Edwulf's parents are more reserved, hinting
+  that postponement is not theirs to decide. Astrid and Edwulf are already gone
+  when either house is visited. Neville can still be found packing.
+- The old man's optional monologue recalls a lock and a prayer against dangers
+  outside, contrasting this with everybody leaving doors wide open now. Avoid
+  an explicit early explanation of government repression.
+
+## What this version implements
+
+The playable unit runs from New Game to crossing the Route 1 boundary. Its
+scope is documented in PLAYTEST.md. The full mechanics design is not yet all
+implemented. Approved character designs are now integrated as native walking sprites and
+battle portraits. Existing Emerald tiles and title artwork remain in use.
+
+Town and next-town names remain undecided; the build uses HOMETOWN and
+“the next town.” Additional gyms, routes and story arcs are outside this unit.
+
+
+Opening revision v0.3 (2026-10-20)
+-----------------------------------
+The saved v0.2 source was restored after the temporary workspace reset. The
+recovered local Git history starts with that snapshot. The GitHub backup adds
+the completed tree on leg-one with the original poc-demo commit as parent.
+The approved character references and nine-frame overworld sheets were recovered
+and converted with dev_scripts/convert_character_assets.py. The lab is now a
+17x18 room with a five-ball counter and a separate practice floor.
+Scene stages: 0=initial, 1=opening, 2=walk to table, 5=inspect choices,
+3=selection/rival choreography/practice battle, 4=completed lab.
+The practice-only whiteout exception permits Neville to continue after the
+player's Pokémon faints; regular partner battles keep upstream behavior.
+The script generator is the source of truth; edit dialogue.json and
+build_leg_one.py, then regenerate. Do not replace the board-approved text
+with an earlier draft.
+
+
+========================================================================
+COMPLETE NARRATIVE AND BRANCHING STORYBOARD
+========================================================================
+
+EMERALD ROMHACK — COMPLETE STORYBOARD AND DESIGN HANDOFF
+Version 0.2 | Updated October 19, 2026, through the final negotiation-design discussion
+
+READ THIS FIRST
+
+This is a standalone knowledge base for continuing the project's story development in another chat. It incorporates the original lore and the subsequent storyboard, faction branches, character arcs, and ending discussions. It supersedes the earlier v0.1 story handoff wherever they differ. No earlier document is needed to understand this one.
+
+The user considers the main storyboard sufficiently cemented. Continue by developing its details rather than repeatedly replacing its structure. Preserve uncertainty where a detail has not been selected. This document is a development handoff, not a finished script or code specification.
+
+STATUS KEY
+- SETTLED: explicit user decisions or clearly adopted directions.
+- WORKING: a broadly accepted implementation or scene treatment whose details can still change.
+- OPEN: something that remains genuinely undecided.
+- EXAMPLE: illustrates an agreed principle; not automatically approved story content.
+
+The exact gym placement of several middle chapters is provisional. Their causal order matters more than their current badge numbers. Do not mistake an assistant's illustrative dialogue for final dialogue.
+
+RESPONSE PREFERENCE
+Index assistant responses so the user can refer to them quickly. The latest conversational response before this handoff was #35; the handoff progress message was #36. Continue numbering naturally in the current thread. In a new thread, retain indexed responses without needing to preserve this thread's numbering exactly.
+
+======================================================================
+1. PROJECT AND CREATIVE NORTH STAR
+======================================================================
+
+The project is a dark, adult-oriented Pokémon ROM hack using an expanded Emerald base. A working proof of concept was previously completed. The user's repository is:
+https://github.com/YoniHymanCodeStuff/pokeemerald-expansion
+
+Current work is story design, not coding. An expanded base was selected to support more recent existing Pokémon without manually adding the entire roster. Do not assume the region must reproduce Hoenn's exact geography.
+
+The game starts convincingly like an ordinary colorful Pokémon adventure. An excited child receives a starter, leaves home, battles trainers, and collects eight badges. Gradually the same familiar conventions acquire darker meanings.
+
+The target audience is adults who grew up with Pokémon and want a grittier story that still delivers nostalgia. The user described jaded adults like themselves. The goal is a believable sinister "behind the scenes" of the original games, not merely a Pokémon skin over an unrelated dystopian story.
+
+Core institutions should do narrative work: the professor, starter ceremony, route encounters, gym attendants, gym leaders, trainer careers, ruins, ocean liner, Victory Road, Elite Four structure, and capture mechanics.
+
+The story can become very dark without relying on blood or graphic corpses, which can look awkward in the pixel-art presentation. Consequences, coercion, memory alteration, damaged friendships, and cheerful normality are the principal tools. Some towns remain colorful and happy after the truth is known; the façade becomes disturbing because its cost is understood.
+
+References mentioned by the user:
+- The Giver: paternalistic containment, managed happiness, suppression of painful truth.
+- 1984: forbidden history and enforced official reality.
+- Men in Black: analogy for possible psychic witness-memory suppression.
+- Avatar Wan and the spirit wilds: analogy for earning nonhuman trust, not a plot to copy.
+- Aladdin's genie: cooperation toward eventual freedom while the immediate mission still requires partnership.
+
+No final title, region name, protagonist name, professor name, rival names, or detailed map has been chosen. Team Anarchy IS the selected resistance name. Giovanni remains only a possible leader identity.
+
+======================================================================
+2. THE WORLD AND ITS HIDDEN HISTORY
+======================================================================
+
+SETTLED:
+This is our world roughly a century after a cataclysmic atomic war. Most countries have broken down. Beyond the region, violent armed groups, severe crime, ruined infrastructure, and powerful mutated Pokémon create genuine danger.
+
+Humans received a protective medical treatment against radiation; animals did not. Animals mutated into Pokémon. The user accepts radiation as the central fictional explanation. Use a few plausible-sounding terms if helpful, but do not replace it with an elaborate biotechnology origin or lengthy scientific exposition.
+
+The exact treatment mechanism, inheritance, dates, individual species origins, legendary origins, and Mewtwo's creation remain OPEN.
+
+Chronology note: at around a century after the war, most elderly people's knowledge would be inherited from parents, hidden records, and fragments of childhood testimony. Firsthand war survivors would be exceptional. Preserve the user's intent that older people retain dangerous, hazy knowledge without casually making every elderly NPC a direct eyewitness.
+
+The regional government has built a genuinely safer enclave. Its borders mark the practical limits of its protection and control. It is not necessarily a world government.
+
+It maintains a happy, colorful official picture and prohibits contact with the outside, discussion of forbidden history, and disclosure of concealed conflict. Its argument is that painful truth causes fear, unrest, and instability.
+
+People are taught that Pokémon are an exciting discovery, in the spirit of the original professor introduction. Since generations have lived with them, the exact propaganda should suggest an ongoing age of discovery rather than an implausibly recent first sighting.
+
+War ruins are attributed to mythical Pokémon or invented ancient events. Some have deliberately installed Pokémon-themed puzzles and tourist attractions disguising their real history.
+
+======================================================================
+3. GOVERNMENT: REAL PROTECTION, TOTAL CONTROL
+======================================================================
+
+The government sincerely wishes to protect citizens and give them happy lives. It also refuses challenges to its authority. Its protective function must remain real: dismantling it creates risks for ordinary people, rather than revealing that all danger was fabricated.
+
+Useful governing premise: safety is real, and obedience and ignorance are its price.
+
+Initial dissent may receive a friendly warning against spreading misinformation that causes alarm or discomfort. Persistent dissenters are marked as problems and taken to reeducation facilities.
+
+Psychic Pokémon are forced to brainwash humans. The state therefore exploits one captive mind to control another.
+
+WORKING limits on psychic coercion:
+- Deep reeducation requires repeated sessions, detention, and psychological conditioning.
+- Field suppression can blur recent incidents, rather than effortlessly rewrite entire lives.
+- Powerful psychic Pokémon and trained handlers are limited resources.
+- Psychic Pokémon can resist or hesitate.
+
+These limits prevent the obvious question of why the government does not instantly mind-control every opponent. Exact mechanics remain open.
+
+Ordinary civilian occupations can coexist with highly prestigious government careers. The detailed economic model is not finished. The user originally considered universal job assignment versus a distinction between ordinary workers and successful government recruits; the working preference is to retain civilian life while letting government control access, movement, and opportunity.
+
+======================================================================
+4. THE TRAINER PROGRAM AND TASK FORCE
+======================================================================
+
+Children enter the program around the familiar Pokémon age of ten; precise age and story duration remain open. The original premise is compulsory enrollment. The local professor is a government official with a familiar tree-based name/codename, overseeing starter selection and training.
+
+Children choose one of three starters and travel through eight gyms. Publicly, this is adventure, partnership, self-improvement, patriotism, and preparation for honorable work. Success determines social standing and access to admired careers.
+
+Privately, it selects and conditions competence, loyalty, obedience, and ruthlessness. The government wants children because they are easier to shape. Elite job duties are concealed.
+
+Failure usually means diminished prospects and low-status work, not automatic imprisonment. The social weight is substantial because this is presented as the opportunity that defines one's future.
+
+Some unsuccessful trainees become stationary route challengers as employment. They wait at assigned posts and battle passing candidates. This explains an iconic Pokémon convention while exposing a disappointing career path.
+
+An elite task force maintains the system. It may not officially exist. Its present duties include:
+- Removing Pokémon too strong for particular training routes.
+- Keeping towns and approved routes safe.
+- Fighting Team Anarchy.
+- Suppressing Pokémon independence.
+- Detaining dissenters and enforcing domestic restrictions.
+
+It historically may have focused more on border defense. Publicly, children know prestigious jobs await successful trainers, not that they are being cultivated for secret-police service.
+
+Routes are deliberately "normalized": dangerous Pokémon are killed or relocated so encounters fit trainee progression. The government's action both protects children and manufactures the apparently natural adventure world.
+
+Gyms and other encounters can covertly assess obedience and ruthlessness. Keep this wrapped in familiar Pokémon/anime idealism. Not every gym has a designed moral test yet. Hidden observation can occur outside gyms too.
+
+======================================================================
+5. THE THREE FACTIONS AND WHAT EACH DEFENDS
+======================================================================
+
+GOVERNMENT
+Defends human security and continuity. Conceals history, coerces dissenters, and treats Pokémon as resources. It can knowingly do terrible things while preserving something genuinely valuable.
+
+TEAM ANARCHY
+Selected public name: Team Anarchy; government descriptions may say "the terrorist organization Team Anarchy." It initially occupies the recognizable villain-team role.
+
+Its opposition to imposed lies, forbidden truth, and authoritarian control has merit. Its violence is also real. Do not later reveal that every crime blamed on it was secretly government work.
+
+The movement contains different views on acceptable violence, casualties, and what follows revolution. It has no unified reliable replacement government. Some members care deeply about the aftermath; others prioritize destruction.
+
+It uses Pokémon as weapons and does not automatically extend human freedom to them. This is central to its conflict with Mewtwo.
+
+MEWTWO'S MOVEMENT
+Defends Pokémon autonomy and resists captivity. Mewtwo distrusts humans because both human factions exploit Pokémon. He can be militant and willing to fight institutions holding them captive without becoming a would-be ruler of humanity.
+
+His ultimate liberation ending is separation and exodus, not the installation of a Pokémon dictatorship. Earlier ideas about supremacy and replacing human tyranny were explored but are not the chosen ending direction.
+
+The user wants broadly familiar Mewtwo lore adjacency, not a specific film/anime/game continuity. His origin remains undefined.
+
+The factions are not perfectly symmetrical:
+- Government and Anarchy contest human political rule.
+- Mewtwo challenges the ownership system both rely on.
+
+All major storylines need closure, but closure need not mean destroying every faction. Withdrawal, negotiated separation, defeat, surviving resentment, and epilogue consequences can resolve a relationship.
+
+======================================================================
+6. MAIN CHARACTERS
+======================================================================
+
+PROTAGONIST
+An excited child who initially believes the ordinary Pokémon worldview. The game should not open with them already aware of the dystopia. They become entangled in faction conflicts as a recognizable Pokémon protagonist would, then make consequential choices.
+
+PROFESSOR
+The local recruiter and government official, later the final government opponent on anti-government routes. Capable, reassuring, and sincerely proud of promising children. Their willingness to expose children to violence is framed as practical training.
+
+They need not secretly stage attacks. They respond to real events and use them as learning and assessment opportunities.
+
+Their eventual regret over the protagonist's defection is sincere, but does not prevent them choosing lethal repression. Avoid reducing them to a generic sneering villain.
+
+LOYALIST FRIEND
+One of the hometown trainees. Becomes successful, gains government access, learns about repression, and knowingly accepts it as necessary. Do not excuse their final position through secret brainwashing or mere ignorance.
+
+They can care for friends and victims while deciding the government's coercion prevents greater suffering. They become the fourth of the professor's elite opponents. Their appointment should be a late promotion reflecting the journey, not an unexplained lifetime as a master assassin.
+
+REBEL FRIEND
+Another hometown trainee. Initially a rival, gradually becomes close to the protagonist. Witnesses cracks in the official story alongside or ahead of them and joins Team Anarchy.
+
+The radio-station encounter is an early seed. Their later commitment grows through experience, especially government repression. They are not automatically a revolutionary after one cryptic line.
+
+They become an important Anarchy operative and the fourth elite Anarchy opponent on the loyalist route. Leadership of the entire movement is not required; local command or a significant operational position is more credible.
+
+UNSUCCESSFUL FRIEND
+The third significant hometown companion. Falls behind around Gym 3, later reappears as a route challenger employed by the program. They are learning to live with their position and defend its modest dignity: "It's not that bad," and they are still helping the government.
+
+COHORT SIZE
+Four central children including the protagonist. Other classmates/children can exist. A small town's annual age cohort reconciles this with mandatory enrollment; the exact enrollment arrangement is not a critical finalized detail.
+
+MEWTWO'S HUMAN DISGUISE
+Mewtwo first appears through a psychic human illusion. He meets the protagonist before his identity is revealed. He is curious about the partner Pokémon's wishes and disappears unusually.
+
+Do not immediately show the disguise melting away. The user accepted keeping the identity for a later reveal, with an enigmatic disappearance as a clue. He later reappears at the underground fighting ring, visibly disturbed by cruelty.
+
+ANARCHY LEADER
+The escaping prisoner whom the protagonist privately assists or subdues aboard the ship later proves to be Anarchy's leader. This is selected. The player does not know their rank at that first conversation.
+
+Giovanni was suggested as a possible identity, not confirmed. How such a valuable prisoner was captured, transported, and liberated remains to be detailed. Avoid assuming staff would casually identify them to the trainee.
+
+======================================================================
+7. SHARED STORYBOARD: OPENING THROUGH THE MIDDLE GAME
+======================================================================
+
+BEAT 1 — DEPARTURE AND STARTERS
+Before Gym 1. A sincere celebration of the children's futures. Introduce companions through ordinary interactions. The professor presents Pokémon training as an exciting patriotic opportunity. Small restrictions can appear as familiar game-world roadblocks without immediately revealing the dystopia.
+
+BEAT 2 — RADIO-STATION ATTACK
+Just after Gym 1, working placement.
+
+A small Team Anarchy cell seizes a radio station to broadcast a "message of truth." Its members are extremely violent toward staff who obstruct them. The violence is genuine.
+
+The professor hears the attack is underway and deliberately brings the protagonist and future rebel along with "great learning opportunity, follow me" energy. Their presence is not accidental and the attack is not staged.
+
+The professor handles the strongest threats while assigning the children a manageable section, such as freeing employees through a side entrance. Include a tag-team fight against junior members.
+
+Fragments of the broadcast provoke the future rebel's curiosity, even though they initially oppose the attackers. The professor restores order and praises the children.
+
+The first impression should remain recognizably Pokémon: capable adult, brave children, villain-team disruption. Later the player reconsiders how readily the professor took children into violence.
+
+Do not plant such obvious sympathetic signals that Team Anarchy stops seeming dangerous immediately.
+
+BEAT 3 — CHARIZARD CLEARANCE
+Between Gyms 1 and 2.
+
+The protagonist and another trainer witness black-clad operatives take down an unusually powerful Pokémon, preferably something nostalgic such as Charizard. It need not be threatening anyone; it may be occupying its own habitat.
+
+Later an official blames Team Anarchy for attacking Pokémon in their homes. In reality, this is the task force normalizing the route.
+
+The children should not positively identify official uniforms as Anarchy uniforms. They see black outfits; the subsequent explanation supplies the false identification. The exact fate of Charizard—death or relocation—is not settled.
+
+The other witness can be an ordinary trainee, making the cohort world larger and preserving someone who can corroborate the memory later.
+
+BEAT 4 — THE HUMAN STRANGER
+After Gym 2.
+
+Mewtwo appears human through illusion. A short ordinary interaction with the partner Pokémon leads to a question about what it wants. Example only: "And what does your partner want?"
+
+He listens rather than delivering an anti-human lecture. The protagonist looks away briefly; he is gone. His identity is revealed much later through a reference to this meeting.
+
+BEAT 5 — THE FRIEND FALLS BEHIND
+Around Gym 3.
+
+Near the gym, the unsuccessful friend complains the leader is unbeatable, then insists they can at least still beat the protagonist. They battle. After losing, their bravado collapses into a depressed monologue about failure.
+
+The professor or an assistant approaches and asks them to take a walk. They leave the screen together. No immediate explanation of the outcome.
+
+Later the protagonist finds this friend assigned to a route. They failed the gauntlet and accepted the posting. Their rationalization mixes resignation, real security, and a desire to remain useful. The initial intervention can be genuinely compassionate without making the institution benign.
+
+BEAT 6 — THE BORDER GATE
+Between Gyms 3 and 4, provisional.
+
+A guard turns the protagonist away because the outside is dangerous. A substantial gate and defensive arrangements suggest a meaningful boundary rather than another temporary road closure. This can be a small exploration encounter rather than a major cutscene.
+
+BEAT 7 — THE PERIMETER PASSAGE
+Around Gym 4, provisional.
+
+The protagonist helps stop an alleged Pokémon-smuggling tunnel or exit through the perimeter, operated by Anarchy. They fight lookouts or help close a passage without inspecting the entire operation.
+
+Ambiguous details can suggest human travelers: bedding, personal belongings, supplies. Officials explain them away.
+
+Later it is revealed the passage was used to help people leave. Whether it also carried supplies or Pokémon remains open. This is a stronger player-complicity mission than the superseded "recover a stolen Pokémon" proposal.
+
+BEAT 8 — THE DISILLUSIONED GYM LEADER
+Around Gym 4; exact gym open.
+
+A respected leader asks questions that undermine the tunnel's official explanation or otherwise hints at their disillusionment. They arrange a later conversation on a route.
+
+The familiar entrance attendant—the "hey, champ in the making" NPC—is the government's gym monitor. A pause or movement makes clear they are listening to the subversive conversation.
+
+A brief later cutscene may show officials confronting or taking the leader, but this does NOT happen directly in front of the protagonist. Do not replace this with the professor publicly hauling them away during the conversation.
+
+At the promised route meeting, the leader remembers wanting to speak, but now delivers earnest praise for the government and warnings against people sabotaging society. They are hazy and changed while retaining familiar mannerisms. Their purpose has been overwritten, not simply their appointment forgotten.
+
+The player does not yet witness the psychic procedure. Later the island facility confirms what happened.
+
+BEAT 9 — THE UNEXPECTED ANARCHY MEETING
+Between Gyms 4 and 5, provisional.
+
+The future rebel leads the protagonist to people who can explain recent events, without initially disclosing it is an Anarchy meeting. The affiliation becomes apparent on arrival.
+
+They present specific evidence or testimony about government wrongdoing, preferably correcting an incident the player experienced, such as the tunnel. They do not explain all lore in one speech.
+
+The protagonist can hear them out, leave, or fight under a credible confrontation. The friend concealed the meeting's nature, which should affect their relationship.
+
+The exact dialogue/battle branches remain to be scripted. Do not assume refusal to join automatically justifies everyone attacking.
+
+BEAT 10 — UNDERGROUND FIGHTING RING
+Between Gyms 5 and 6, provisional.
+
+A local Anarchy cell runs or protects an underground Pokémon fighting ring: revenue, recruitment, and a meeting hub away from government surveillance. Show genuine cruelty through forced fighting, exhaustion, ignored refusal, and treatment of injury.
+
+This comes after Anarchy has provided some credible truth, preventing a simple reversal from "Anarchy bad" to "Anarchy secretly always right."
+
+The disguised Mewtwo is watching, angry and possibly struggling to contain that anger. He asks what the protagonist thinks or intends to do and subtly urges action. His identity can remain concealed here.
+
+Player responses and actions concerning the ring should later affect Mewtwo's trust. Exact options are open; direct intervention versus discreet rescue were proposed, not exhaustively finalized.
+
+======================================================================
+8. OUTSIDE THE REGION, HISTORY, AND MEWTWO'S REVEAL
+======================================================================
+
+WORKING BRIDGE AFTER THE FIGHTING RING:
+Helping freed Pokémon reach safety gives a practical reason to follow the disguised stranger through an unmaintained passage beyond the perimeter. This avoids an excursion whose only purpose is exposition. Exact escort objectives remain open.
+
+OUTSIDE ENCOUNTERS
+Show no uniform curated level progression. Include weak Pokémon as well as dangerous ones, and human communities whose survival depends on local knowledge. The outside is genuinely threatening, but not everyone there is a monster or criminal.
+
+The user raised an important gameplay issue: a level-70 encounter should not simply wipe the player's midgame team.
+
+WORKING SOLUTION, requiring technical verification:
+- Most encounters remain survivable but vary more widely.
+- A visibly dangerous Pokémon triggers a brief scripted battle showing its overwhelming level.
+- Before player commands or a fatal attack, the disguised Mewtwo intervenes psychically and enables escape.
+- Return to the map and avoid its territory.
+
+This is a proposed presentation, not a verified implementation. Do not claim the battle scripts have been written or tested.
+
+HISTORICAL REVELATION
+A surviving medical/civil-defense facility or comparable concrete evidence establishes the war, human radiation treatment, and changes in untreated animals. Keep it brief and connected to prior clues. The exact building and records are open.
+
+ROUTE-REGULATION REVELATION
+The stranger can explain that approved routes are deliberately cleared of unsuitable Pokémon, giving a new account of Charizard's removal. At this stage it is an allegation. Later government evidence confirms it. Do not assume the protagonist understands route regulation before this explanation.
+
+REFUGE AND IDENTITY
+The escaped Pokémon reach an autonomous refuge. The stranger reveals himself as Mewtwo, linking the conversation back to the early meeting. Pokémon organize and choose without human ownership.
+
+Trust becomes conditional rather than universal reconciliation. Mewtwo objects to both human factions' use of Pokémon. The protagonist does not cure his distrust with a single kind act.
+
+Earlier proposals had the team freely choose to stay here. Preserve continuity with the later liberation campaign: do not promise permanent companionship if the starter will ultimately leave. They can choose to continue cooperating without committing to live with the protagonist forever.
+
+RETURN TO THE COLORFUL REGION
+The contrast should have room to breathe. Familiar propaganda, route jobs, and the altered gym leader are reinterpreted. The loyalist now openly defends necessary evils, citing the real outside danger. They are informed, not merely deceived.
+
+======================================================================
+9. THE SHIP AND ISLAND: ONE CONTINUOUS OPERATION
+======================================================================
+
+This replaces older outlines containing separate unrelated ship and prison attacks. There is ONE Anarchy assault as the ship reaches the island.
+
+WHY THE PROTAGONIST IS ABOARD
+The government has intelligence of a coming Anarchy attack. The protagonist is assigned supervised escort/security duty as a promising trainee, alongside the loyalist. They protect provisions, crew, and the vessel until docking.
+
+The vessel is a recognizable Pokémon-style ocean liner that also transports supplies and detainees. Restricted decks conceal prisoners. The island is an Alcatraz-like reeducation facility publicly masked as something benign, such as recovery and rehabilitation. Its exact cover name remains open.
+
+VOYAGE
+Allow exploration, restricted doors, and conversation with the loyalist. The protagonist may glimpse detainees or discover inconsistencies. The loyalist can acknowledge supposed rehabilitation rather than transparently deny all restrictions.
+
+The precise pre-voyage conversation with the rebel is not locked. An earlier proposal had a warning at the harbor, but the selected branch does not require a separate advance-contact stage.
+
+BREACH AND FIRST CHOICE
+As the ship approaches/docks and Anarchy attacks, the protagonist has a private moment with an escaping Anarchy prisoner. After a short conversation, choose:
+- ASSIST the prisoner.
+- SUBDUE the prisoner in battle.
+
+This prisoner later turns out to be Anarchy's leader. That identity is concealed at the time and becomes a consequential personal connection.
+
+FACILITY ROUTE
+- If assisting: help the breakout and fight government personnel.
+- If subduing: help security and fight Anarchy members.
+
+The action carries from ship to dock to facility. Entry must follow operational objectives and physical access, not an unexplained ability to stroll into a secret prison.
+
+REEDUCATION WINDOW
+Both routes pass observation windows. A cutscene shows psychic Pokémon being forced to alter a prisoner. The gym leader's earlier change is now understood. A record can independently identify their treatment.
+
+Government personnel/evidence can also confirm route clearances and the true identity of the Charizard operatives. Place evidence in accessible spaces during the mission; avoid interrupting action with a giant lore dump.
+
+FINAL CONFRONTATION: THE THREE FRIENDS
+Near the end, protagonist, rebel, and loyalist converge. Each friend urges the protagonist to act. The player chooses which friend to fight, regardless of their first prisoner decision.
+
+Four valid combinations:
+1) Assist prisoner, fight loyalist: follow through on escape assistance.
+2) Assist prisoner, fight rebel: reject Anarchy despite helping a detainee.
+3) Subdue prisoner, fight rebel: continue government support.
+4) Subdue prisoner, fight loyalist: change course after witnessing reeducation.
+
+The second decision is informed by what the player has now seen. Both decisions matter later; do not collapse them into one identical reputation increment.
+
+IF THE PLAYER FIGHTS THE REBEL
+After the rebel loses, an Anarchy explosion enables their extraction by comrades. People die in the explosion. The rebel survives for the late game.
+
+Who ordered the explosion and whether the rebel knew the risks remain open. Its harm is real and should affect subsequent conversations.
+
+IF THE PLAYER FIGHTS THE LOYALIST
+The protagonist leaves with the rebel and escaping prisoners. The loyalist survives and knows the protagonist deliberately opposed them.
+
+Whether an explosion also happens on this version is OPEN; it is established only for the rebel-defeat version.
+
+AFTERMATH
+The two routes reconverge on the mainland. The protagonist completes the final gym, then is summoned by the professor.
+
+The professor is still trying to recruit/reclaim them. Dialogue branches:
+- Fought rebel: approval and recognition of difficult service.
+- Fought loyalist: disappointment, an explanation of necessary measures, and one last opportunity to prove dedication.
+
+The exact legal/political mechanism allowing a defiant protagonist to continue should be made explicit: the professor intervenes, contains the incident, and treats them as salvageable. Do not ignore their prior fight with government agents.
+
+======================================================================
+10. VICTORY ROAD: THE FINAL ASSIGNMENT, NOT A FIXED ROAD
+======================================================================
+
+SETTLED USER DECISION:
+Everyone knows Victory Road is the last challenge before graduation. Children imagine a tough road filled with powerful trainers and high-level Pokémon. In reality, Victory Road is whatever final test the program assigns a candidate.
+
+Do NOT restore the superseded proposals of an old evacuation road, compulsory mountain corridor, or an extra Elite Four exam before the assignment.
+
+After Gym 8, the professor assigns this protagonist's Victory Road:
+1) Capture Mewtwo, whose movement threatens society's foundations.
+2) Take down the former friend who defected to Anarchy, as part of suppressing its leadership.
+
+This tests competence and dedication: will the recruit put the government's version of the public good ahead of personal attachment and doubt?
+
+The player chooses which target to visit first. The professor should hint that order matters and urge careful thought about the greater threat, without revealing every consequence or assigning the player a preferred route.
+
+NO REQUIRED EXTRA CONTACT STAGE
+An assistant proposed advance messages from both factions to advertise all options. The user rejected the need. The offer to join is discovered naturally when visiting the faction. Do not add a mandatory introductory summit or messenger sequence merely to force equal exposure.
+
+======================================================================
+11. FINAL BRANCHING LOGIC — CURRENT AGREED STRUCTURE
+======================================================================
+
+DECISION A: FIRST DESTINATION
+- Anarchy.
+- Mewtwo.
+
+DECISION B: FIRST FACTION'S CONFRONTATION
+The faction offers a meaningful "with us or against us" choice:
+- FIGHT: carry out that part of the government assignment.
+- JOIN: commit to that faction's cause and prepare to storm government power.
+
+Joining fixes allegiance but does NOT instantly launch the final assault. There is a preparation interval and one optional visit to the remaining faction.
+
+IF THE PLAYER FIGHTS THE FIRST FACTION
+They next visit the remaining faction and can:
+- Fight it too: complete both government assignments, leading to the loyalist ending.
+- Join it: defect to that faction after having already harmed the other.
+
+IF THE PLAYER JOINS A FACTION
+Before the government assault, choose:
+- Proceed without addressing the remaining faction.
+- Visit the remaining faction to seek limited terms or fight over incompatible demands.
+
+The second visit is made ON BEHALF OF THE ALLEGIANCE ALREADY CHOSEN. It is not another unrestricted faction-switch menu. This prevents endless allegiance changes and branching overhead.
+
+No requirement to recruit both factions into one army. Their goals differ. The optional mission is limited accommodation, noninterference, or liberation—not a universal golden alliance.
+
+If the other faction has already been defeated/captured, the optional negotiation visit is unavailable. Its fate remains part of the ending.
+
+COMPACT PATH REGISTER
+
+A1. Visit Anarchy -> fight -> visit Mewtwo -> fight:
+Government outcome; Anarchy defeated, Mewtwo captured.
+
+A2. Visit Anarchy -> fight -> visit Mewtwo -> join:
+Liberation allegiance; Anarchy already weakened/defeated; assault government.
+
+A3. Visit Anarchy -> join:
+Anarchy allegiance; optional Mewtwo visit, then assault government.
+
+M1. Visit Mewtwo -> fight/capture -> visit Anarchy -> fight:
+Government outcome; Mewtwo captured, Anarchy defeated.
+
+M2. Visit Mewtwo -> fight/capture -> visit Anarchy -> join:
+Anarchy allegiance; Pokémon movement already harmed; assault government.
+
+M3. Visit Mewtwo -> join:
+Liberation allegiance; optional Anarchy visit, then assault government.
+
+For A3 and M3, optional second-faction outcomes depend on negotiation conditions and player responses, described below.
+
+ORDER MATTERS
+Defeating one faction and defecting at the next is not morally equivalent to joining immediately. Captures, damaged movements, prisoners, personal relationships, and future options persist. Do not magically undo the first operation after allegiance changes.
+
+The professor's final targets should not be empty fights whose consequences disappear when the player changes sides.
+
+======================================================================
+12. OPTIONAL NEGOTIATIONS: PLAYER AGENCY AND HISTORICAL CONSEQUENCES
+======================================================================
+
+CORE AGREED RULE:
+Past actions establish the available deals. Present choices determine which deal, if any, the player accepts.
+
+The player can offer workable compromises, insist on incompatible demands and enforce them, or leave without agreement. Conflict results from material disagreement and action, not simply choosing a rude line.
+
+Compromise must have a real cost: release captives, protect an evacuation, give up a tactical advantage, or undertake an additional objective. It cannot just be the universally correct polite option.
+
+Earlier choices must have SIGNIFICANT impact. Merely changing greeting warmth or adding a trivial fetch quest is insufficient.
+
+ANARCHY-ALIGNED NEGOTIATION WITH MEWTWO
+Goal: secure withdrawal/noninterference or another limited agreement before the human revolution.
+
+Mewtwo's objection: leaving his people dependent on another human regime's promise, especially while Anarchy still holds Pokémon captive.
+
+Possible conditions: concrete releases, an evacuation guarantee backed by action, or a staged release agreement if the protagonist is trusted. Exact terms remain to be written.
+
+Player exits:
+- Meet an available agreement's conditions.
+- Leave without agreement and accept unresolved danger/resentment.
+- Force the issue and fight.
+
+Defeating Mewtwo on this optional Anarchy-aligned visit must NOT automatically deliver him to the government. Forced withdrawal or another outcome needs to be specified. This is an explicit remaining gap.
+
+LIBERATION-ALIGNED NEGOTIATION WITH ANARCHY
+Goal: permit captive Pokémon to choose whether to leave or voluntarily continue, rather than inherit ownership from the government.
+
+Anarchy's objection: unilateral liberation could disarm the movement while government forces and outside threats remain.
+
+Possible conditions: real defensive assistance, a safe route, or coordinated timing that does not postpone autonomy indefinitely. The player's alliance with Mewtwo cannot be honored by bargaining away Pokémon consent.
+
+Player exits:
+- Meet available conditions and secure a voluntary-choice arrangement.
+- Leave without agreement, preserving Anarchy as an unresolved faction.
+- Force liberation, fight the cell/leadership, and free Pokémon.
+
+SPECIFIC HISTORY, NOT ONLY A SINGLE HIDDEN REPUTATION NUMBER
+Track consequential events. A friend who supported one action and opposed another has mixed history; do not flatten all conduct into simple good/bad points.
+
+Examples of meaningful carryover already discussed:
+- Helping the unidentified leader escape aboard the ship creates a personal debt, potentially letting them authorize a concession others oppose.
+- Subduing that prisoner but later helping the breakout demonstrates a change of heart, but does not erase the first act.
+- Helping the prisoner and later fighting the rebel creates a perceived betrayal; the friend may refuse to vouch for promises.
+- Action at the fighting ring influences Mewtwo's belief that the protagonist recognizes Pokémon autonomy.
+- If a knowingly returning-Pokémon-to-captivity choice is included, Mewtwo may demand release before negotiation, refusing any promise of later action. That particular earlier choice is an EXAMPLE, not an already scripted scene.
+
+Trust can affect:
+- Which peaceful agreements exist.
+- Whether a promise suffices or action must precede agreement.
+- Who advocates for the player internally.
+- The scale of concessions.
+- Personal reconciliation.
+
+Strongly negative history can close a particular peaceful settlement. Do not make every consequence repairable with one generic task. Conversely, one isolated early choice should not mechanically determine everything.
+
+Preserve the three MAIN allegiances as available at the final branch; earlier actions primarily constrain secondary settlements, trust, and costs. The exact thresholds, flags, and scene combinations have not been designed.
+
+MAKE CAUSALITY VISIBLE
+Characters explicitly refer to actions: "You handed them back last time," or "You helped me before you knew who I was." The player should understand why terms differ. Avoid invisible approval checks, random negotiation outcomes, or a sequence of correct polite dialogue answers.
+
+======================================================================
+13. FINAL BATTLES AND PACING
+======================================================================
+
+USER'S ELITE FOUR MIRROR
+Against government:
+- Four elite operatives/assassins personally associated with the professor.
+- Loyalist friend is fourth.
+- Professor occupies the Champion/final-boss slot.
+
+Serving government against Anarchy:
+- Four senior Anarchy opponents.
+- Rebel friend is fourth.
+- Anarchy leader is final boss.
+
+Mewtwo operation:
+The original idea used autonomous Pokémon groups as trainerless trainer-style waves, culminating in Mewtwo. The professor supplies a Master Ball and a psychic-protection key item.
+
+IMPORTANT PACING CAUTION:
+The user repeatedly worried about too many back-to-back boss ladders. Four or five Pokémon waves plus another complete four-plus-one campaign is NOT fixed. Earlier discussions recommended shortening Mewtwo's operation and optional faction confrontations, with exploration, rescue objectives, healing, and preparation between major sequences.
+
+The final branching logic is settled more firmly than exact encounter counts. Keep the government's four-plus-professor and Anarchy's four-plus-leader as the principal recognizable mirrors, but do not silently require a full Elite Four at every visit. Exact distributions remain open.
+
+LIBERATION ASSAULT
+The protagonist's willing team fights alongside Mewtwo's forces to free captives and dismantle recapture operations. Mewtwo's forces handle parallel fronts so the child is not single-handedly winning an uprising. Human familiarity, access, and trainer competence can explain the protagonist's particular role.
+
+ANARCHY ASSAULT
+Overthrow the government, release human prisoners, and capture infrastructure. It can share the government stronghold and elite opponents with liberation while pursuing different operational objectives.
+
+Boss defeat should create a credible operational opening. It does not instantly erase a whole institution. The professor's position needs to be powerful enough that defeating their unit changes regional enforcement; the exact hierarchy is still open.
+
+MASTER BALL / PSYCHIC PROTECTION
+The key item protects the protagonist against direct psychic intrusion/mental coercion, not all harm. It should not make them immune to physical attacks or every Psychic-type battle move.
+
+Whether Mewtwo must be weakened or his defenses broken before the Master Ball works remains OPEN. Preserve a meaningful battle rather than promising an instantly usable guaranteed win and then arbitrarily disabling it.
+
+Mewtwo captured before the protagonist later joins Anarchy should not become an obedient legendary conveniently usable against the government. Immediate government custody was proposed as a clean consequence, but exact handoff logistics still need to be finalized.
+
+TRAINERLESS ENCOUNTERS
+Autonomous Pokémon groups can use trainer-style rules with different presentation and no human owner. This is a narrative design intention; technical feasibility and scripting against the actual repository have not been verified.
+
+======================================================================
+14. LIBERATION, PARTY CONSENT, AND THE FINAL FAREWELL
+======================================================================
+
+The user wants Pokémon autonomy to affect gameplay and relationships, not exist only in speeches.
+
+CURRENT DIRECTION:
+On choosing liberation, the protagonist's team willingly agrees to help finish the campaign that makes wider freedom possible. They remain usable through the finale. In the aftermath, they make their longer-term choice and depart with Mewtwo if they wish. The starter leaves.
+
+It helps to acknowledge consent before the campaign: surrender the ownership claim or explicitly give them a genuine choice, then cooperate. The aftermath becomes departure and farewell, rather than freedom only being granted after all the protagonist's needs are satisfied. The exact on-screen ritual is not fixed.
+
+The user earlier proposed deciding departures by friendship, RNG, or Pokémon ID. They noted friendship alone would retain every frequently used Pokémon. No roster-loss algorithm was selected.
+
+Design caution discussed:
+- Hidden randomness can make a major loss feel arbitrary.
+- Friendship need not equal a wish to continue a trainer's lifestyle.
+- Forced team loss immediately before final battles creates grinding and fairness problems.
+
+The later selected timing avoids the main gameplay problem: keep cooperating through the push, then depart after victory. Exact behavior for non-starter Pokémon remains open. Preferences can be foreshadowed through earlier interactions rather than invented in the final scene.
+
+The starter's affection was real. Departure must not reveal that it secretly hated the protagonist. A real bond does not guarantee a shared future.
+
+The wider exodus need not compel literally every Pokémon to leave. Autonomy means some can remain with humans. Similarly, not every human must resent the protagonist, but widespread grief and resentment establish their loss of belonging. These nuances support the user's intended ending without replacing it with a happy reconciliation.
+
+======================================================================
+15. ENDINGS — CURRENT ACCEPTED DIRECTIONS
+======================================================================
+
+The endings should secure different goods at different costs. Avoid funneling all paths into an identical new dictatorship. Avoid automatic total defeat, a golden ending, or a twist that makes all player achievements meaningless.
+
+LOYALIST ENDING: SAFETY AT THE COST OF CONSCIENCE
+Mewtwo is captured and becomes a government weapon. Pokémon independence is crushed or scattered; many participants are captured for government use. Anarchy is largely routed, leaderless, and in hiding.
+
+The protagonist and loyalist become unremorseful enforcers who believe they serve the greater good. Their language can remain reassuring and idealistic rather than overtly villainous.
+
+The rebel friend is subjected to reeducation at the institution, with the protagonist participating/authorizing it. This echoes the altered gym leader. To the protagonist, they may be saving their friend and allowing them to be happy.
+
+A new recruiting ceremony may close the cycle. The world remains colorful and genuinely protected. The player understands the machinery maintaining it.
+
+Keep the rebel alive through the relevant final battles so this ending remains possible. The fate of Anarchy's leader after defeat is not fully specified.
+
+REBEL ENDING: FREEDOM WITHOUT GUARANTEED SECURITY
+The government falls. Street fighting and dismantled barriers are followed by disrupted protection, increased crime, dangerous Pokémon incursions, and fear. People are free, but the question of whether they are better off remains painful.
+
+Show real gains too: prisoners reunited with families, public truth, voluntary travel. The ending should not simply declare tyranny objectively correct. Some communities can organize better than others; uncertainty is stronger than a flat claim that everyone inevitably dies.
+
+The rebel kills the loyalist as part of the late conflict. Exact timing, intent, and the protagonist's response are OPEN. Killing after the protagonist's battle was an assistant suggestion, not a locked scene.
+
+A provisional government consolidating into new tyranny was considered earlier. The preferred later direction is instability and dangerous freedom, rather than repeating the same authoritarian twist across all endings.
+
+LIBERATION ENDING: AUTONOMY AT THE COST OF BELONGING
+Pokémon are freed and many follow Mewtwo deeper into the wilds, away from human control. The protagonist's team cooperates through the final push, then leaves; the starter's farewell is the central personal loss.
+
+Human society loses companions, labor, protection, and familiar ways of life. Many resent the protagonist for causing those losses. Understanding the moral case does not make grief disappear.
+
+Mewtwo and his people respect the protagonist, but wish to live apart from humans. Their refuge/new society is not the protagonist's home simply because they helped make it possible. Avoid gratuitous cruelty or sudden hatred from Mewtwo; the tragedy is genuine respect without shared belonging.
+
+This is not a Pokémon-supremacist conquest. Mewtwo does not need to become a new tyrant to produce melancholy.
+
+The protagonist achieves liberation and becomes isolated between the society they left and the society they enabled.
+
+======================================================================
+16. THIRD-FACTION CLOSURE AND POSTGAME
+======================================================================
+
+If a joined faction proceeds directly to the government assault, the ignored faction remains consequential. Do not pretend its story disappeared.
+
+ANARCHY VICTORY, MEWTWO UNADDRESSED
+Mewtwo and his already free followers withdraw deeper into the wilds. They resent abandonment of captives still in human society, distrust the new regime, and may hint at future retaliation. "We thought you were different" is the user's desired emotional direction, not mandatory final wording.
+
+LIBERATION VICTORY, ANARCHY UNADDRESSED
+Anarchy recognizes the protagonist helped defeat government power but resents the large-scale Pokémon departure and loss of the strength needed to defend people against outside criminals and feral Pokémon.
+
+These encounters can be available postgame. A design recommendation was to show basic faction fate in the ending itself so players who stop at credits still receive closure, with optional encounters deepening it. Exact split between epilogue and playable postgame remains open.
+
+Negotiated or fought outcomes alter these encounters. A prior agreement should be honored in the world state unless a betrayal is intentionally written and foreshadowed. Do not reset every version to the same angry speech.
+
+Postgame reconciliation is not permission to reverse the central ending or conjure an effortless golden solution. Its scope remains to be designed.
+
+======================================================================
+17. HOW REVELATIONS ARE DELIVERED
+======================================================================
+
+Avoid one late exposition dump. Establish experience, a plausible official explanation, then evidence that changes its meaning.
+
+- Charizard clearance: first blamed on Anarchy; later explained by Mewtwo; government evidence confirms it.
+- Perimeter tunnel: initially Pokémon trafficking; later testimony reveals human escape.
+- Gym leader: subversive conversation overheard; changed demeanor at arranged meeting; reeducation seen at the island.
+- Radio broadcast: violent criminals make claims; later events prove some claims true without excusing violence.
+- Fighting ring: Anarchy's exploitation remains real after government lies are exposed.
+- Outside world: confirms actual danger and prevents total dismissal of the government's protective purpose.
+- Historical records: confirm the war and mutations, connecting previously disguised ruins.
+- Final assignment: reveals the purpose of childhood advancement by making the protagonist enact it.
+
+Keep immediate playable objectives clear: rescue, escort, pursuit, escape, route access, liberation, securing positions. The player should not wander from one political lecture to the next.
+
+======================================================================
+18. WHY NOT GUNS? — BACKGROUND EXPLANATION ONLY
+======================================================================
+
+The user explicitly does NOT want firearms central or necessarily visible. They only need a credible answer to why Pokémon are the primary weapons.
+
+WORKING EXPLANATION:
+After the war, manufacturing and ammunition were scarce. Pokémon offered detection, restraint, mobility, barriers, physical force, and other capabilities beyond guns. Trained teams became the dominant security instrument. The government restricted civilian conventional weapons and controlled access to powerful Pokémon.
+
+Over generations this became ideology: conventional weapons belong to the violent old world; Pokémon partnership represents civilization.
+
+Guns can still harm exposed humans. Do not claim universal bulletproof Pokémon or pretend conventional weapons never existed. Strategic dominance, state control, and access explain their marginal role.
+
+A brief exhibit, record, or conversation is enough. Do not add a firearms subplot.
+
+Related battle consistency: organized matches follow accepted rules. In real violence, explain the trainer's protection or the opponent's capture objective rather than assume everyone politely waits for six knockouts. This does not require rebuilding the combat engine.
+
+======================================================================
+19. LEGENDARIES AND OTHER UNFINISHED THEMATIC MATERIAL
+======================================================================
+
+The user wants to interrogate capturing a unique/endangered, almost divine being as a weapon rather than preserving or respecting it. This applies to celebrated trainers and the player, not only villain organizations.
+
+Which legendaries appear, their origins, capture availability, and plot functions remain OPEN. Do not insert an elaborate legendary subplot merely because this theme was mentioned.
+
+Mewtwo's Master Ball assignment already embodies part of that critique but does not settle every legendary question.
+
+======================================================================
+20. PRACTICAL NARRATIVE STATE TO TRACK
+======================================================================
+
+This is a planning checklist, not implemented variables or a locked schema.
+
+Shared campaign flags:
+- Radio-station participation and significant dialogue/promises.
+- Tunnel involvement and later response to its truth.
+- Response to the unexpected Anarchy meeting.
+- Fighting-ring intervention and treatment of escaping Pokémon.
+- Mewtwo meetings and concrete promises.
+- Ship prisoner assisted/subdued.
+- Facility final opponent: rebel/loyalist.
+- Any specific rescues, betrayals, and casualties selected in later scripting.
+
+Final-act flags:
+- First destination: Anarchy/Mewtwo.
+- First resolution: defeated/joined.
+- If defeated first, second resolution: defeated/joined.
+- Chosen allegiance: government/Anarchy/liberation.
+- Other faction's status at commitment.
+- Optional visit undertaken/skipped.
+- Negotiation terms available from history.
+- Terms accepted, rejected without combat, or enforced through combat.
+- Actual releases, evacuations, captures, and surviving leaders.
+
+Ending flags:
+- Mewtwo's actual fate, not only selected ending label.
+- Anarchy leadership and movement's actual fate.
+- Loyalist/rebel survival and treatment.
+- Party departure decisions.
+- Third-faction agreement and postgame reaction.
+
+Keep a small number of concrete consequential events. Do not build an unnecessarily huge morality simulator or hidden reputation labyrinth.
+
+======================================================================
+21. SUPERSEDED IDEAS — DO NOT ACCIDENTALLY RESTORE
+======================================================================
+
+- Mandatory capture-or-release Mewtwo decision before Anarchy becomes available. Rejected because it makes liberation the obvious moral gate and crowds out the Anarchy route.
+- A single forced three-faction summit or required advance-contact stage. Not needed.
+- Joining immediately launches the final assault and deletes the other faction's storyline. Replaced with a preparation interval and optional second-faction visit.
+- Unlimited faction switching at every visit. Joining fixes allegiance; a later visit is made on that faction's behalf.
+- Earlier history merely changes greetings or adds a trivial task. It must materially affect available settlements and trust.
+- Negotiation decided by faction whim or rude/polite wording. Conditions, concessions, and consequential history determine outcomes visibly.
+- Separate repeated Anarchy attacks on ship and island. One connected operation is selected.
+- Full psychic atrocity shown before the gym leader's altered route meeting. The window scene at the island is the main confirmation.
+- Professor staging the radio attack. He hears of a real attack and brings children as training.
+- Victory Road as a fixed mountain route before a separate graduation exam. It is the name of the assigned final mission.
+- Automatic identical authoritarian endings for every faction. The endings now have distinct losses.
+- Mewtwo must become a human-subjugating tyrant. The accepted liberation ending centers on separation and belonging.
+- Mandatory random loss of the trained party immediately before final combat. Not selected; current timing preserves willing cooperation through the campaign.
+- Radiation must be replaced by elaborate biological engineering. The user chose the simpler science-fiction premise.
+
+======================================================================
+22. REMAINING DESIGN WORK
+======================================================================
+
+The central storyboard is agreed. Remaining work is refinement, consistency, and scene design:
+
+1) Fix exact gym placements and travel geography, especially the outside excursion and island sequence.
+2) Define all names and the leader's identity; Giovanni is not settled.
+3) Establish the professor's authority and why their defeat breaks task-force control.
+4) Detail the eight gym leaders, attendants, and covert assessments.
+5) Write the rivals' personalities, early warmth, divergences, and recurring interactions.
+6) Specify how Anarchy's leader was captured and transported, and how the two ship choices lead to their later freedom/leadership.
+7) Define what each first-target defeat actually achieves; captures and escapes must support later endings.
+8) Decide what fighting Mewtwo while already aligned with Anarchy does to him and his followers.
+9) Build a compact negotiation-condition matrix from actual earlier choices. The examples above are not a completed score system.
+10) Choose final encounter counts and preparation intervals; avoid two full boss gauntlets without breathing room.
+11) Define Master Ball restrictions, psychic immunity, and capture handoff without technical contradictions.
+12) Finalize the consent/party presentation and starter departure foreshadowing.
+13) Define the rebel's killing of the loyalist on the rebel path and its emotional consequences.
+14) Specify optional-third-faction outcomes and how they modify endings/postgame.
+15) Decide how the liberation ending treats surviving civilian institutions and humans who still have willing Pokémon partners.
+16) Settle ruins, war clues, legendaries, and Mewtwo's origin only as needed for the plot.
+17) Verify implementation feasibility against the actual codebase when entering production; none of this handoff certifies code or scripts already exist.
+
+======================================================================
+23. READY-TO-PASTE CONTINUATION INSTRUCTION
+======================================================================
+
+You are helping me develop a dark Emerald Pokémon ROM hack. Use this document as the current complete story handoff. The main storyboard and final branch structure are established; help refine them without repeatedly replacing them with new structures. Respect the distinctions between settled decisions, working treatments, and open details. The game must initially feel like a familiar happy Pokémon adventure, then reveal an authoritarian protected region, Team Anarchy's compromised human revolution, and Mewtwo's struggle for Pokémon autonomy. Keep the three endings distinct, preserve significant consequences of earlier player choices, and avoid excessive branching or boss-ladder repetition. We are doing story development unless I explicitly ask for implementation. Index your responses. I will specify what to work on next.
+
+END OF COMPLETE HANDOFF
+
+
+========================================================================
+COMPLETE MECHANICS AND QOL DESIGN SPECIFICATION
+========================================================================
+
+EMERALD ROMHACK — MECHANICS, SETTINGS, AND QUALITY-OF-LIFE HANDOFF
+Version 0.1 | October 19, 2026 | Through the real-time-clock agreement
+
+PURPOSE
+
+This is the standalone mechanics specification and conversation handoff for the Emerald ROM hack. It is deliberately separate from Emerald-Romhack-Complete-Storyboard-Handoff-v0.2.txt, the narrative document. Neither file replaces the other. No narrative file was modified while creating this document.
+
+This records design decisions, not implemented or tested code. The project uses the user's pokeemerald-expansion fork:
+https://github.com/YoniHymanCodeStuff/pokeemerald-expansion
+
+Current upstream capabilities were researched during discussion, but the exact version/configuration of the user's fork has not been audited for these mechanics. Do not claim a feature already works merely because upstream supports part of it.
+
+STATUS LANGUAGE
+AGREED: explicit user decision or clear acceptance.
+WORKING: proposed detail consistent with the direction, not fully finalized.
+OPEN: requires a decision or implementation verification.
+
+Where the user corrected the assistant, the correction takes priority. Do not restore superseded suggestions such as repeatedly scanning the party for trainer level, permanent PP-history bookkeeping, automatic downscaling in battle, universally free gift encounters, or universal pathfinding for portable healing.
+
+The user prefers indexed assistant responses. Continue that preference when using this handoff.
+
+1. DESIGN PHILOSOPHY
+
+AGREED:
+Remove repetitive grinding, catching/breeding for optimal stats, inconvenient travel, and menu repetition. Preserve strategic battle decisions, deliberate team construction, encounter limits when enabled, and authored gauntlet difficulty.
+
+Most conveniences are modular. Players who want traditional restrictions should be able to choose them. Settings are presented at the start and remain editable during play, except Nuzlocke-related choices when the player voluntarily locks them.
+
+The game encourages unusual Pokémon, niche abilities, and flexible team changes. It does not need every supported species in its encounter roster or every powerful familiar option early.
+
+2. CURATED ROSTER AND STARTERS
+
+AGREED ROSTER GOALS:
+- Early routes predominantly contain weaker options, stronger species becoming available later where appropriate.
+- This matches the narrative of government route curation, but also serves balance.
+- Remove or delay common playthrough-dominating species, such as Gyarados, so overlooked alternatives have meaningful opportunities.
+- Do not merely offer a weaker species early and then immediately overshadow it with a superior equivalent.
+- Consider abilities, learnsets, evolution timing, items, typing, and available competition, not only BST.
+- Gen 1–3 species are personally preferred, but suitability and niche variety take priority over strict generation limits.
+- No blanket stat buffs or full roster have been approved.
+
+STARTER REQUIREMENTS:
+Four children, including the protagonist, receive distinct starters. No forced three-type triangle.
+All four starter evolutionary lines must:
+1) Have the same number of evolutionary stages.
+2) Finish with similar BST.
+3) Avoid shared typing between the lines.
+4) Either all require stone evolution, or none require it.
+5) Offer distinct stat distributions and underused strategic identities.
+
+Sandshrew is a positive reference example, not a confirmed starter. The earlier mixed shortlist including Ponyta and Vulpix was rejected because it failed the matching criteria. No final quartet, BST tolerance, or initial encounter pool is selected.
+
+3. TRAINER LEVEL: PERSISTENT HIGH-WATER MARK
+
+AGREED:
+Trainer level is ONE saved integer. Whenever a player-owned Pokémon's level exceeds it, increase the integer. Otherwise leave it unchanged.
+
+Also update it on acquiring a higher-level Pokémon through catching, receiving, or trading. The user expects few gifts/trades and is not fond of those acquisition experiences, but the rule remains consistent.
+
+Do not recalculate it by repeatedly scanning the current party/boxes. It never falls because of death, release, storage, level reduction, or party changes. This is natural campaign progression without repeating the grind when building a new team.
+
+4. FAST LEVELING AT POKÉMON CENTERS
+
+AGREED:
+Separate convenience toggle. At a Center, instantly raise eligible lower-level Pokémon to trainer level, limited by the active level cap.
+
+Target = min(trainer level, current cap), or trainer level when caps are off.
+
+Fast Leveling:
+- Does not grant or alter EVs.
+- Does not grant or alter friendship.
+- Processes relevant level-up moves and evolution opportunities.
+- Lets the player decline evolution.
+- Cannot revive or make Nuzlocke casualties usable.
+- Does not independently raise the strongest Pokémon to the cap.
+
+WORKING UI:
+Individual selection and batch selection rather than repeated one-level candy animations. Exact menu and presentation of a long list of eligible moves remain to be designed.
+
+Missed level-based evolution opportunities should be available. Stone/item evolutions retain their required resources; fast leveling must not silently grant them. The exact evolution-eligibility UI remains open.
+
+5. EVs, IVs, NATURES, AND ABILITIES
+
+AGREED MODULAR OPTIONS:
+- Player EV effects on/off.
+- Opponent EV treatment: zero, randomized legal allocation, or optimized/maxed legal allocation.
+- Affordable IV/nature editing on/off.
+- Ability swapping on/off.
+
+WORKING ADDITION:
+A Designed opponent-EV option was recommended so authored boss spreads can be used. It fits the broad accepted direction, but exact labels/defaults are not individually finalized.
+
+Maxed EVs means a legal optimized spread, not maximum EVs in every stat. Randomized opponent spreads should be stable across retries rather than rerolling with each reload; this is a recommended fairness rule, not implemented behavior.
+
+Pokémon initially have random IVs and natures. Flexible editing removes the need to breed or repeatedly catch replacements for optimal stats.
+
+IV editing should allow raising and lowering values, including zero. Nature editing changes effective stat nature. Exact prices and whether displayed original nature is preserved separately are open.
+
+Affordable editing happens at the POKÉMON CENTER, not portably. EV reset/allocation belongs there when EVs are enabled. Exact EV-training economics remain to be designed; fast leveling does not provide EVs.
+
+ABILITY SELECTION:
+- Outside battle, switch among legitimate species abilities when the convenience is enabled.
+- Hidden abilities have a story unlock; meeting Mewtwo at the refuge was suggested, not firmly placed.
+- After that unlock, hidden abilities are also easily selectable. No repeated ability-item farming or searching for special individuals in the flexible mode.
+- Ability changes inside gauntlets are permitted outside battle, but cannot produce free HP, status cures, items, or other resources by repeated toggling.
+
+6. LEARNSET SOURCE AND DOCUMENTATION
+
+USER DIRECTION:
+Choose one documented generation/game ruleset already supported by the base rather than inventing every learnset. The user favors the latest available because modern moves, including Fairy moves, should be accessible.
+
+CURRENT RECOMMENDATION, NOT AN EXPLICITLY FINAL USER SELECTION:
+Pin Gen 9 level-up learnsets, rather than an automatically changing GEN_LATEST alias, with documented species fallbacks. Confirm the user's fork supports the selector before implementation.
+
+Research source:
+https://github.com/rh-hideout/pokeemerald-expansion/blob/master/include/config/pokemon.h
+
+The upstream configuration inspected during this conversation explicitly documents:
+- Gen 1: Yellow.
+- Gen 2: Crystal.
+- Gen 3: Ruby/Sapphire/Emerald.
+- Gen 4: HeartGold/SoulSilver.
+- Gen 5: Black 2/White 2.
+- Gen 6: Omega Ruby/Alpha Sapphire.
+- Gen 7: Ultra Sun/Ultra Moon.
+- Gen 8: BDSP for Gen 1–4 species, Legends: Arceus for species introduced there, then Sword/Shield where present; otherwise Gen 7 fallback, per upstream comments.
+- Gen 9: Scarlet/Violet where present, otherwise the Gen 8 selection.
+- Species introduced after the selected generation use their first available appearance.
+
+Level-up data, TM compatibility, transfer eligibility, typing, and battle-mechanic generation settings are separate concerns. Choosing a historical level-up set does not inherently remove Fairy typing or disable modern moves.
+
+Official source data reduces maintenance but does not guarantee balance under this hack's encounter order, reusable teaching, and direct move transfer. Verify the actual fork and keep compatibility documentation explicit.
+
+7. SET MOVES, TMs, AND NO TUTORS
+
+AGREED:
+When Set Moves convenience is enabled, a Pokémon menu command lets the player change its active four moves outside battle.
+
+Eligible moves include:
+- Current-species level-up moves available by the relevant current level.
+- Pre-evolution level-up moves available by that level.
+- Unlocked compatible TMs/HMs.
+- Legitimately acquired transferable moves.
+
+The exact treatment of previously learned high-level moves after deliberate level reduction is addressed below: keep already acquired moves. Do not remove them or reverse evolution when reducing levels to meet a cap.
+
+TMs can be configured for unlimited reuse/relearning. Obtaining the TM remains an acquisition gate; reusable does not mean every TM is available from the beginning.
+
+NO PLAYER-FACING MOVE TUTORS.
+The user dislikes searching for particular NPCs. Replace tutor rewards with additional TM givers/distribution. Implementations may reuse engine functions internally, but the user flow should be TMs and convenient menus, not a scattered tutor network.
+
+8. DIRECT MOVE TRANSFER INSTEAD OF BREEDING FOR EGG MOVES
+
+AGREED DIRECTION:
+Pokémon can learn eligible moves directly from another owned Pokémon rather than hatch a specially bred offspring. Example concept: an evolved recipient learns a compatible move directly from a donor that knows it.
+
+WORKING INTERACTION ACCEPTED IN DISCUSSION:
+1) Recipient selects Learn from teammate.
+2) Choose a donor currently in the party.
+3) Show donor's currently known moves that recipient can legally receive.
+4) Teach selected move; donor retains it.
+5) It is permanently unlocked for relearning by that individual, including after evolution.
+
+Use existing egg-move compatibility as an internal recipient eligibility list. Include relevant pre-evolution compatibility for evolved recipients. Do not allow arbitrary copying of any move from any species.
+
+No gender matching, egg hatching, waiting, or egg-group acquisition loop. No full breeding experience has been requested; eggs are likely omitted, but final scope is open.
+
+Technical assessment discussed: this is a contained menu/eligibility feature rather than inherently a risky breeding rewrite. Existing data and transfer concepts may help. It still needs code inspection and verification of evolved forms, save persistence, and relearning integration. No implementation has been tested.
+
+Reference:
+https://github.com/rh-hideout/pokeemerald-expansion/blob/master/docs/tutorials/teachable_learnsets.md
+
+9. PP WHEN LEARNING OR SWAPPING MOVES
+
+AGREED USER RULE:
+- Newly learned level-up moves receive full PP.
+- Moves taught via TM or selected via Set Moves inherit the remaining PP of the move being replaced, capped at the new move's maximum.
+- Optional setting: learned moves receive fresh/full PP instead.
+
+The user explicitly accepts some potential PP abuse. PP is principally meaningful in longer battles for this design, and players wanting stronger restrictions can select them.
+
+Do NOT add persistent PP bookkeeping for every inactive move or force all newly taught moves to zero PP. Those earlier assistant suggestions were superseded.
+
+WORKING DETAILS, NOT EXPLICITLY FINALIZED:
+- Apply replacement-slot PP inheritance to direct-transfer learning too.
+- Empty-slot learning receives full PP.
+- Exact inclusion of level-up prompting under the fresh-PP toggle should retain the unconditional full-PP level-up behavior.
+
+Abilities do not have PP. References to learning abilities in the user's PP discussion mean moves.
+
+10. HMs AND FIELD SKILLS
+
+AGREED:
+- HMs behave like reusable, freely deletable TMs.
+- Once a Pokémon has learned an HM, it retains the associated field skill even if the battle move is overwritten.
+- Until replaced by a key item, a qualifying Pokémon must be in the party and usable.
+- A boxed Pokémon or a Nuzlocke casualty cannot provide the field skill.
+- Story/badge access gates still apply.
+- Later key items replace the need for a Pokémon to supply the skill.
+
+Exact item names, placements, and HM roster remain open.
+
+11. LEVEL CAPS AND BRANCHING DIFFICULTY
+
+AGREED MODES:
+- Off: no progression cap.
+- Normal: next designated boss's highest level.
+- Hard: that highest level minus two.
+- Pro: must be at least as restrictive as Hard; use the lower of boss's lowest level and Hard's cap.
+- Clamp valid caps to at least level one.
+
+Explicit boss milestones include gyms and selected plot-significant encounters, not every incidental trainer battle. Display the active cap and relevant milestone to the player.
+
+MIDGAME CAP CHANGES:
+If enabling/tightening a cap affects overleveled Pokémon, ask the player to choose:
+A) Permanently reduce those Pokémon to the cap, recalculating stats.
+B) Preserve actual levels, but make those Pokémon unusable until allowed again.
+
+Apply the treatment to both party and boxes after clear confirmation. Keep evolved forms and already acquired moves. Do not lower trainer level. Do not substitute automatic battle-only downscaling for this choice.
+
+MID-BATTLE LEVELING:
+Whether leveling is allowed during a capped boss fight is a Nuzlocke-menu option. The user explicitly requested configurability. Exact enforcement when allowing leveling, cap update timing, and overflow experience handling remain to be specified.
+
+BRANCHING FINAL OPERATIONS:
+Use authored first-operation and second-operation versions. If Anarchy is visited first, its levels are lower than Mewtwo's subsequent operation; reverse that order when Mewtwo is first.
+
+Corresponding caps and operation trainers must branch too. Early completed routes retain authored levels; do not scale every old route globally. Account for moves, evolution, and held items in scaled encounter versions, not only numeric level.
+
+12. NUZLOCKE: MODULAR BASE RULES
+
+Independent settings:
+- One eligible encounter opportunity per named area.
+- Permadeath.
+- Evolution-family dupes clause.
+- Shiny clause.
+- Automatic required nickname entry.
+- Wipe behavior.
+- Mid-battle cap/leveling behavior.
+- Voluntary lock of all Nuzlocke-related choices at run setup.
+
+Other difficulty settings can coexist. Precisely enumerate which menu choices fall under the lock before implementation; avoid a loophole where the same locked behavior remains editable elsewhere.
+
+AREA IDENTIFICATION:
+Use the recorded route/area name, as in familiar Nuzlocke play. Designers may create more specific names such as Smelly Cave B1 to deliberately grant separate areas. Different maps with the same encounter-area identity should share the opportunity.
+
+An opportunity is consumed by the FIRST ELIGIBLE ENCOUNTER, not the first successful catch. Fleeing, defeating it, or failing to catch it loses the area's opportunity.
+
+Uncatchable scripted encounters do not consume an opportunity. Scripted uncatchability does NOT inherently suspend permadeath in an otherwise real battle.
+
+With a spent opportunity, block ball throws except enabled exceptions. Ordinary battles remain available.
+
+DUPES CLAUSE:
+Exclude the whole evolutionary family of any Pokémon previously owned, including dead/released Pokémon. Excluded encounters do not consume the opportunity. Track ownership history rather than only the current party.
+
+SHINY CLAUSE — USER'S SPECIFIC VARIANT:
+- Nothing in encounter-limit or dupes restrictions blocks an otherwise catchable shiny when enabled.
+- A spent ordinary opportunity does not block a shiny.
+- A prior shiny does not block another shiny.
+- A shiny duplicate is allowed.
+- A shiny encounter consumes any still-unused ordinary opportunity for the area.
+- If the opportunity is already spent, shiny encounters remain available as exceptions.
+- This does not override a scripted encounter's actual uncatchability.
+
+Do NOT replace this with the common alternative where shinies never consume the normal opportunity.
+
+NICKNAMING:
+When enabled, open the naming screen automatically instead of asking Give a nickname? Require a nonblank result. Keeping the species name is allowed; do not force a different name.
+
+13. STARTERS, GIFTS, STATICS, EGGS
+
+The user dislikes gift-heavy acquisition, trading, and egg grinding. Eggs may be omitted entirely; do not build a breeding system by default.
+
+The user requested research into community norms for starters/static encounters. Research found no universal consensus on gifts/statics. Separate allowances are optional variants, not a mandatory canonical rule.
+
+References consulted:
+https://nuzlockeuniversity.ca/nuzlocke-rules/
+https://nuzlockeuniversity.ca/optional-rules/
+https://nuzlockewiki.com/rules/
+
+PROPOSED DEFAULTS, NOT EXPLICITLY ACCEPTED YET:
+- Starters/gifts and catchable statics consume the opportunity for their recorded acquisition area.
+- Offer separate toggles exempting gifts/starters and exempting statics.
+- Starter acquired in the hometown would consume the hometown opportunity, not Route 1.
+
+Do not present these defaults as finalized. If eggs are included later, define their area accounting explicitly.
+
+14. PERMADEATH AND PARTY WIPES
+
+AGREED:
+Pokémon that faint under active permadeath become permanently unusable and greyed out. Move to a casualty box when safely possible. They can still be moved between boxes or released, but cannot be healed, field-skilled, or withdrawn into usable service through another menu.
+
+Turning permadeath on midgame is prospective: Pokémon already fainted receive a normal recovery rather than retroactively dying. Mark the transition consistently so it cannot repeatedly revive genuine later casualties.
+
+Scripted demonstrations/unavoidable scripted outcomes may explicitly exempt deaths; real story battles otherwise count. Important scripted overwhelming-level scenes should not impose an unavoidable Nuzlocke casualty.
+
+FULL-PARTY WIPE OPTIONS:
+A) Lose only the Pokémon that died; continue with usable reserves.
+B) Return to title/menu screen.
+C) Delete save file and return to title/menu screen.
+D) Immediately begin a fresh playthrough, separately choosing whether to delete or retain the previous save.
+
+The behavior is selected in setup, not a surprise destructive confirmation after defeat. Make the wording unambiguous before locking it.
+
+OPEN:
+- Option A when no usable reserves exist: title-screen fallback was proposed, not explicitly selected.
+- Whether option B records the loss in persistent run data before returning to title.
+- How a fresh unsaved run coexists with a retained old save under option D. It must not silently overwrite the retained save.
+- Meaning and limits of a save deletion in emulator environments: the ROM cannot promise to erase external emulator savestates/backups.
+
+These are save-state integrity details to settle during implementation, not grounds to remove the user's requested choices.
+
+15. VOLUNTARY RULE LOCK
+
+AGREED:
+Nothing starts locked. At the beginning, the player selects all desired settings and may choose Lock in Nuzlocke rules, acting as a personal resolution enforcer.
+
+Once locked, covered Nuzlocke-related choices cannot change during that run. Unrelated conveniences/accessibility options remain editable. Make the covered list explicit in setup and show locked status in the menu.
+
+Caps and other restrictions have some overlap with the Nuzlocke menu; finalize the exact coverage rather than assuming every setting everywhere becomes locked.
+
+16. BATTLE STYLE, BAG ITEMS, AND HELD ITEMS
+
+AGREED:
+- Shift/Set battle-style option.
+- Separate player and opponent bag-item permission in trainer battles.
+- Independent player bag-item restriction for wild battles.
+- Held items remain enabled by default; do not conflate bag-use bans with held-item bans.
+- Balls remain allowed in otherwise catchable wild encounters, unless encounter-limit rules or a specific scripted restriction forbid the catch.
+
+Bag-item restrictions cover battle healing, cures, revives, and boosters as appropriate. Exact escape-item exceptions can be listed during implementation.
+
+OPTIONAL DUPLICATE HELD-ITEM CLAUSE:
+The active party cannot equip duplicate held items.
+- Block an attempted equip that would create a duplicate.
+- Directly moving an item from one teammate to another is allowed as one operation, because the original holder relinquishes it.
+- When withdrawing/swapping in a boxed Pokémon holding an already represented item, remove the INCOMING Pokémon's item to the Bag.
+- Never delete the removed item.
+- Boxed Pokémon may carry duplicate items; enforce the restriction as they enter the active party.
+- Enabling the rule on an existing party: keep the first occurrence in party order, return later duplicates to the Bag.
+- If returning an item exceptionally fails, cancel the operation/setting change rather than lose it.
+
+Bag capacity should be generous enough that ordinary play and automatic returns do not become inventory-management chores. Exact current fork capacity and needed expansion have not been verified.
+
+17. PORTABLE POKÉMON CENTER
+
+Separate convenience toggle grants remote full healing and box access ONLY where returning to a Center would entail travel tedium rather than overcoming a challenge.
+
+AGREED IMPLEMENTATION SCOPE:
+Use authored areas/boundaries, defeated-trainer records, and known gauntlet transitions. No generalized map pathfinding or universal reachability simulation.
+
+Example: stepping over a particular ledge starts a restricted section; defeating the designated exit trainer restores safe access. More complex zones can refer to explicit groups of trainers and story state.
+
+In gauntlets, the portable Center is OFFLINE. Flavor explanation: no reception. Both healing AND storage are unavailable, preventing box swaps/deposit-withdraw healing from bypassing the restriction.
+
+When safe access is restored, do not heal automatically. The player deliberately invokes an instant-heal command. Authored physical Centers/PCs/healing opportunities work where deliberately placed.
+
+Permanent-death and over-cap unusable states remain enforced in all interfaces.
+
+18. QUICK HEALING AND THE SADIST NPC
+
+QUICK HEAL:
+Center healing should be immediate: no mandatory repeated long animation/dialogue. Preserve a deliberate interaction and brief confirmation. Portable healing uses the same deliberate instantaneous principle.
+
+SADIST NPC AT CENTERS:
+The user wants an NPC who happily inflicts selected HP damage or status conditions for strategic preparation.
+
+Functions:
+- Set a selected Pokémon's HP to a requested value or reduce it by a requested amount.
+- Apply a requested persistent status condition.
+- Respect applicable status immunities. Cannot poison Poison-types, etc.; also respect relevant ability immunities under the chosen battle rules.
+- Cannot restore a casualty or make an otherwise unusable Pokémon usable.
+
+WORKING DETAILS:
+- Show the resulting HP/status before confirming.
+- Minimum HP of one was proposed to avoid accidental executions; not explicitly finalized by the user.
+- Offer normal/bad poison distinctly where supported.
+- Temporary battle-only states such as confusion do not automatically become persistent overworld states.
+
+Exact service price, menu layout, and support for setting sleep duration or other status substate are open. Do not add complicated simulation unless needed.
+
+19. OVERWORLD POISON
+
+User requested an option controlling whether poison can kill outside battle.
+
+WORKING THREE-MODE SPECIFICATION, presented and not contradicted:
+- No field damage: status persists, walking does not reduce HP.
+- Survive at one HP: field damage stops at one.
+- Can faint: field poison can cause fainting and, with permadeath, death.
+
+Do not introduce random fatality by default. The user asked whether chance-based behavior exists; no random-poison-death variant was selected. Exact tick timing follows the intended engine rules once chosen.
+
+20. INFINITE REPEL AND FISHING
+
+AGREED:
+An optional discoverable Infinite Repel key item is available before the first cave/dungeon-like area. Player toggles it on/off.
+
+Initially it follows ordinary Repel behavior: suppress weaker ordinary encounters according to the selected engine rules, not all encounters.
+
+A later upgrade unlocks mode selection:
+- Standard Repel.
+- Block all ordinary random Pokémon encounters.
+
+Block-all applies to normal grass, cave, surf, AND fishing Pokémon encounters. This supersedes the assistant's earlier idea to exempt deliberate fishing.
+
+FISHING UNDER BLOCK-ALL:
+- Display a short alert explaining that Pokémon encounters are being suppressed.
+- Fishing can still yield items if the fishing pool supports them.
+- Otherwise the cast yields nothing.
+- Do not invent item rewards in a pool without items.
+- Exact probability handling for suppressed Pokémon outcomes versus item outcomes is open; do not silently convert every blocked fish into a guaranteed item.
+
+Visible/static Pokémon and scripted encounters remain available according to their own rules, not ordinary Repel suppression.
+
+SMOOTH FISHING OPTION:
+Remove reaction timing/repeated-input minigame. Cast, resolve success/failure, then deliver encounter/item/nothing as appropriate.
+
+The intended working interpretation preserves designed success probabilities; smooth does not automatically mean every cast succeeds. Exact rod-specific rates and warning frequency remain to be chosen.
+
+21. MAP AND ENCOUNTER LOG
+
+AGREED:
+When selecting routes/areas on the map, show Nuzlocke encounter opportunity status. Provide a map-view toggle highlighting all discovered areas where an opportunity remains available.
+
+Example labels:
+- Available.
+- Used: caught [species].
+- Used: eligible encounter defeated/fled.
+- Shiny exception available after ordinary opportunity is spent, when relevant.
+
+Highlight discovered areas only. Undiscovered areas remain unknown. A skipped duplicate or uncatchable scripted battle does not consume opportunity. A shiny consumes a still-open opportunity under this game's selected shiny rule.
+
+Map granularity must support separately named areas such as cave floors, whether by sub-area selection/list or another clear UI. Do not incorrectly merge separately named opportunities just because they share a world-map tile.
+
+An encounter log showing discovered local species was broadly welcomed; exact contents/spoiler policy are open. It must not reveal future unseen encounters merely to explain eligibility.
+
+22. LEARNSET REFERENCE AT THE CENTER PC
+
+AGREED USER LOCATION:
+Comprehensive learnset reference belongs in a separate Pokémon Center PC menu for owned Pokémon, NOT as a full future-move encyclopedia in the party menu.
+
+The ordinary party Set Moves command still displays currently available moves, so it remains functional. The Center reference can explain future level-up moves, TM compatibility, transferable moves, and their source ruleset.
+
+Exact interpretation of owned (currently owned versus ever-owned species) and visibility of future evolutions' information is open. At minimum support the player's current Pokémon across party/storage.
+
+Evolution-method reference and detailed stat/ability information were additional welcomed QoL directions. They can live in the Center reference or another appropriate information interface; exact location is not locked.
+
+23. EVOLUTION REPLACEMENTS
+
+AGREED:
+Remove friendship-grinding and trade requirements.
+- Friendship-based evolution uses a Friendship Stone.
+- Trade-based evolution uses a Trading Stone.
+- Names are placeholders.
+
+The user expects these to be purchasable alongside other evolution stones around midgame. Exact availability, prices, and placement are deliberately deferred.
+
+WORKING COMPOUND-REQUIREMENT RULES, not separately finalized:
+- Friendship plus day/night: replace friendship with stone, keep time condition.
+- Trade holding a specific item: use Trading Stone with the item held; consume the required evolution item.
+- Paired-species trade: replace pairing with Trading Stone.
+
+Whether the new stones themselves are consumable is not explicitly finalized; do not assume a reusable key item. Preserve branching evolution identity when replacing conditions.
+
+All remaining unusual evolution methods need a later pass for unnecessary grind. No new decisions on them were made here.
+
+24. CLOCK AND TIME-OF-DAY
+
+AGREED:
+In-game time follows real elapsed time using the real-time clock, but the player can reset the displayed in-game time whenever desired through settings.
+
+Use a saved offset from RTC so time keeps advancing normally after adjustment. Do not change system/emulator clock settings.
+
+Resetting time:
+- Immediately updates day/night and time-based evolution eligibility.
+- Does not reset playtime.
+- Does not refresh one-time rewards.
+
+Future recurring timed rewards must explicitly define their behavior rather than accidentally becoming farmable via the time-setting menu. RTC-unavailable emulator fallback is an implementation detail still to design.
+
+25. CATCH CHANCE DISPLAY
+
+AGREED FEATURE:
+Provide a visible indicator of the chance that the selected ball will catch the selected target. Text associated with the ball action is sufficient.
+
+Use actual configured capture rules and relevant target state/ball conditions. Do not present a percentage from the wrong generation formula.
+
+OPEN PRESENTATION:
+Exact percentage versus approximate display versus optional hiding was suggested; final mode/default not chosen. Ensure uncatchable encounters and Nuzlocke-blocked throws are clearly distinguished from an ordinary low catch chance.
+
+26. ADDITIONAL QOL DIRECTIONS
+
+The user liked most additional suggestions, with the specific changes elsewhere in this document. Treat these as accepted directions needing UI/detail work, not individually completed implementations:
+- Visible IV/EV and nature-effect information.
+- Full ability descriptions and useful move details/category.
+- Fast text and skipping repeated tutorials.
+- Configurable battle presentation speed/animations where feasible; no promise that arbitrary emulator fast-forward can be controlled by the ROM.
+- Running indoors.
+- Evolution-method information without external research.
+- Short objective journal for branching story progress.
+- Optional boss retry support, subject to explicit Nuzlocke-death/wipe consistency.
+
+Boss retry behavior is NOT finalized and must not silently revive permanent casualties or override the selected wipe punishment.
+
+CUSTOM TELEPORT/RETURN CHECKPOINT:
+User proposed placing a return marker anywhere, but explicitly shelved it due to risk of map/story bypass bugs. Do not implement by default. Conventional travel and portable Center features remain the current plan.
+
+27. SETTINGS INTERACTION RULES
+
+These are consistency requirements, not extra mechanics:
+- Trainer level may exceed active cap; Fast Leveling still stops at cap.
+- Trainer level never falls after level reduction or death.
+- Dead/over-cap unusable Pokémon stay unusable through party, box, healing, and field-skill menus.
+- Portable healing/storage share gauntlet restrictions.
+- Ability toggling does not create resources.
+- PP behavior follows the chosen permissive/replacement rule, not an invented hidden history system.
+- Hidden ability access requires the story unlock and the applicable convenience permission.
+- Fixed Nuzlocke settings cannot be changed through a duplicate menu route.
+- Shiny exception overrides encounter/dupes limits but never overrides actual scripted uncatchability.
+- Branch order selects both authored opponent version and cap milestone.
+- Item-clause automatic returns never delete inventory.
+- Clock changes affect world time, not run duration or one-time flags.
+- Smooth Fishing and Repel compose: smooth resolution still honors suppression and item pools.
+- Story scenes must not assume a starter survives in runs where it may die or be released. The narrative handoff's starter farewell needs a conditional alternative.
+
+28. IMPLEMENTATION VERIFICATION CHECKLIST
+
+No code has been written for this specification. Verify the exact repository version before claiming built-in support.
+
+Focused checks when implementation starts:
+- Trainer-level updates across leveling, catching, receiving, loading, and permanent record persistence.
+- Fast-level caps, evolution refusal, no EV/friendship side effects.
+- Level-reduction stat recalculation and party/box handling without lowering trainer level.
+- First/second-operation teams and cap selection across all final branch orders.
+- Direct-transfer eligibility through evolution, saving, and relearning.
+- Replacement PP values, maximum clamping, empty slots, and fresh-PP toggle.
+- Ability-switch resource and immunity interactions.
+- Nuzlocke opportunity records for duplicate, shiny, failed catch, static, and scripted cases.
+- Casualty handling and prevention of revival through every storage/healing path.
+- All wipe modes and retained-save integrity.
+- Item-clause swaps and lossless Bag returns.
+- Gauntlet entry/exit boundaries, trainer-defeat conditions, and no-reception presentation.
+- Repel fishing/item outcomes and Smooth Fishing composition.
+- Map sub-area status and discovered-only highlighting.
+- Sadist immunity handling and HP limits.
+- Time offset persistence and no one-time reward reset.
+
+29. OPEN DECISIONS TO RETAIN, NOT SILENTLY INVENT
+
+1) Final starter quartet and full roster/encounter placement.
+2) Explicit final learnset selector and alignment of TM/transfer sources; Gen 9 is the recommendation, not a recorded final selection.
+3) Prices, service unlocks, hidden-ability milestone, and evolution-stone placement.
+4) Gift/static exception defaults; eggs likely omitted but not categorically banned.
+5) Exact Nuzlocke lock coverage, especially overlapping cap/battle settings.
+6) In-battle leveling/cap overflow details under the selectable option.
+7) Wipe-with-no-reserves behavior, save persistence for return-to-title, and retained-save restart design.
+8) PP for empty slots and direct transfer, if a different rule from the working defaults is desired.
+9) Sadist minimum HP and detailed status-substate controls.
+10) Compound evolution requirements and stone consumption.
+11) Catch-chance display format/default.
+12) Exact Center-reference ownership/spoiler scope and map sub-area UI.
+13) Smooth Fishing rates, Repel-warning frequency, and item-pool probability handling.
+14) Boss retry behavior and its relationship to permadeath/wipe settings.
+15) Battle-generation choices beyond learnsets, and whether any special generational battle gimmicks are included; none were selected here.
+
+Most user-facing behavior is now specified. These remaining details should be resolved as needed, without reopening agreed principles or adding unnecessary complexity.
+
+30. NEW-CHAT CONTINUATION INSTRUCTION
+
+Use this document as the mechanics and QoL handoff for my Emerald ROM hack. It is separate from the narrative storyboard. Preserve the agreed modular design and distinguish open details from final decisions. The goal is strategic team-building without repetitive grinding. Do not implement code unless I ask; when implementation begins, inspect my actual fork instead of assuming current upstream matches it. Index your responses. I will tell you which part to develop next.
+
+END OF MECHANICS HANDOFF
+
+
+========================================================================
+APPROVED IMPLEMENTED OPENING AND HOMETOWN DIALOGUE
+========================================================================
+
+LEG ONE: APPROVED OPENING AND HOMETOWN DIALOGUE
+Revision: 2026-10-20
+
+Latest board edits take precedence over earlier drafts. Astrid and Edwulf have already departed when their houses can be visited. Their parents remain. Neville is still packing. The old man uses the revised monologue below.
+PC+Neville oppose Astrid+Edwulf in a level-5 supervised double battle. Win and loss both continue. No permadeath for this battle.
+Five candidates: Vulpix, Psyduck, Phanpy, Crabrawler, Deerling. Unchanged generation-9 level-up moves. No early impactful TMs or Infinite Repel.
+All introductory character/name selections occur in the opening interface. Yew addresses the group; the lab reveal follows.
+Opening speech:
+YEW: Hello, children. Welcome.
+My name is Professor Yew. I oversee the Pokémon Training Program here in our region.
+Today, the day you have been waiting for is finally here. You begin your first steps as Pokémon trainers.
+Our world is home to remarkable creatures called Pokémon. Some live alongside us. Others make their homes in the wild.
+They are our friends and companions. Together, we soar above the clouds, cross vast oceans, light our cities, and make gardens bloom.
+Pokémon help us heal the sick, create beautiful music, discover new places, and accomplish things we could never dream of doing alone.
+And, of course, they love a good battle!
+As trainers, you will learn to bring out your partners’ remarkable gifts.
+The places you discover, the challenges you overcome, and the victories you share will build the strongest bonds between you.
+A Pokémon journey is the beginning of a friendship that can last a lifetime.
+Before we begin, let’s make sure your enrollment details are correct.
+[Appearance selection] And your name? [Name entry] {PLAYER}. Good.
+Please review your training preferences. [Settings, optional Nuzlocke configuration and rule lock.] Everything in order? Then we can begin.
+
+STARTER ASSIGNMENTS (PC / Neville / Astrid / Edwulf / Unused)
+Vulpix / Phanpy / Psyduck / Deerling / Crabrawler
+Psyduck / Phanpy / Deerling / Crabrawler / Vulpix
+Phanpy / Psyduck / Deerling / Crabrawler / Vulpix
+Crabrawler / Vulpix / Psyduck / Phanpy / Deerling
+Deerling / Psyduck / Vulpix / Crabrawler / Phanpy
+
+CONVERSATION FLOW
+Lab: Welcome to ReadyN, battle, WinN/WinA/WinY OR LoseA/LoseE/LoseA2/LoseN/LoseY, then Rested through MeetNeville.
+Challenge choice: “We heard her.” -> Heard; “You two can take notes for us.” -> Notes.
+Mom choice: “We won our first battle.” (only after win) or “We had our first battle.” -> respective response.
+Neville choice: “She knows you.” or “Any food in there?” -> respective response.
+Edwulf parents choice: “They didn’t say.” or “I’m sure we can.” -> respective response.
+Optional visits, not mandatory sightseeing. Only Mom farewell is required before departure.
+
+DIALOGUE TEXT (scene labels are implementation identifiers)
+
+[Lab_Welcome]
+YEW: Each of you will receive a Pokémon to accompany you throughout the program.
+
+Choosing a partner is an important--
+
+[Lab_Whisper]
+NEVILLE: Bet mine takes one look at me and asks for someone else.
+
+[Lab_Interrupt]
+YEW: Who is interrupting me?
+
+[Lab_Nerves]
+NEVILLE: Sorry, Professor. Just nerves.
+
+[Lab_Listen]
+YEW: Then take a breath. You'll need to listen if you intend to learn anything.
+
+You. Come forward. Since the two of you are so eager, you may begin.
+
+[Lab_Listening]
+ASTRID: Professor, we were listening.
+
+[Lab_Hear]
+YEW: And you'll hear the instructions perfectly well from there.
+
+Take your time. Have a look at each of them.
+
+You'll be doing a great deal of growing together.
+
+[Lab_Choose]
+Choose your first partner.
+
+[Lab_Confirm]
+YEW: {STR_VAR_1}. A fine choice.
+
+Is this the Pokémon you'd like?
+
+[Lab_Nickname]
+Give your new partner a nickname?
+
+[Lab_NevChoice]
+NEVILLE: Oh, good choice. I was thinking about that one.
+
+Well. That one and three of the others.
+
+[Lab_AstridTurn]
+YEW: Astrid. Your turn.
+
+[Lab_AstridChoice]
+ASTRID: We're going to do something worthwhile. You and me.
+
+[Lab_EdwulfTurn]
+YEW: Edwulf?
+
+[Lab_EdwulfChoice]
+EDWULF: This one, please.
+
+[Lab_NevilleTurn]
+YEW: And Neville.
+
+[Lab_NevilleChoice]
+NEVILLE: Mostly.
+
+Hey, {PLAYER}, do you also think this {STR_VAR_1} looks like me a little?
+
+Hello, little monster. I'm Neville. I will be your supreme commander from now on.
+
+[Lab_Serious]
+ASTRID: You could try taking this seriously.
+
+[Lab_Introduced]
+NEVILLE: I introduced myself!
+
+[Lab_Before]
+ASTRID: I meant before that.
+
+[Lab_Important]
+EDWULF: She was explaining something important.
+
+[Lab_Heard]
+ASTRID: Then perhaps you can tell your partner what to do.
+
+[Lab_Notes]
+EDWULF: You'll still have to understand them.
+
+[Lab_Fun]
+NEVILLE: You two are really good at sucking the fun out of everything. It's quite impressive.
+
+[Lab_Practice]
+YEW: Maybe instead of all this bickering you could channel this aggression into something useful.
+
+If you have something to prove, we have a practice floor.
+
+Astrid and Edwulf, together. {PLAYER}, you'll partner with Neville.
+
+[Lab_Paper]
+NEVILLE: This is sooo much better than throwing wads of paper at their backs.
+
+[Lab_Safe]
+YEW: The Pokémon will be quite safe. I'll be supervising.
+
+Now, take your places.
+
+[Lab_ReadyA]
+ASTRID: Ready, Edwulf?
+
+[Lab_ReadyE]
+EDWULF: Yes.
+
+[Lab_ReadyN]
+NEVILLE: We've got this, {PLAYER}.
+
+Ready?
+
+[Lab_DefeatA]
+This doesn't prove anything.
+
+[Lab_DefeatE]
+...
+
+[Lab_WinN]
+NEVILLE: You guys really should have listened better.
+
+Good work, soldier!
+
+[Lab_WinA]
+ASTRID: This doesn't prove anything.
+
+[Lab_WinY]
+YEW: Well done, {PLAYER}. Neville.
+
+Astrid, don't rush your next decision because the last one went badly.
+
+Edwulf, you're allowed to speak to your partner. They cannot follow a plan you keep to yourself.
+
+[Lab_LoseA]
+ASTRID: Yes! Well done!
+
+We make a good team.
+
+[Lab_LoseE]
+EDWULF: You nearly went too quickly.
+
+[Lab_LoseA2]
+ASTRID: Nearly.
+
+[Lab_LoseN]
+NEVILLE: Sorry, {PLAYER}. I thought that would work.
+
+[Lab_LoseY]
+YEW: A good first showing, Astrid. Edwulf.
+
+{PLAYER}, keep an eye on your partner's position as well as your own.
+
+Neville, you knew what you wanted to do. Next time, give the instruction clearly.
+
+Hesitation makes it harder for your Pokémon to understand you.
+
+[Lab_Rested]
+YEW: There. All rested.
+
+Remember how that felt. There will be plenty of opportunities to improve.
+
+And you won't always be battling the people you already know.
+
+[Lab_JustAsWell]
+NEVILLE: Probably just as well.
+
+[Lab_Program]
+YEW: Your first destination is the next town over.
+
+From there, you'll begin the journey through our eight gyms. Each gym leader will assess your progress and award a badge when you're ready to advance.
+
+Between gyms, you'll meet other trainers, encounter wild Pokémon, and learn to manage your team.
+
+Your badges and assessments will help us find the work best suited to your abilities.
+
+[Lab_Service]
+ASTRID: And the people who do best get considered for regional service?
+
+[Lab_Opportunities]
+YEW: They do. There are excellent opportunities for capable, dedicated trainers.
+
+But you have eight badges to earn before we discuss those.
+
+[Lab_VictoryRoad]
+EDWULF: And Victory Road.
+
+[Lab_Graduation]
+YEW: Yes. The final challenge before graduation.
+
+You'll hear plenty about that along the way.
+
+[Lab_HowFar]
+NEVILLE: How far are we supposed to travel on our own?
+
+[Lab_Routes]
+YEW: As far as the program takes you.
+
+There's no need to look so worried. Our regional administration works very hard to keep the training routes safe.
+
+You'll find Pokémon Centers in every town, clearly marked routes, and staff ready to help.
+
+The route numbers will guide you through the program toward your next gym. Follow the signs, and pay attention to official notices.
+
+Help is never far away.
+
+[Lab_Equipment]
+YEW: One last piece of equipment.
+
+[Lab_Dex]
+YEW: This is a Pokédex: an electronic guide that identifies Pokémon and records your encounters with them.
+
+It helps us assess your progress as trainers while providing the administration with valuable information about the region's wildlife.
+
+When you see a species you don't recognize, make sure to register it. Understanding your Pokémon is an important part of becoming a good trainer.
+
+Your observations also help our wildlife staff monitor local populations and keep the routes healthy and safe.
+
+[Lab_Contributing]
+ASTRID: So we'll already be contributing.
+
+[Lab_FourTrainers]
+YEW: Exactly. Four trainers can observe far more than one researcher.
+
+[Lab_Reports]
+NEVILLE: Do we have to write reports?
+
+[Lab_Automatic]
+YEW: No. It sends the information automatically.
+
+[Lab_Invention]
+NEVILLE: Excellent invention.
+
+[Lab_Appreciate]
+YEW: I thought you might appreciate that.
+
+[Lab_Goodbyes]
+YEW: Your families are expecting you before you leave. Go and say your goodbyes.
+
+Check your supplies, look after your partners, and remember--you represent your hometown now.
+
+I look forward to hearing about your progress.
+
+[Lab_Moving]
+ASTRID: We should get moving. We can reach the next town before--
+
+[Lab_GoodbyeHome]
+EDWULF: You haven't said goodbye at home.
+
+[Lab_AfterThat]
+ASTRID: I know. After that.
+
+[Lab_MeetNeville]
+NEVILLE: I've still got to go home. Mum's packed something, and I'm apparently not allowed to leave without it.
+
+Meet you in the next town?
+
+We can compare how many things we forgot.
+
+[Lab_YewAgain]
+YEW: Check your supplies, look after your partner, and follow the route signs.
+
+I look forward to hearing about your progress.
+
+[Mom_First]
+MOM: Oh, look at you two!
+
+Let me have a proper look. You'll want to remember this day.
+
+Did everything go well at the lab?
+
+[Mom_Win]
+MOM: Already? I knew you'd make us proud.
+
+[Mom_Battle]
+MOM: And Professor Yew was there? Then you couldn't have had a better start.
+
+[Mom_Shoes]
+MOM: I've got a couple of things for you.
+
+These should make those long routes a little easier on your feet.
+
+[Mom_Map]
+MOM: And a map. Before you tell me you know the way--take it anyway.
+
+[Mom_Farewell]
+MOM: Your first destination is the next town. Just follow Route 1.
+
+It's wonderful, really. When else would children your age get an opportunity like this?
+
+Your own Pokémon, a proper journey, and people looking out for you the whole way.
+
+I'll miss having you underfoot.
+
+But I'm not going to spoil your big day by fussing.
+
+Go on. Neville's probably packed enough for both of you.
+
+[Mom_Again]
+MOM: You can always come home.
+
+Just leave those muddy shoes by the door.
+
+[Neville_Home]
+NEVILLE: She packed a second pair of shoes.
+
+For when the first pair gets wet.
+
+And a third pair of socks. For when apparently everything goes wrong.
+
+[Neville_Knows]
+NEVILLE: That's what makes it so difficult to argue.
+
+[Neville_Food]
+NEVILLE: Yes. But I've been told it has to last longer than the walk out of town.
+
+[Neville_Meet]
+NEVILLE: I'll catch up with you in the next town.
+
+Don't go beating everybody before I get there.
+
+[Neville_Again]
+NEVILLE: I know I've forgotten something.
+
+Probably whatever's under all the socks.
+
+[NevMom]
+NEVILLE'S MUM: Will you remind him to eat something besides sweets?
+
+And if he says he knows a shortcut, ask whether he's actually been there.
+
+[NevOnce]
+NEVILLE: That happened once.
+
+[NevTwice]
+NEVILLE'S MUM: You were late twice.
+
+[NevMom_End]
+NEVILLE'S MUM: He's been looking forward to going with you.
+
+I'm glad you'll have each other.
+
+[AstridParent]
+ASTRID'S MOM: She's finally off, then?
+
+We've had weeks of breakfast speeches about everything she's going to accomplish.
+
+She used to line her toys up and give them badges.
+
+Still, it's good to care about something.
+
+If you see her rushing ahead, remind her the rest of the world needs time to catch up.
+
+[EdParents]
+EDWULF'S MOM: You received your Pokémon?
+
+A good companion, I hope.
+
+[EdParents2]
+EDWULF'S DAD: Did they tell you when you'll be able to visit home?
+
+[EdParents_No]
+EDWULF'S DAD: No. I suppose there was a lot to explain.
+
+[EdParents_Yes]
+EDWULF'S DAD: Yes. Of course.
+
+[EdParents_End]
+EDWULF'S MOM: We asked whether Edwulf could begin next year.
+
+He's young for his class.
+
+EDWULF'S DAD: But they've arranged everything now.
+
+EDWULF'S MOM: Look after yourselves. All four of you.
+
+[EdParents_Again]
+EDWULF'S DAD: Tell him he can write even if he hasn't earned a badge.
+
+[OldMan]
+OLD MAN: Used to be, you didn't know what might come knocking after dark.
+
+You'd turn the lock, check it twice, and say a little prayer it held till morning.
+
+Now look at us. Doors wide open! Half the street wandering through your kitchen.
+
+My daughter says I ought to get rid of the old lock.
+
+Still works, though. Shame to throw out a good lock.
+
+[OldMan_Again]
+OLD MAN: Come in, come in. Everybody else does.
+
+[Resident]
+Four new trainers from our little town!
+
+I remember when your lot could barely be trusted to cross the square without breaking something.
+
+Don't look at me like that. I remember the flowerpot.
+
+Come back with a badge or two. Give us something to boast about.
+
+[Worker]
+Heading down Route 1?
+
+The signs are up, and the path's been checked. You shouldn't have any trouble finding your way.
+
+Keep to the marked trail. If there's a closure notice, it's there for a reason.
+
+The Pokémon don't read the signs, unfortunately. That part keeps us busy.
+
+[FastLevel]
+I used to stick with the same team because bringing anyone new up to speed took forever.
+
+If you've enabled Fast Leveling, ask at a Pokémon Center.
+
+They can bring another Pokémon up to your trainer level immediately. Now I can use the right Pokémon for each task without having to spend time grinding levels on my recently caught Pokémon.
+
+[FastLevel_Off]
+You can enable it in your training preferences if you change your mind.
+
+[SetMoves]
+A Pokémon can know more than four moves. Four is just how many you take into a battle.
+
+If you've enabled Set Moves, you can change that selection from its menu whenever you want.
+
+I like being able to prepare a custom moveset for important battles.
+
+[Child]
+You got yours today?
+
+I'm choosing that one when it's my turn.
+
+Unless they have something better.
+
+Don't tell it I said that.
+
+[Boundary]
+ROUTE 1
+NEXT TOWN AHEAD
+
+Registered trainers: carry your Pokédex and follow posted route guidance.
+
+[NeedMom]
+You should say goodbye at home before leaving town.
+
+[Complete]
+LEG ONE COMPLETE
+
+Your journey begins here.
+
+This build ends at the Route 1 boundary. You can return to town, speak to everyone, and save your progress.
+
+[Heal]
+Your Pokémon are fully rested.
+
+[Prefs]
+Please review your training preferences.
+
+Battle style and text speed are also available from OPTIONS in the START menu.
+
+[Prefs_Nick]
+Automatically open the nickname screen for received Pokémon?
+
+[Prefs_Fast]
+Enable Fast Leveling?
+
+[Prefs_Moves]
+Enable Set Moves?
+
+[Prefs_Done]
+Everything in order?
+
+Then we can begin.
+
+[Guide]
+Training preferences can be reviewed at the terminal in Professor Yew's lab.
+
+Press START to save. Hold B to run once you've collected your shoes.
+
+[TownMap]
+Your map shows your hometown and the Route 1 exit. The rest of your journey lies ahead.
+
+[Sign_Mom]
+{PLAYER}'s home
+
+[Sign_Neville]
+Neville's home
+
+[Sign_Astrid]
+Astrid's home
+
+[Sign_Edwulf]
+Edwulf's home
+
+[Sign_OldMan]
+A well-kept home. The door is wide open.
+
+[Sign_Lab]
+Regional Pokémon Training Program
+Professor Yew's Laboratory
+
+[ShoesReceived]
+{PLAYER} received the Running Shoes!
+
+Hold B while walking to run.
+
+[MapReceived]
+{PLAYER} received the Town Map!
+
+Use it from the KEY ITEMS pocket.
+
+[DexReceived]
+{PLAYER} received a Pokédex!
+
+[Lab_Chosen]
+YEW: {STR_VAR_1}. A fine choice.
+
+[Lab_Table]
+Examine a Poké Ball on the table to meet the Pokémon inside.
+
+[Lab_FinishChoosing]
+Choose your partner before leaving the lab.
+
+[Lab_NevilleThinking]
+NEVILLE: Right. Yes. I've thought about this.
+
+[Home_Bed]
+Your own bed. A little rest before the journey?
+
+[Home_PC]
+A half-finished game is still on the screen. It'll have to wait.
+
+[Ball_0]
+VULPIX
+
+FIRE type. A clever little fox with six warm tails.
+
+Choose this Pokémon?
+
+[Ball_1]
+PSYDUCK
+
+WATER type. A curious duck whose headaches hide surprising power.
+
+Choose this Pokémon?
+
+[Ball_2]
+PHANPY
+
+GROUND type. A sturdy little elephant with a playful trunk.
+
+Choose this Pokémon?
+
+[Ball_3]
+CRABRAWLER
+
+FIGHTING type. A determined crab, always ready to raise its claws.
+
+Choose this Pokémon?
+
+[Ball_4]
+DEERLING
+
+NORMAL / GRASS type. A nimble woodland Pokémon that changes with the seasons.
+
+Choose this Pokémon?
+
+
+========================================================================
+PLAYABLE SEGMENT AND LIMITS
+========================================================================
+
+# Hometown opening — leg one, v0.3
+
+Open `pokemon-leg-one-v0.3.gba` in your GBA emulator and start a **NEW GAME**.
+Old proof-of-concept saves are not compatible with this story opening.
+Press START to skip the title movie, then START again for the main menu.
+Use NEW GAME to see Yew's introduction, choose your appearance and name,
+and set your initial training preferences. SELECT on the title screen is an
+upstream quick-start shortcut; avoid it for a normal story playthrough.
+
+## This playable segment
+
+- Yew's group introduction and the lab reveal.
+- Vulpix, Psyduck, Phanpy, Crabrawler, or Deerling at level 5.
+- Walk up to the table and inspect each physical Poké Ball for its Pokémon
+  sprite, description and confirmation. Decline freely to inspect another.
+- The other three classmates walk up and choose from the same pool. Their selections
+  follow the approved five-row assignment table.
+- A real multi battle: you and AI Neville versus Astrid and Edwulf.
+- Both victory and defeat continue into the program briefing and Pokédex.
+- A small, fully connected hometown with six buildings and a two-floor player home, optional dialogue
+  choices, the old man's revised monologue, and the approved mechanics tips.
+- Astrid and Edwulf are already gone when you visit their houses.
+- Mom gives Running Shoes and a usable local Town Map. Hold B to run.
+- The lab's northwest terminal can change this build's training preferences.
+- Enabled SET MOVES opens the moves page from the party menu. Use the
+  on-screen relearner prompt to choose a previously available level-up move.
+- Leaving north requires Mom's farewell. Crossing into Route 1 marks the
+  end of leg one; you can return, explore, and save normally.
+
+## Prototype limits
+
+This is the first implementation of the approved opening, not the full game.
+The setting is labelled HOMETOWN / ROUTE 1 pending location names. Existing
+Emerald tiles provide the environments. The approved custom Yew, Astrid,
+Edwulf, and Neville designs now have native battle portraits and walking sprites;
+Neville also has a custom partner battle back sprite.
+The title screen still uses Emerald's original artwork/music.
+
+The complete mechanics specification is design work, not a claim that every
+feature has shipped. This segment provides nickname prompting, the free move
+relearner, a persistent trainer-level high-water mark, and saved preference
+flags. Fast Leveling is recorded for the later Center implementation; this
+segment has no Center, wild captures, or grind. The larger Nuzlocke settings,
+level caps, EV/IV editing, abilities, portable Center and Repel systems remain
+future implementation work. No unused controls pretend to enforce those rules.
+The opening battle cannot cause a game-over or permanent loss of your starter.
+
+## Reviewing it
+
+Try a fresh game with each starter, test the two battle outcomes, then visit
+all houses and NPCs in different orders. Try leaving before visiting Mom.
+Check the Town Map and SET MOVES, then save and reload after leaving the lab
+and again after reaching Route 1. Repeated Mom visits must not duplicate items,
+and returning to the lab must not replay the starter ceremony.
+
+## Source
+
+`data/our-game/dialogue.json` is the editable dialogue source.
+`docs/our-game/Leg-One-Dialogue.txt` records the approved dialogue and decisions.
+`dev_scripts/build_leg_one.py` regenerates the new maps and event scripts.
+
+Build with the upstream toolchain and `make -j8`. No copyrighted base ROM is
+needed for this source build. See upstream INSTALL.md and CREDITS.md.
+
+## Revision v0.3 review points
+
+New dialogue messages clear the previous message. At the lab reveal everyone
+faces Yew; Neville turns toward you before whispering. Each claimed ball leaves
+the table immediately. All four trainers walk to their practice positions.
+Neville keeps fighting if your Pokémon faints first. Yew enters the practice
+floor before feedback, retrieves devices from the desk, and hands them out.
+Mom hands you the supplies and her dialogue now says so. Explore the upstairs
+bedroom; Astrid's mom and Edwulf's mom/dad remain home after the children leave.
+
+Start NEW GAME for this revision. Earlier saves and emulator save states can
+retain the old positions and story stages.
+
+
+========================================================================
+VERIFICATION RESULTS
+========================================================================
+
+# Leg one v0.3 validation — 2026-10-20
+
+ROM SHA-256: `98e2d5530e749a1c7231a31780e5858a750e511347d1879938aa614346fad3f5`.
+
+- Full Emerald build passes. ROM 79.86%, EWRAM 86.56%, IWRAM 86.60%.
+- Nine content checks pass: assignments, reverse warp destinations, layout
+  sizes and NPC positions, departed classmates, text references, approved text,
+  individual ball selection, two-storey home/parent names, native art formats.
+- All five physical starter choices were replayed in mGBA 0.10.2 from a
+  fresh New Game and a same-build table checkpoint. Each preview identifies the correct species;
+  declining leaves all five balls available;
+  rivals complete their collection walks; exactly one ball remains; player
+  (5,12), Neville (5,14), Astrid (11,12), Edwulf (11,14) face their opponents.
+  See tests/leg-one/qa_opening.py and the attached starter-results.json.
+- Custom trainer front portraits and Neville's partner back portrait display
+  in an actual doubles battle. All four custom overworld actors display.
+- Faint regression: set the player's active HP to 1 and temporarily increased
+  Neville's HP for observation. The player's Pokémon fainted normally; battle
+  outcome stayed 0, Neville remained on screen, continued taking turns and
+  damage, and the battle ended only after his Pokémon also fainted. No battle
+  outcome was injected for this test. Defeat feedback and handover completed.
+- Win feedback was separately exercised by reducing opposing active HP to 1
+  and winning through normal attacks. Yew walks into view before feedback
+  in both outcome branches. These battle checks preceded the final purely
+  visual ball-height and exit-tile fixes.
+- Fresh final-build Deerling playthrough completed the battle, briefing,
+  handover and rival departures, then walked out of the lab into town.
+- Balls visibly rest on the counter; chosen balls disappear immediately.
+  Dialogue pages and successive speakers display without old text underneath.
+- Entered the new player home, completed Mom's supply conversation and gifts,
+  climbed the stairs and inspected the bedroom with its bed.
+- Used the game's SAVE menu in the upstairs room; waited for save completion,
+  exported a populated 128 KiB battery save, reset, selected CONTINUE, and
+  returned to upstairs (7,2), lab stage 4 and farewell flag 1.
+
+The remaining optional conversations and parent placement were structurally
+checked and compiled. This revision does not implement the entire future QoL
+settings specification. Begin a NEW GAME when upgrading from v0.2.
+
+Source restoration note: v0.2 was recovered from its saved source archive after
+a temporary workspace reset. Local Git records the recovered base and these
+changes; this revision has not been pushed to GitHub.
+
+
+END OF HANDOFF

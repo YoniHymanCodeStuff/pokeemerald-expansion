@@ -16897,3 +16897,81 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Scratch
 - Growl
+
+
+=== TRAINER_LEG_ASTRID_PSYDUCK ===
+Name: ASTRID
+Class: Lass
+Pic: Leg Astrid
+Gender: Female
+Music: Male
+AI: Check Bad Move
+
+Psyduck
+Level: 5
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+
+=== TRAINER_LEG_ASTRID_DEERLING ===
+Name: ASTRID
+Class: Lass
+Pic: Leg Astrid
+Gender: Female
+Music: Male
+AI: Check Bad Move
+
+Deerling
+Level: 5
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+
+=== TRAINER_LEG_ASTRID_VULPIX ===
+Name: ASTRID
+Class: Lass
+Pic: Leg Astrid
+Gender: Female
+Music: Male
+AI: Check Bad Move
+
+Vulpix
+Level: 5
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+
+=== TRAINER_LEG_EDWULF_DEERLING ===
+Name: EDWULF
+Class: School Kid
+Pic: Leg Edwulf
+Gender: Male
+Music: Male
+AI: Check Bad Move
+
+Deerling
+Level: 5
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+
+=== TRAINER_LEG_EDWULF_CRABRAWLER ===
+Name: EDWULF
+Class: School Kid
+Pic: Leg Edwulf
+Gender: Male
+Music: Male
+AI: Check Bad Move
+
+Crabrawler
+Level: 5
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+
+=== TRAINER_LEG_EDWULF_PHANPY ===
+Name: EDWULF
+Class: School Kid
+Pic: Leg Edwulf
+Gender: Male
+Music: Male
+AI: Check Bad Move
+
+Phanpy
+Level: 5
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe

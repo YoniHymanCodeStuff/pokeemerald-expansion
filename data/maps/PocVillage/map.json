@@ -22,50 +22,222 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_PROF_BIRCH",
-      "x": 9,
-      "y": 10,
+      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "x": 17,
+      "y": 21,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "PocVillage_Professor",
+      "script": "Leg_Resident",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
-      "x": 14,
-      "y": 12,
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
+      "x": 23,
+      "y": 29,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "PocVillage_Help",
+      "script": "Leg_Worker",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "x": 16,
+      "y": 15,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Leg_FastLevel",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "x": 23,
+      "y": 15,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Leg_SetMoves",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
+      "x": 22,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Leg_Child",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
+      "x": 17,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Leg_Guide",
       "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 4,
-      "y": 7,
+      "x": 5,
+      "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_POC_CABIN",
+      "dest_map": "MAP_LEG_OLD_MAN",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 28,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_LEG_EDWULF",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_LEG_NEVILLE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 28,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_LEG_ASTRID",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 28,
+      "elevation": 0,
+      "dest_map": "MAP_LEG_HOME",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 28,
+      "y": 28,
+      "elevation": 0,
+      "dest_map": "MAP_LEG_LAB",
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 2,
+      "elevation": 3,
+      "var": "VAR_LEG_FAREWELL",
+      "var_value": "0",
+      "script": "Leg_NeedMom"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 2,
+      "elevation": 3,
+      "var": "VAR_LEG_FAREWELL",
+      "var_value": "0",
+      "script": "Leg_NeedMom"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 2,
+      "elevation": 3,
+      "var": "VAR_LEG_FAREWELL",
+      "var_value": "0",
+      "script": "Leg_NeedMom"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 2,
+      "elevation": 3,
+      "var": "VAR_LEG_FAREWELL",
+      "var_value": "0",
+      "script": "Leg_NeedMom"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",
-      "x": 7,
-      "y": 12,
+      "x": 8,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "PocVillage_Sign"
+      "script": "Leg_Sign_LegOldMan"
+    },
+    {
+      "type": "sign",
+      "x": 31,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Leg_Sign_LegEdwulf"
+    },
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Leg_Sign_LegNeville"
+    },
+    {
+      "type": "sign",
+      "x": 31,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Leg_Sign_LegAstrid"
+    },
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 29,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Leg_Sign_LegHome"
+    },
+    {
+      "type": "sign",
+      "x": 31,
+      "y": 29,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Leg_Sign_LegLab"
+    },
+    {
+      "type": "sign",
+      "x": 22,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Leg_Boundary"
     }
   ]
 }

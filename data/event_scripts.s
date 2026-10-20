@@ -1744,3 +1744,6 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/PocTrail/scripts.inc"
 
 	.include "data/maps/PocCabin/scripts.inc"
+
+	.include "data/our-game/events.inc"
+	.include "data/our-game/text.inc"

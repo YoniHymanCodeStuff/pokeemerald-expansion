@@ -1,4 +1,5 @@
 #include "global.h"
+#include "leg_one.h"
 #include "clock.h"
 #include "new_game.h"
 #include "random.h"
@@ -138,7 +139,7 @@ static void WarpToTruck(void)
     if (IS_FRLG)
         SetWarpDestination(MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), WARP_ID_NONE, 6, 6);
     else
-        SetWarpDestination(MAP_GROUP(MAP_POC_VILLAGE), MAP_NUM(MAP_POC_VILLAGE), WARP_ID_NONE, 9, 12);
+        SetWarpDestination(MAP_GROUP(MAP_LEG_LAB), MAP_NUM(MAP_LEG_LAB), WARP_ID_NONE, 7, 7);
     WarpIntoMap();
 }
 
@@ -234,6 +235,7 @@ void NewGameInitData(void)
     ResetItemFlags();
     ResetDexNav();
     ClearFollowerNPCData();
+    LegOneApplyPreferences();
 }
 
 static void ResetMiniGamesRecords(void)

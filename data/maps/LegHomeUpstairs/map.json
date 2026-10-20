@@ -1,0 +1,46 @@
+{
+  "id": "MAP_LEG_HOME_UPSTAIRS",
+  "name": "LegHomeUpstairs",
+  "layout": "LAYOUT_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F",
+  "music": "MUS_OLDALE",
+  "region": "REGION_HOENN",
+  "region_map_section": "MAPSEC_POC_VILLAGE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 7,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_LEG_HOME",
+      "dest_warp_id": "2"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 1,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LegHome_Bed"
+    },
+    {
+      "type": "sign",
+      "x": 1,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "LegHome_PC"
+    }
+  ]
+}

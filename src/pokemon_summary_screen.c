@@ -1,4 +1,5 @@
 #include "global.h"
+#include "leg_one.h"
 #include "main.h"
 #include "battle.h"
 #include "battle_anim.h"
@@ -1243,6 +1244,11 @@ void ShowPokemonSummaryScreen(u8 mode, void *mons, u8 monIndex, u8 maxMonIndex, 
         sMonSummaryScreen->currPageIndex = PSS_PAGE_CONTEST_MOVES;
     else
         sMonSummaryScreen->currPageIndex = sMonSummaryScreen->minPageIndex;
+    if (gLegOpenMovesPage && mode == SUMMARY_MODE_NORMAL)
+    {
+        sMonSummaryScreen->currPageIndex = PSS_PAGE_BATTLE_MOVES;
+        gLegOpenMovesPage = FALSE;
+    }
 
     sMonSummaryScreen->categoryIconSpriteId = 0xFF;
     SummaryScreen_SetAnimDelayTaskId(TASK_NONE);
@@ -4740,6 +4746,7 @@ static void KeepMoveSelectorVisible(u8 firstSpriteId)
 static inline bool32 ShouldShowMoveRelearner(void)
 {
     return (P_SUMMARY_SCREEN_MOVE_RELEARNER
+         && FlagGet(FLAG_LEG_SET_MOVES)
          && !sMonSummaryScreen->lockMovesFlag
          && sMonSummaryScreen->mode != SUMMARY_MODE_BOX_CURSOR
          && sMonSummaryScreen->hasRelearnableMoves

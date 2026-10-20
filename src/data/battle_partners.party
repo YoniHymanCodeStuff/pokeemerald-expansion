@@ -42,3 +42,42 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 - Protect
 - Solar Beam
 - Dragon Claw
+
+
+=== PARTNER_LEG_NEVILLE_PHANPY ===
+Name: NEVILLE
+Class: School Kid
+Pic: Leg Neville
+Gender: Male
+Music: Male
+AI: Check Bad Move
+
+Phanpy
+Level: 5
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+
+=== PARTNER_LEG_NEVILLE_PSYDUCK ===
+Name: NEVILLE
+Class: School Kid
+Pic: Leg Neville
+Gender: Male
+Music: Male
+AI: Check Bad Move
+
+Psyduck
+Level: 5
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+
+
+=== PARTNER_LEG_NEVILLE_VULPIX ===
+Name: NEVILLE
+Class: School Kid
+Pic: Leg Neville
+Gender: Male
+Music: Male
+AI: Check Bad Move
+
+Vulpix
+Level: 5
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe

@@ -496,6 +496,10 @@ const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
 #include "data/object_events/object_event_graphics_info_followers.h"
 
 static const struct SpritePalette sObjectEventSpritePalettes[] = {
+    {gObjectEventPal_LegNeville, OBJ_EVENT_PAL_TAG_LEG_NEVILLE},
+    {gObjectEventPal_LegEdwulf, OBJ_EVENT_PAL_TAG_LEG_EDWULF},
+    {gObjectEventPal_LegAstrid, OBJ_EVENT_PAL_TAG_LEG_ASTRID},
+    {gObjectEventPal_LegYew, OBJ_EVENT_PAL_TAG_LEG_YEW},
     {gObjectEventPal_Npc1,                  OBJ_EVENT_PAL_TAG_NPC_1},
     {gObjectEventPal_Npc2,                  OBJ_EVENT_PAL_TAG_NPC_2},
     {gObjectEventPal_Npc3,                  OBJ_EVENT_PAL_TAG_NPC_3},

@@ -66,3 +66,6 @@ tools/aif2pcm/aif2pcm
 *.smolTM
 __pycache__
 .map_version
+
+# Reassembled playable release; lossless parts are tracked.
+/releases/leg-one-v0.3/Pokemon-Leg-One-v0.3.zip

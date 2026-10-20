@@ -1165,6 +1165,13 @@
   "gMapGroup_Poc": [
     "PocVillage",
     "PocTrail",
-    "PocCabin"
+    "PocCabin",
+    "LegOldMan",
+    "LegEdwulf",
+    "LegNeville",
+    "LegAstrid",
+    "LegHome",
+    "LegLab",
+    "LegHomeUpstairs"
   ]
 }
